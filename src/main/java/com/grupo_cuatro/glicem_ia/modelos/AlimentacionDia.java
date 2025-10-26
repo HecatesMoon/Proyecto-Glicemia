@@ -11,6 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -22,13 +24,13 @@ public class AlimentacionDia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    String tipoComida;
+    private String tipoComida;
 
-    String descripcion;
+    private String descripcion;
 
-    LocalDate fecha;
+    private LocalDate fecha;
 
-    LocalTime hora;
+    private LocalTime hora;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
@@ -104,6 +106,17 @@ public class AlimentacionDia {
 
     public void setFechaActualizacion(Date fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+
+    @PrePersist
+    protected void onCreate(){
+        this.fechaCreacion = new Date();
+        this.fechaActualizacion = new Date();
+    }
+    
+    @PreUpdate
+    protected void onUpdate(){
+        this.fechaActualizacion = new Date();
     }
 
     
