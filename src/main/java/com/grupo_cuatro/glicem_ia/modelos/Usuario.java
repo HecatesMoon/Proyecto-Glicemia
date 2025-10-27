@@ -17,6 +17,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -44,11 +45,14 @@ public class Usuario {
     @NotNull(message = "Por favor proporciona tu fecha de nacimiento")
     private LocalDate fechaNacimiento;
 
-    @Size(message = "Proporciona tu tipo de diabetes")
+    @Size(message = "Por favir proporciona tu tipo de diabetes")
     private String tipoDiabetes;
 
     @Transient
     private String confirmarContrasenia;
+
+    @NotNull(message = "Debes aceptar los términos y condiciones para continuar")
+    private Boolean aceptaTerminos;
 
     @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
     List<Glucosa> glucosa;
@@ -125,6 +129,14 @@ public class Usuario {
         this.confirmarContrasenia = confirmarContrasenia;
     }
 
+    public Boolean getAceptaTerminos() {
+        return aceptaTerminos;
+    }
+
+    public void setAceptaTerminos(Boolean aceptaTerminos) {
+        this.aceptaTerminos = aceptaTerminos;
+    }
+
     public List<Glucosa> getGlucosa() {
         return glucosa;
     }
@@ -161,5 +173,4 @@ public class Usuario {
     }
     
 
-    
 }

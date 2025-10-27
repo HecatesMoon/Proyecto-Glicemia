@@ -10,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Max;
@@ -23,17 +25,19 @@ public class Glucosa {
 
     @NotNull(message = "El valor en mg/dL es obligatorio")
     /* @Min(value = 1, message = "El valor mínimo permitido es 1 mg/dL") */
-    @Max(value = 500, message = "El valor máximo permitido es 500 mg/dL")
+    /* @Max(value = 500, message = "El valor máximo permitido es 500 mg/dL") */
     private Integer valorMgDl;
 
     
     private Double valorMmolL;
 
+    @NotNull(message = "Por favor indique la fecha")
     private LocalDate fecha;
 
     @NotNull(message = "La hora de medición es obligatoria")
     private LocalTime hora;
 
+    @NotNull(message = "Indique el momento de medición")
     private String momentoMedicion;
 
     @ManyToOne
@@ -121,5 +125,14 @@ public class Glucosa {
         this.fechaActualizacion = fechaActualizacion;
     }
 
+    @PrePersist
+    protected void onCreate(){
+        this.fechaCreacion = new Date();
+        this.fechaActualizacion = new Date();
+    }
     
+    @PreUpdate
+    protected void onUpdate(){
+        this.fechaActualizacion = new Date();
+    }
 }

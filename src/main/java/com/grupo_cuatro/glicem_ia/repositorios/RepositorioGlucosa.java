@@ -11,6 +11,5 @@ import com.grupo_cuatro.glicem_ia.modelos.Glucosa;
 public interface RepositorioGlucosa extends CrudRepository<Glucosa, Long>{
     Glucosa save(Glucosa nuevoGlucosa);
     List<Glucosa> findAll();
-    
 } 
 
