@@ -3,6 +3,7 @@ package com.grupo_cuatro.glicem_ia.modelos;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -39,6 +40,14 @@ public class Receta {
     private Integer tiempoCoccion;
 
     private String imagenReceta;
+    
+    @Column(columnDefinition = "TEXT")
+    private String ingredientes;
+    
+    @Column(columnDefinition = "TEXT")
+    private String instrucciones;
+
+    private String categoriaEtiqueta;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id")
@@ -122,6 +131,43 @@ public class Receta {
 
     public void setImagenReceta(String imagenReceta) {
         this.imagenReceta = imagenReceta;
+    }
+    
+    
+
+
+    public String getIngredientes() {
+        return ingredientes;
+    }
+
+
+
+    public void setIngredientes(String ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+
+
+
+    public String getInstrucciones() {
+        return instrucciones;
+    }
+
+
+
+    public void setInstrucciones(String instrucciones) {
+        this.instrucciones = instrucciones;
+    }
+
+
+
+    public String getCategoriaEtiqueta() {
+        return categoriaEtiqueta;
+    }
+
+
+
+    public void setCategoriaEtiqueta(String categoriaEtiqueta) {
+        this.categoriaEtiqueta = categoriaEtiqueta;
     }
 
 
