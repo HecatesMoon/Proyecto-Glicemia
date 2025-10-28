@@ -2,10 +2,15 @@ package com.grupo_cuatro.glicem_ia.controladores;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+=======
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+>>>>>>> develop
 
 import com.grupo_cuatro.glicem_ia.modelos.LoginUsuario;
 import com.grupo_cuatro.glicem_ia.modelos.Usuario;
@@ -14,6 +19,15 @@ import com.grupo_cuatro.glicem_ia.servicios.ServicioUsuario;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+
+@Controller
+>>>>>>> develop
 public class ControladorUsuario {
     @Autowired
     private final ServicioUsuario servicioUsuario;

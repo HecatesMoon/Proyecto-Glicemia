@@ -50,8 +50,9 @@ public class Usuario {
     @Transient
     private String confirmarContrasenia;
 
-    @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
-    List<Glucosa> glucosa;
+    // //TODO: descomentar cuando Glucosa.java este completo
+    // @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
+    // List<Glucosa> glucosa;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
@@ -125,13 +126,14 @@ public class Usuario {
         this.confirmarContrasenia = confirmarContrasenia;
     }
 
-    public List<Glucosa> getGlucosa() {
-        return glucosa;
-    }
+    // TODO: Descomentar cuando la clase Glucosa esté disponible
+    // public List<Glucosa> getGlucosa() {
+    //     return glucosa;
+    // }
 
-    public void setGlucosa(List<Glucosa> glucosa) {
-        this.glucosa = glucosa;
-    }
+    // public void setGlucosa(List<Glucosa> glucosa) {
+    //     this.glucosa = glucosa;
+    // }
 
     public Date getFechaCreacion() {
         return fechaCreacion;

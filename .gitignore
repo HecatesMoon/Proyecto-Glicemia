@@ -32,6 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
+<<<<<<< HEAD
 # ==== Vistas de Prueba de Frontend ====
 /src/main/webapp/WEB-INF/*_prueba.jsp
 /src/main/webapp/WEB-INF/*_temp.jsp
@@ -44,3 +45,7 @@ build/
 # ==== Modelos de Prueba (Dummies) ====
 **/*Dummy.java
 
+=======
+### Local Configuration ###
+.env
+>>>>>>> develop

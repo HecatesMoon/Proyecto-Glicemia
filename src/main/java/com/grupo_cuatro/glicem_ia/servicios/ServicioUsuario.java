@@ -25,4 +25,8 @@ public class ServicioUsuario {
         nuevoUsuario.setContrasenia(contraseniaEncriptada);
         return this.repositorioUsuario.save(nuevoUsuario);
     }
+
+    public Usuario obtenerPorId(Long idUsuario){
+        return this.repositorioUsuario.findById(idUsuario).orElse(null);
+    }
 }
