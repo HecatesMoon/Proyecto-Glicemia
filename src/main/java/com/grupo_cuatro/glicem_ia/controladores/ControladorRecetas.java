@@ -34,6 +34,7 @@ public class ControladorRecetas {
     }
 
 
+
     @GetMapping("/recetas")
     public String mostrarRecetas(Model modelo, HttpSession sesion){
         if (sesion.getAttribute("id_usuario")== null) {
@@ -44,6 +45,8 @@ public class ControladorRecetas {
         return "recetas";
     }
 
+
+
     @GetMapping("/formulario/receta")
     public String formularioReceta(@ModelAttribute("nuevaReceta") Receta nuevaReceta, HttpSession sesion){
         if (sesion.getAttribute("id_usuario") == null) {
@@ -52,25 +55,39 @@ public class ControladorRecetas {
         return "formularioReceta";
     }
 
+
+
     @GetMapping("/detalle/receta/{idReceta}")
     public String detalleReceta(Model modelo, @PathVariable Long idReceta, HttpSession sesion){
+        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
         if (sesion.getAttribute("id_usuario") == null) {
             return "redirect:/login";
         }
         Receta receta = this.servicioReceta.obtenerUna(idReceta);
+        boolean esCreador = receta.getUsuario().getId().equals(idUsuario);
+        modelo.addAttribute("esCreador", esCreador);
         modelo.addAttribute("receta", receta);
         return "detalleReceta";
     }
 
+
+
     @GetMapping("/formulario/editar/receta/{idReceta}")
     public String editarReceta(Model modelo, @PathVariable Long idReceta, HttpSession sesion){
+        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
         if (sesion.getAttribute("id_usuario") == null) {
             return "redirect:/login";
         }
         Receta receta = this.servicioReceta.obtenerUna(idReceta);
+        if (!receta.getUsuario().getId().equals(idUsuario)) {
+            return "redirect:/recetas";
+            
+        }
         modelo.addAttribute("receta", receta);
         return "editarReceta";
     }
+
+
 
     @GetMapping("/misRecetas")
     public String misRecetas(HttpSession sesion, Model modelo) {
@@ -102,26 +119,41 @@ public class ControladorRecetas {
         return "redirect:/recetas";
     }
 
+
+
     @DeleteMapping("/eliminar/receta/{idReceta}")
     public String eliminarReceta(@PathVariable Long idReceta, HttpSession sesion){
+        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
         if (sesion.getAttribute("id_usuario") == null) {
             return "redirect:/login";
         }
+        Receta receta = this.servicioReceta.obtenerUna(idReceta);
+        if (!receta.getUsuario().getId().equals(idUsuario)) {
+            return "redirect:/recetas";
+        }
+
         servicioReceta.eliminarReceta(idReceta);
         return "redirect:/misRecetas";
     }
+
+
 
     @PutMapping("/actualizar/receta/{idReceta}")
     public String actualizatReceta(@Valid @ModelAttribute("receta") Receta receta,
                                     BindingResult validaciones, @PathVariable Long idReceta,
                                     HttpSession sesion){
+        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
         if (sesion.getAttribute("id_usuario") == null) {
             return "redirect:/login";
         }
         if (validaciones.hasErrors()) {
             return "editarReceta";
         }
-        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
+        Receta recetaExiste = servicioReceta.obtenerUna(idReceta);
+        if (!recetaExiste.getUsuario().getId().equals(idUsuario)) {
+            return "redirect:/recetas";
+        }
+
         Usuario usuario = this.servicioUsuario.obtenerPorId(idUsuario);
         receta.setUsuario(usuario);
         receta.setId(idReceta);
