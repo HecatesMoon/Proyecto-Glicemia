@@ -5,10 +5,8 @@
 }
 
 body {
-    //*background: linear-gradient(#ff9900,#ffce84);
     margin: 0;
-    padding: 20px;
-    margin-left: 50px;*/
+    padding: 0px;
 }
 
 #naranjo {
@@ -25,17 +23,15 @@ html {
 }
 
 body {
-    /* Tu degradado */
-    background: linear-gradient(white, orange);
-    
+
     /* Clave: Asegura que el body ocupe al menos el 100% de la altura de la ventana */
-    min-height: 100vh; 
+    min-height: 100vh;
 
     /* Clave: Evita que el degradado se repita horizontalmente */
     background-repeat: no-repeat;
 
     /* Opcional: Hace que el fondo no se mueva al hacer scroll */
-    background-attachment: fixed; 
+    background-attachment: fixed;
 }
 
 #iniciaS{
@@ -127,5 +123,25 @@ body {
 h5.titColumnDona{
     font-family: "Figtree", sans-serif;
     color: rgb(65, 61, 60);
-    font-size: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
 }
+.parrafoCol {
+    font-family: "Figtree", sans-serif;
+    font-size: 15px;
+    color: rgb(119, 119, 119);
+    font-weight: 270;
+    text-align: center;
+}
+
+.iconosNaran{
+    color: #ff8c00;
+    font-size: 2rem;
+    padding-bottom: 20px;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
