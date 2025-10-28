@@ -17,7 +17,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -33,11 +32,11 @@ public class Receta {
     @Size(min = 10, message = "La descripción debe tener al menos 10 caracteres")
     private String descripcionReceta;
     
-    @NotNull(message = "El tiempo de preparación es obligatorio")
+    @Column(name = "Tiempo de preparación")
     private Integer tiempopreparacion;
     
-    @NotNull(message = "El tiempo de cocción es obligatorio")
-    private Integer tiempoCoccion;
+    //@NotNull(message = "El tiempo de cocción es obligatorio")
+    //private Integer tiempoCoccion;
 
     private String imagenReceta;
     
@@ -111,15 +110,15 @@ public class Receta {
 
 
 
-    public Integer getTiempoCoccion() {
-        return tiempoCoccion;
-    }
+   // public Integer getTiempoCoccion() {
+    //    return tiempoCoccion;
+    //}
 
 
 
-    public void setTiempoCoccion(Integer tiempoCoccion) {
-        this.tiempoCoccion = tiempoCoccion;
-    }
+   // public void setTiempoCoccion(Integer tiempoCoccion) {
+     //   this.tiempoCoccion = tiempoCoccion;
+    //}
 
 
 
