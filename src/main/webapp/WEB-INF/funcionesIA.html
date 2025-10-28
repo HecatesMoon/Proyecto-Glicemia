@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funciones IA - GlicemIA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fffaf6;
+      color: #2b2b2b;
+    }
+    .btn-orange {
+      background-color: #ff6b1a;
+      color: white;
+      transition: 0.2s;
+    }
+    .btn-orange:hover {
+      background-color: #e85d0e;
+      color: white;
+    }
+    .btn-gray {
+      background-color: #e0e0e0;
+      color: #333;
+      transition: 0.2s;
+    }
+    .btn-gray:hover {
+      background-color: #cfcfcf;
+      color: #000;
+    }
+    .section-title {
+      font-weight: 700;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .feature-card {
+      border-radius: 12px;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .highlight {
+      color: #ff6b1a;
+    }
+    .icon-bg {
+      background-color: #fff1e6;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #ff6b1a;
+      margin: 0 auto 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="row align-items-center py-2 px-md-5">
+  <div class="col-md-3 d-flex align-items-center">
+    <img src="/src/main/resources/static/img/GlicemIA_icono.png" alt="Icono de GlicemIA"
+         style="width: 40px; height: auto; margin-right: 10px;">
+    <h4 class="mb-0">Glicem<span style="color: #d2691e;">IA</span></h4>
+  </div>
+  <div class="col-md-9 text-end">
+    <a href="#" class="text-decoration-none text-dark me-3">Perfil</a>
+    <a href="#" class="text-decoration-none text-dark me-3">Glucosa</a>
+    <a href="#" class="active text-decoration-none text-dark me-3">Funciones IA</a>
+    <a href="#" class="text-decoration-none text-dark me-3">Análisis de alimentos</a>
+    <a href="#" class="text-decoration-none text-dark me-3">Ver recetas</a>
+    <a href="#" class="btn btn-secondary" style="border-radius: 8px;">Cerrar sesión</a>
+  </div>
+</nav>
+
+
+  <!-- ENCABEZADO -->
+  <section class="container text-center mt-5">
+    <p class="text-warning fw-semibold mb-2">⚡ Herramientas Premium</p>
+    <h1 class="fw-bold">Potencia tu control con <span class="highlight">GlicemIA</span></h1>
+    <p class="text-muted mb-5">Descubre nuestras herramientas de inteligencia artificial diseñadas para ayudarte a gestionar tu glucemia de forma proactiva.</p>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-bg"><i class="bi bi-egg-fried"></i></div>
+          <h5 class="fw-bold">Generador de Planes de Comidas</h5>
+          <p>Crea planes de alimentación personalizados que se ajustan a tus necesidades y preferencias.</p>
+          <button class="btn btn-orange">Crear mi plan</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-bg"><i class="bi bi-graph-up"></i></div>
+          <h5 class="fw-bold">Análisis Predictivo de Tendencias</h5>
+          <p>Anticípate a las subidas y bajadas de glucosa con análisis predictivo.</p>
+          <button class="btn btn-orange">Analizar tendencias</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="icon-bg"><i class="bi bi-robot"></i></div>
+          <h5 class="fw-bold">Asistente Virtual GlicemIA</h5>
+          <p>Chatea con nuestro asistente IA para resolver dudas y recibir consejos.</p>
+          <button class="btn btn-orange">Iniciar chat</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN GENERADOR -->
+  <section class="mt-5 py-5" style="background-color: #fff3e8;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h3 class="fw-bold mb-3">Generador de Planes de Comidas Personalizados</h3>
+          <p>Nuestra IA diseña planes de comidas semanales basados en tus objetivos de glucosa y preferencias.</p>
+          <ul>
+            <li>Planes adaptados a tus gustos</li>
+            <li>Lista de compras automática</li>
+            <li>Recetas sencillas paso a paso</li>
+          </ul>
+          <button class="btn btn-orange">¡Quiero mi plan Premium!</button>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card text-start">
+            <h6 class="fw-bold mb-3">Ejemplo de Plan Semanal</h6>
+            <p><strong>Lunes - Desayuno:</strong> Avena con bayas y nueces.</p>
+            <p><strong>Lunes - Almuerzo:</strong> Ensalada de pollo a la parrilla con quinoa.</p>
+            <p><strong>Lunes - Cena:</strong> Salmón al horno con brócoli al vapor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN ANÁLISIS PREDICTIVO -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="feature-card text-center">
+            <h6 class="fw-bold mb-3">Predicción de Glucosa (Próximas 3 horas)</h6>
+            <div class="p-4 border rounded bg-light text-muted">Gráfico de tendencias aquí</div>
+            <div class="alert alert-warning mt-3 mb-0">⚠️ Se predice un pico de glucosa en 90 minutos.</div>
+          </div>
+        </div>
+        <div class="col-md-6 ps-md-5">
+          <h3 class="fw-bold mb-3">Análisis Predictivo de Tendencias</h3>
+          <p>GlicemIA analiza tus registros históricos para identificar patrones y predecir futuros niveles de glucosa.</p>
+          <ul>
+            <li>Alertas proactivas antes de que salgas de rango.</li>
+            <li>Identificación de patrones alimenticios.</li>
+            <li>Recomendaciones inteligentes.</li>
+          </ul>
+          <button class="btn btn-orange">Activar Análisis Predictivo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN ASISTENTE -->
+  <section class="py-5" style="background-color: #fff3e8;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h3 class="fw-bold mb-3">Asistente Virtual Interactivo</h3>
+          <p>¿Dudas sobre qué comer o cómo interpretar tu glucosa? Nuestro asistente virtual te responde 24/7.</p>
+          <ul>
+            <li>Respuestas inmediatas y confiables.</li>
+            <li>Soporte emocional en momentos difíciles.</li>
+            <li>Integrado con tus datos personales.</li>
+          </ul>
+          <button class="btn btn-orange">Chatear con GlicemIA</button>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-card text-start">
+            <div class="mb-3">
+              <div class="text-end bg-orange text-white p-2 rounded" style="background-color:#ff6b1a; display:inline-block;">¿Es seguro comer mango si tengo diabetes?</div>
+            </div>
+            <div class="bg-light p-3 rounded">
+              ¡Hola! Sí, puedes comer mango con moderación.
+              Una porción de media taza (unos 80 g) es una buena medida.
+              Te recomiendo combinarlo con yogur griego para minimizar el impacto en tu glucosa. ¡Disfruta!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-2 text-center mb-3 mb-md-0">
+                <i class="bi bi-gift-fill" style="font-size: 4rem; color: #f5843a;"></i>
+            </div>
+            <div class="col-md-7">
+                <h3 class="section-title">Apoya nuestra misión, transforma vidas</h3>
+                <p>GlicemIA es gratuita gracias al apoyo de usuarios como tú. Tu donación nos permite seguir innovando y ayudando a más personas.</p>
+            </div>
+            <div class="col-md-3 text-center text-md-end">
+                 <a href="donacion.html" class="btn btn-orange">Hacer una Donación</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container py-4 mt-5 border-top">
+        <div class="row">
+            <div class="col-md-4 d-flex align-items-center mb-3 mb-md-0">
+                <img src="/src/main/resources/static/img/GlicemIA_icono.png" alt="Icono GlicemIA" style="width: 30px; height: auto; margin-right: 10px;">
+                <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
+            </div>
+            <div class="col-md-8 text-md-end">
+                <a href="#" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
+                <a href="#" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+                <a href="#" class="text-muted text-decoration-none">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

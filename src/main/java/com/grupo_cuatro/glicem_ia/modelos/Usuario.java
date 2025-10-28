@@ -154,12 +154,12 @@ public class Usuario {
         this.fechaCreacion = new Date();
         this.fechaActualizacion = new Date();
     }
-    
+
     @PreUpdate
     protected void onUpdate(){
         this.fechaActualizacion = new Date();
     }
-    
 
-    
+
+
 }
