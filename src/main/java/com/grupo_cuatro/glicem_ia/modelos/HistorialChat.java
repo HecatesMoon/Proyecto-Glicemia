@@ -2,7 +2,6 @@ package com.grupo_cuatro.glicem_ia.modelos;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,7 +23,6 @@ public class HistorialChat {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    // !TODO: conectar con el modelo usuario
     private Usuario usuario;
     @Lob
     private String texto;

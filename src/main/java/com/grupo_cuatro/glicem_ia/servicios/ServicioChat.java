@@ -9,13 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.google.genai.Chat;
 import com.google.genai.Client;
 import com.google.genai.types.Content;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Part;
-import com.google.genai.types.UsageMetadata;
 import com.grupo_cuatro.glicem_ia.modelos.HistorialChat;
 import com.grupo_cuatro.glicem_ia.modelos.OrigenMensaje;
 import com.grupo_cuatro.glicem_ia.modelos.Usuario;
@@ -74,16 +72,16 @@ public class ServicioChat {
             """;
 
     public ServicioChat(RepositorioChat repositorioChat, 
-                        RepositorioUsuario repositorioUsuario) {
+                        RepositorioUsuario repositorioUsuario,
+                        @Value("${GEMINI_API_KEY}") String apiKey) {
         this.repositorioChat = repositorioChat;
         this.repositorioUsuario = repositorioUsuario;
-        this.cliente = new Client();
+        this.cliente = Client.builder().apiKey(apiKey).build();
     }
 
 
     public String procesarMensaje(Long userId, String userPrompt){
         Usuario usuario = repositorioUsuario.findById(userId).orElse(null);
-        guardarMensaje(usuario, userPrompt, OrigenMensaje.USUARIO);
 
         GenerateContentConfig config =
         GenerateContentConfig.builder()
@@ -106,6 +104,7 @@ public class ServicioChat {
 
         String iaResponse = response.text(); 
 
+        guardarMensaje(usuario, userPrompt, OrigenMensaje.USUARIO);
         guardarMensaje(usuario, iaResponse, OrigenMensaje.ASISTENTE);
 
         return iaResponse;
