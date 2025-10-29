@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funciones IA - GlicemIA</title>
+    <title>Registro Glucosa - GlicemIA</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/src/main/resources/static/css/Style_prueba.css">
+
+    <link rel="stylesheet" href="/css/Style_prueba.css">
+
     <style>
-        /* Estilos específicos para esta página/componentes, mover a Style_prueba.css si se reutilizan */
         body { background-color: #fdfaf5; font-family: "Figtree", sans-serif; color: #413d3c; }
         .btn-orange { background-color: #f5843a; color: white; border: none; border-radius: 8px; padding: 10px 20px; font-weight: 500; }
         .btn-orange:hover { background-color: #e0702a; color: white; }
@@ -22,135 +25,27 @@
         .nav-link-custom { text-decoration: none; color: #413d3c; margin-right: 1.2rem; font-weight: 500; transition: color 0.2s; }
         .nav-link-custom:hover { color: #f5843a; }
         .nav-link-active { color: #f5843a !important; font-weight: 600; }
-
-        /* Estilos de la tarjeta de registro / análisis */
-        .card-glicemia {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .card-glicemia .card-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-        }
-        .card-premium, .card-donacion {
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        .card-premium {
-            background-color: #fce8d5; /* Fondo más claro para la tarjeta Premium */
-        }
-        .card-donacion {
-            background-color: #fff;
-            border: 1px solid #eee;
-        }
-        .card-premium .icon-bg-lg {
-            background-color: #f5843a;
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            color: white;
-            margin: 0 auto 15px;
-        }
-        .card-donacion .icon-bg-lg {
-            background-color: #fff1e6;
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            color: #f5843a;
-            margin: 0 auto 15px;
-        }
-        .input-group-custom .form-control {
-            border-top-right-radius: 0.375rem; /* Bootstrap's default radius */
-            border-bottom-right-radius: 0.375rem;
-        }
-        .input-group-custom .input-group-text {
-            border-top-left-radius: 0.375rem;
-            border-bottom-left-radius: 0.375rem;
-            background-color: #e9ecef; /* Color de fondo del icono */
-            border-color: #ced4da;
-        }
-        .chart-card {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            padding: 1.5rem;
-            height: 400px; /* Altura fija para el gráfico */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .macro-card {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .macro-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .macro-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #f5843a;
-        }
-        .impact-card {
-            background-color: #fce8d5; /* Fondo más claro para la tarjeta de impacto */
-            border-radius: 15px;
-            padding: 1.5rem;
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-        .impact-card .icon {
-            font-size: 2.5rem;
-            color: #f5843a;
-            margin-right: 15px;
-        }
-        .impact-card .text strong {
-            color: #f5843a;
-            font-size: 1.2rem;
-        }
-        .sponsored-card {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            padding: 1.5rem;
-            text-align: center;
-            height: 100%; /* Asegura que las tarjetas tengan la misma altura */
-        }
-        .sponsored-card .icon-img {
-            max-width: 80px;
-            height: auto;
-            margin-bottom: 1rem;
-        }
-        .sponsored-card h5 {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        .sponsored-card p {
-            font-size: 0.9rem;
-            color: #777;
-        }
+        .card-glicemia { background-color: #fff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 1.5rem; margin-bottom: 2rem; }
+        .card-glicemia .card-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.2rem; }
+        .card-premium, .card-donacion { border-radius: 15px; padding: 1.5rem; text-align: center; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .card-premium { background-color: #fce8d5; }
+        .card-donacion { background-color: #fff; border: 1px solid #eee; }
+        .card-premium .icon-bg-lg { background-color: #f5843a; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; margin: 0 auto 15px; }
+        .card-donacion .icon-bg-lg { background-color: #fff1e6; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: #f5843a; margin: 0 auto 15px; }
+        .input-group-custom .form-control { border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; }
+        .input-group-custom .input-group-text { border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem; background-color: #e9ecef; border-color: #ced4da; }
+        .chart-card { background-color: #fff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 1.5rem; height: 400px; display: flex; flex-direction: column; justify-content: space-between; }
+        .macro-card { background-color: #fff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 1.5rem; margin-bottom: 1.5rem; }
+        .macro-item { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .macro-value { font-size: 1.8rem; font-weight: 700; color: #f5843a; }
+        .impact-card { background-color: #fce8d5; border-radius: 15px; padding: 1.5rem; height: 100%; display: flex; align-items: center; }
+        .impact-card .icon { font-size: 2.5rem; color: #f5843a; margin-right: 15px; }
+        .impact-card .text strong { color: #f5843a; font-size: 1.2rem; }
+        .sponsored-card { background-color: #fff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 1.5rem; text-align: center; height: 100%; }
+        .sponsored-card .icon-img { max-width: 80px; height: auto; margin-bottom: 1rem; }
+        .sponsored-card h5 { font-weight: 600; font-size: 1.1rem; }
+        .sponsored-card p { font-size: 0.9rem; color: #777; }
+        .error-text { color: #dc3545; font-size: 0.875em; margin-top: 0.25rem; }
     </style>
 </head>
 <body>
@@ -162,12 +57,12 @@
                 <h4 class="mb-0">Glicem<span style="color: #d2691e;">IA</span></h4>
             </div>
             <div class="col-md-9 text-end">
-                <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
-                <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom nav-link-active">Glucosa</a>
-                <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom">Funciones IA</a>
-                <a href="${pageContext.request.contextPath}/analisisAlimentos" class="nav-link-custom">Análisis de Alimentos</a>
-                <a href="${pageContext.request.contextPath}/verRecetas" class="nav-link-custom">Ver Recetas</a>
-                <a href="${pageContext.request.contextPath}/cerrarSesion" class="btn btn-gray">Cerrar Sesión</a>
+                <a href="perfil.html" class="nav-link-custom">Perfil</a>
+                <a href="glucosa.html" class="nav-link-custom nav-link-active">Glucosa</a>
+                <a href="funcionesIA.html" class="nav-link-custom">Funciones IA</a>
+                <a href="analisisAlimentos.html" class="nav-link-custom">Análisis de Alimentos</a>
+                <a href="verRecetas.html" class="nav-link-custom">Ver Recetas</a>
+                <a href="login.html" class="btn btn-gray">Cerrar Sesión</a>
             </div>
         </div>
     </nav>
@@ -175,7 +70,7 @@
     <div class="container-fluid py-4 px-md-5">
         <div class="row">
             <div class="col-md-4">
-                <h3 class="mb-4">GlicemIA: Registro y Análisis con IA</h3>
+                <h3 class="mb-4">GlicemIA: Registro y Análisis</h3>
                 <p class="text-muted mb-4">Registra tus datos de glucosa y alimentación.</p>
 
                 <div class="card-premium mb-4">
@@ -184,7 +79,7 @@
                     </div>
                     <h5 class="mb-2" style="font-weight: 600;">Hazte Premium</h5>
                     <p class="text-muted mb-3">Potencia tu control bajo el análisis de IA de GlicemIA.</p>
-                    <a href="${pageContext.request.contextPath}/planesPremium" class="btn btn-orange">Saber Más</a>
+                    <a href="planesPremium.html" class="btn btn-orange">Saber Más</a>
                 </div>
 
                 <div class="card-donacion mb-4">
@@ -198,38 +93,37 @@
 
                 <div class="card-glicemia">
                     <h5 class="card-title">Registro de Glucosa</h5>
-                    <form action="${pageContext.request.contextPath}/registrarGlucosa" method="post">
-                        <div class="row mb-3">
+                    <form action="#" method="POST">
+                         <div class="row mb-3">
                             <div class="col-6">
-                                <label for="valorGlucosa" class="form-label">Valor (mg/dL)</label>
-                                <input type="number" class="form-control" id="valorGlucosa" name="valorGlucosa" placeholder="Ej: 110">
-                            </div>
+                                <label for="valorMgDl" class="form-label">Valor (mg/dL)</label>
+                                <input id="valorMgDl" name="valorMgDl" class="form-control" placeholder="Ej: 110"/>
+                                </div>
                             <div class="col-6">
-                                <label for="valorMmol" class="form-label">Valor (mmol/L)</label>
-                                <input type="number" step="0.1" class="form-control" id="valorMmol" name="valorMmol" placeholder="Ej: 6.1">
+                                <label for="valorMmolL" class="form-label">Valor (mmol/L)</label>
+                                <input id="valorMmolL" name="valorMmolL" class="form-control" placeholder="Ej: 6.1"/>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-6">
                                 <label for="fechaGlucosa" class="form-label">Fecha</label>
-                                <input type="date" class="form-control" id="fechaGlucosa" name="fechaGlucosa" placeholder="MM/DD/YYYY">
+                                <input id="fechaGlucosa" name="fechaGlucosa" type="date" class="form-control"/>
                             </div>
                             <div class="col-6">
                                 <label for="horaGlucosa" class="form-label">Hora</label>
-                                <input type="time" class="form-control" id="horaGlucosa" name="horaGlucosa" placeholder="--:--">
+                                <input id="horaGlucosa" name="horaGlucosa" type="time" class="form-control"/>
                             </div>
                         </div>
                         <div class="mb-4">
                             <label for="momentoMedicion" class="form-label">Momento de la medición</label>
-                            <select class="form-select" id="momentoMedicion" name="momentoMedicion">
-                                <option selected>Antes del desayuno</option>
-                                <option>Después del desayuno</option>
-                                <option>Antes del almuerzo</option>
-                                <option>Después del almuerzo</option>
-                                <option>Antes de la cena</option>
-                                <option>Después de la cena</option>
-                                <option>Al acostarse</option>
-                                <option>Otro</option>
+                            <select id="momentoMedicion" name="momentoMedicion" class="form-select">
+                                <option value="">-- Selecciona una opción --</option>
+                                <option value="ayuna">Ayuna</option>
+                                <option value="preprondial">Preprandial (Antes de comer)</option>
+                                <option value="posprandia">Postprandial (Después de comer)</option>
+                                <option value="precolacion">Precolación (Antes de snack)</option>
+                                <option value="postcolacion">Postcolación (Después de snack)</option>
+                                <option value="otro">Otro</option>
                             </select>
                         </div>
                         <div class="d-grid">
@@ -240,32 +134,32 @@
 
                 <div class="card-glicemia">
                     <h5 class="card-title">Registro de Alimentación</h5>
-                    <form action="${pageContext.request.contextPath}/registrarAlimento" method="post">
+                    <form action="#" method="POST">
                         <div class="mb-3">
                             <label for="tipoComida" class="form-label">Tipo de comida</label>
-                            <select class="form-select" id="tipoComida" name="tipoComida">
-                                <option selected>Desayuno</option>
-                                <option>Almuerzo</option>
-                                <option>Cena</option>
-                                <option>Merienda</option>
-                                <option>Otro</option>
+                            <select id="tipoComida" name="tipoComida" class="form-select">
+                                <option value="Desayuno">Desayuno</option>
+                                <option value="Almuerzo">Almuerzo</option>
+                                <option value="Cena">Cena</option>
+                                <option value="Merienda">Merienda</option>
+                                <option value="Otro">Otro</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="descripcionComida" class="form-label">Descripción</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="descripcionComida" name="descripcionComida" placeholder="Describe lo que comiste... Ej: 2 tostadas de pan integral con aguacate y un huevo revuelto.">
+                                <input id="descripcionComida" name="descripcionComida" class="form-control" placeholder="Describe lo que comiste... Ej: 2 tostadas..."/>
                                 <button class="btn btn-orange" type="button"><i class="bi bi-lightning-fill me-1"></i>Generar con IA</button>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col-6">
                                 <label for="fechaComida" class="form-label">Fecha</label>
-                                <input type="date" class="form-control" id="fechaComida" name="fechaComida" placeholder="MM/DD/YYYY">
+                                <input id="fechaComida" name="fechaComida" type="date" class="form-control"/>
                             </div>
                             <div class="col-6">
                                 <label for="horaComida" class="form-label">Hora</label>
-                                <input type="time" class="form-control" id="horaComida" name="horaComida" placeholder="--:--">
+                                <input id="horaComida" name="horaComida" type="time" class="form-control"/>
                             </div>
                         </div>
                         <div class="d-grid">
@@ -273,7 +167,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
 
             <div class="col-md-8">
@@ -282,22 +175,12 @@
 
                 <div class="chart-card mb-4">
                     <h5 class="card-title">Tendencia de Glucosa</h5>
-                    <div class="chart-placeholder text-center py-5">
-                        <img src="https://via.placeholder.com/600x200/f8f9fa/dee2e6?text=Gr%C3%A1fico+de+Glucosa+aqu%C3%AD" alt="Gráfico de Tendencia de Glucosa" class="img-fluid">
-                    </div>
-                    <div class="d-flex justify-content-between text-muted small mt-3">
-                        <span>Lunes</span>
-                        <span>Martes</span>
-                        <span>Miércoles</span>
-                        <span>Jueves</span>
-                        <span>Viernes</span>
-                        <span>Sábado</span>
-                        <span>Domingo</span>
-                    </div>
+
+                    <canvas id="glucoseChart"></canvas>
+
                 </div>
 
                 <h3 class="mb-4 mt-5">Análisis IA de Comida</h3>
-
                 <div class="row mb-4">
                     <div class="col-md-7">
                         <div class="macro-card h-100">
@@ -335,7 +218,7 @@
                             <img src="/src/main/resources/static/img/partner-logo1.png" alt="Logo BienestarTotal" class="icon-img">
                             <h5 class="mb-2">Patrocinado por BienestarTotal</h5>
                             <p class="mb-3">Glucómetros precisos para ti<br>Controla tu diabetes, vive tu vida.</p>
-                            <a href="${pageContext.request.contextPath}/bienestarTotal" class="btn btn-orange">Ver glucómetros</a>
+                            <a href="bienestarTotal.html" class="btn btn-orange">Ver glucómetros</a>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
@@ -343,7 +226,7 @@
                              <img src="/src/main/resources/static/img/partner-logo5.png" alt="Logo SaborSalud" class="icon-img">
                             <h5 class="mb-2">Patrocinado por SaborSalud</h5>
                             <p class="mb-3">Alimentos de bajo índice glucémico<br>Come delicioso y cuida tu salud.</p>
-                            <a href="${pageContext.request.contextPath}/saborSalud" class="btn btn-orange">Ver alimentos</a>
+                            <a href="saborSalud.html" class="btn btn-orange">Ver alimentos</a>
                         </div>
                     </div>
                 </div>
@@ -358,13 +241,82 @@
                 <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
             </div>
             <div class="col-md-8 text-md-end">
-                <a href="${pageContext.request.contextPath}/terminos" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
-                <a href="${pageContext.request.contextPath}/politicaPrivacidad" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
-                <a href="${pageContext.request.contextPath}/contacto" class="text-muted text-decoration-none">Contacto</a>
+                <a href="terminos.html" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
+                <a href="politicaPrivacidad.html" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+                <a href="contacto.html" class="text-muted text-decoration-none">Contacto</a>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+    const ctx = document.getElementById('glucoseChart');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+        datasets: [{
+          label: 'Tendencia de Glucosa',
+          data: [90, 108, 102, 115, 112, 130, 125],
+          borderColor: '#f97316',
+          backgroundColor: 'rgba(249,115,22,0.1)',
+          fill: true,
+          tension: 0.4,
+          pointRadius: 5,
+          pointBackgroundColor: '#f97316'
+        }]
+      },
+      options: {
+        responsive: true, // Hace que el gráfico se adapte al contenedor
+        maintainAspectRatio: false, // Permite que el gráfico llene el 'chart-card'
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: false, min: 80, max: 140, title: { display: true, text: 'mg/dL' } }
+        }
+      }
+    });
+    </script>
+
+     <script>
+            /* mg → mmol */
+            document.addEventListener("DOMContentLoaded", function () {
+                const mgInput = document.querySelector('[name="valorMgDl"]');
+                const mmolInput = document.querySelector('[name="valorMmolL"]');
+
+                mgInput.addEventListener("input", function () {
+                    const mgValue = parseFloat(mgInput.value);
+                    if (!isNaN(mgValue)) {
+                        const mmolValue = (mgValue * 0.0555).toFixed(2);
+                        mmolInput.value = mmolValue;
+                    } else {
+                        mmolInput.value = "";
+                    }
+                });
+
+               /*  mmol → mg */
+                    mmolInput.addEventListener("input", function () {
+                        const mmolValue = parseFloat(mmolInput.value);
+                        if (!isNaN(mmolValue)) {
+                            const mgValue = (mmolValue / 0.0555).toFixed(0);
+                            mgInput.value = mgValue;
+                        } else {
+                            mgInput.value = "";
+                        }
+                    });
+            });
+
+
+            setTimeout(() => {
+                    const alerta = document.querySelector('.boton');
+                    if (alerta) {
+                    alerta.style.display = 'none';
+                    }
+                }, 10000); // 10 segundos
+
+
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

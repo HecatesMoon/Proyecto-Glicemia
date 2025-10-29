@@ -11,7 +11,7 @@ import com.grupo_cuatro.glicem_ia.repositorios.RepositorioAlimentacionDia;
 
 @Service
 public class ServicioAlimentacionDia {
-    
+
     private final RepositorioAlimentacionDia repositorioAlimentacionDia;
 
     public ServicioAlimentacionDia(RepositorioAlimentacionDia repositorioAlimentacionDia){
