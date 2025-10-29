@@ -1,47 +1,29 @@
+/* === Reset and Base Styles === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 0px;
-}
-
-#naranjo {
-    background-color: chocolate;
-    border: none;
-    padding: 10px;
-    font-family: "Figtree", sans-serif;
-    font-size: 17px;
-    font-weight: 500;
-}
-
 html {
     min-height: 100%; /* Asegura que el HTML base cubra la altura */
+    overflow-x: hidden; /* Evita scroll horizontal global */
 }
 
 body {
-
-    /* Clave: Asegura que el body ocupe al menos el 100% de la altura de la ventana */
-    min-height: 100vh;
-
-    /* Clave: Evita que el degradado se repita horizontalmente */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
     background-repeat: no-repeat;
-
-    /* Opcional: Hace que el fondo no se mueva al hacer scroll */
-    background-attachment: fixed;
+    background-attachment: fixed; /* Opcional: Hace que el fondo no se mueva al hacer scroll */
+    overflow-x: hidden; /* Evita scroll horizontal global */
+    /* El background gradient se aplica inline en el HTML, pero podrías moverlo aquí */
+    /* background: linear-gradient(rgb(255, 228, 178), orange); */
+    font-family: "Figtree", sans-serif; /* Establece la fuente por defecto */
 }
 
-#iniciaS{
-    font-family: "Figtree", sans-serif;
-    font-size: 15px;
-    color: rgb(119, 119, 119);
-    font-weight: 270;
-}
-
-#bienV{
+/* === Typography === */
+#bienV {
     color: rgb(65, 61, 60);
     text-align: center;
     font-family: "Figtree", sans-serif;
@@ -50,52 +32,11 @@ body {
     font-size: 40px;
 }
 
-.labelUser{
+#iniciaS {
     font-family: "Figtree", sans-serif;
-    font-weight: 450;
-    color: rgb(65, 61, 60);
-
-}
-
-#pNaranjo{
-    color: chocolate;
-}
-/* ... (resto de tus estilos) ... */
-
-
-/* En tu archivo Style_prueba.css */
-
-/* Estilos para los Input Groups personalizados */
-.input-group .input-group-text {
-    background-color: transparent; /* Fondo transparente para el contenedor del icono */
-    border: none; /* Quita el borde del contenedor del icono */
-    padding-right: 0.5rem; /* Opcional: ajusta el espacio entre el icono y el input */
-}
-
-.input-group .input-group-text i {
-    color: #6c757d; /* Color gris para los iconos (puedes ajustar el tono) */
-}
-
-.input-group .form-control {
-    border: none; /* Quita el borde principal del input */
-    border-bottom: 1px solid #ced4da; /* Añade solo un borde inferior para separación */
-    border-radius: 0; /* Quita el redondeo si lo hubiera */
-    box-shadow: none; /* Quita cualquier sombra al hacer foco */
-}
-
-/* Opcional: Estilo al hacer foco (cuando se hace clic en el input) */
-.input-group .form-control:focus {
-    border-color: #ff8c00; /* Cambia el color del borde inferior al hacer foco (ejemplo naranja) */
-    box-shadow: none; /* Asegura que no aparezca la sombra azul de Bootstrap */
-}
-
-/* Ajuste para que el input no se superponga con el icono */
-.input-group .form-control {
-    padding-left: 0.5rem; /* Añade un poco de espacio a la izquierda del texto */
-}
-
-#noTienesC{
-    margin-top: 50px;
+    font-size: 15px;
+    color: rgb(119, 119, 119);
+    font-weight: 270;
 }
 
 #tuApoyo {
@@ -106,13 +47,6 @@ body {
     font-weight: 750;
     font-size: 34px;
 }
-#cadaCon {
-    font-family: "Figtree", sans-serif;
-    font-size: 15px;
-    color: rgb(119, 119, 119);
-    font-weight: 270;
-    padding-top: 30px;
-}
 
 #donacion {
     font-family: "Figtree", sans-serif;
@@ -120,13 +54,14 @@ body {
     font-weight: 650;
 }
 
-h5.titColumnDona{
+h5.titColumnDona {
     font-family: "Figtree", sans-serif;
     color: rgb(65, 61, 60);
     font-size: 16px;
     font-weight: 700;
     text-align: center;
 }
+
 .parrafoCol {
     font-family: "Figtree", sans-serif;
     font-size: 15px;
@@ -135,26 +70,86 @@ h5.titColumnDona{
     text-align: center;
 }
 
-.iconosNaran{
-    color: #ff8c00;
+#cadaCon {
+    font-family: "Figtree", sans-serif;
+    font-size: 15px;
+    color: rgb(119, 119, 119);
+    font-weight: 270;
+    padding-top: 30px;
+}
+
+/* === Forms & Inputs === */
+.labelUser {
+    font-family: "Figtree", sans-serif;
+    font-weight: 450;
+    color: rgb(65, 61, 60);
+}
+
+/* Estilos para Input Groups personalizados */
+.input-group .input-group-text {
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    padding-right: 0.5rem;
+}
+
+.input-group .input-group-text i {
+    color: #6c757d; /* Color gris para iconos */
+}
+
+.input-group .form-control {
+    border: none; /* Sin bordes */
+    border-bottom: 1px solid #ced4da; /* Borde inferior */
+    border-radius: 0;
+    box-shadow: none;
+    padding-left: 0.5rem; /* Espacio a la izquierda del texto */
+}
+
+.input-group .form-control:focus {
+    border-color: #ff8c00; /* Borde naranja al enfocar */
+    box-shadow: none;
+}
+
+/* === Buttons & Links === */
+#naranjo { /* Asumiendo que es el ID del botón de Iniciar Sesión */
+    background-color: chocolate;
+    border: none;
+    padding: 10px;
+    font-family: "Figtree", sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    /* Considera añadir color de texto si no lo hereda bien */
+    color: white;
+}
+
+#pNaranjo { /* Para enlaces "Olvidaste contraseña" y "Registrate" */
+    color: chocolate;
+}
+
+.nav-link { /* Estilos para enlaces de navegación si los usas */
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #f5843a;
+}
+
+/* === Icons === */
+.iconosNaran {
+    color: #ff8c00; /* Naranja más brillante que chocolate */
     font-size: 2rem;
     padding-bottom: 20px;
 }
 
-html, body {
-    overflow-x: hidden;
-}
-
+/* === Utilities === */
 .text-orange {
-  color: #f5843a !important;
-}
-.nav-link {
-  color: inherit;
-  text-decoration: none;
-  font-weight: 500;
-}
-.nav-link:hover {
-  color: #f5843a;
+    color: #f5843a !important; /* Color naranja específico */
 }
 
+#noTienesC {
+    margin-top: 50px; /* Espaciado para el enlace de registro */
+}
 
+.nav-link-custom { text-decoration: none; color: #413d3c; margin-right: 1.2rem; font-weight: 500; transition: color 0.2s; }
+.nav-link-custom:hover { color: #f5843a; }

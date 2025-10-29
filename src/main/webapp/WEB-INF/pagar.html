@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar Premium - GlicemIA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/main/resources/static/css/Style_prueba.css">
+
+    <style>
+        /* Estilos específicos para esta página de pago, mover a Style_prueba.css si se reutilizan */
+        body { background-color: #fdfaf5; font-family: "Figtree", sans-serif; color: #413d3c; }
+        .btn-orange { background-color: #f5843a; color: white; border: none; border-radius: 8px; padding: 10px 20px; font-weight: 500; }
+        .btn-orange:hover { background-color: #e0702a; color: white; }
+        .btn-gray { background-color: #e0e0e0; color: #333; border: none; border-radius: 8px; transition: 0.2s; padding: 8px 15px; }
+        .btn-gray:hover { background-color: #cfcfcf; color: #000; }
+        .nav-link-custom { text-decoration: none; color: #413d3c; margin-right: 1.2rem; font-weight: 500; transition: color 0.2s; }
+        .nav-link-custom:hover { color: #f5843a; }
+        .nav-link-active { color: #f5843a !important; font-weight: 600; }
+
+        /* Estilos de la sección principal */
+        .premium-hero {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            text-align: center;
+        }
+        .premium-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #413d3c;
+            margin-bottom: 1rem;
+        }
+        .premium-hero h1 .highlight {
+            color: #f5843a;
+        }
+        .premium-hero p {
+            font-size: 1.1rem;
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Contenedor principal de la oferta */
+        .premium-offer-container {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 3rem;
+            max-width: 900px; /* Ajusta el ancho según tu preferencia */
+            margin: -3rem auto 4rem; /* Sube un poco por encima de la sección hero */
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+            align-items: flex-start; /* Alinea los elementos en la parte superior */
+        }
+
+        /* Beneficios del plan (lado izquierdo) */
+        .benefits-section {
+            flex: 1; /* Ocupa el espacio disponible */
+            min-width: 300px; /* Ancho mínimo para que no se comprima demasiado */
+            padding-right: 2rem;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+        }
+        .benefit-item .icon {
+            color: #f5843a;
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+            flex-shrink: 0; /* Evita que el icono se encoja */
+            line-height: 1.5; /* Alinea con el texto */
+        }
+        .benefit-item p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 0; /* Elimina margen inferior del párrafo */
+        }
+        .benefit-item p strong {
+            color: #413d3c;
+            font-weight: 600;
+        }
+
+        /* Sección de elección de plan y pago (lado derecho) */
+        .plan-payment-section {
+            flex: 1; /* Ocupa el espacio disponible */
+            min-width: 350px; /* Ancho mínimo */
+            padding-left: 2rem;
+            border-left: 1px solid #eee; /* Separador visual */
+        }
+        @media (max-width: 768px) {
+            .plan-payment-section {
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid #eee;
+                margin-top: 2rem;
+                padding-top: 2rem;
+            }
+            .benefits-section {
+                padding-right: 0;
+            }
+        }
+        .plan-options {
+            display: flex;
+            gap: 1.5rem; /* Espacio entre las tarjetas de plan */
+            margin-bottom: 2rem;
+        }
+        .plan-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            flex: 1;
+            position: relative;
+        }
+        .plan-card:hover {
+            border-color: #f5843a;
+        }
+        .plan-card.active {
+            border-color: #f5843a;
+            box-shadow: 0 0 0 3px rgba(245, 132, 58, 0.3);
+            background-color: #fffaf5;
+        }
+        .plan-card.active .plan-price {
+             color: #f5843a;
+        }
+        .plan-card small.badge {
+            position: absolute;
+            top: -12px; /* Ajusta según la altura del badge */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f5843a;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .plan-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #413d3c;
+            margin-bottom: 0.2rem;
+        }
+        .plan-duration {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        .plan-discount {
+            font-size: 0.8rem;
+            color: #5cb85c; /* Un verde para el ahorro */
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        /* Métodos de pago */
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .payment-methods img {
+            max-height: 25px;
+            opacity: 0.7;
+            filter: grayscale(100%);
+            transition: opacity 0.2s, filter 0.2s;
+        }
+        .payment-methods img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        /* Formularios de pago */
+        .form-label-custom {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.3rem;
+            display: block;
+            font-weight: 500;
+        }
+        .form-control-payment {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            width: 100%;
+        }
+        .form-control-payment:focus {
+            border-color: #f5843a;
+            box-shadow: 0 0 0 0.25rem rgba(245, 132, 58, 0.25);
+        }
+        .btn-subscribe {
+            width: 100%;
+            background-color: #f5843a;
+            color: white;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+        .btn-subscribe:hover {
+            background-color: #e0702a;
+        }
+        .terms-text {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container-fluid border-bottom">
+        <div class="row align-items-center py-2 px-md-5">
+            <div class="col-auto d-flex align-items-center">
+                <img src="/src/main/resources/static/img/GlicemIA_icono.png" alt="Icono de GlicemIA" style="width: 30px; height: auto; margin-right: 8px;">
+                <h6 class="mb-0" style="font-weight: 600;">Glucemia<span style="color: #d2691e;">IA</span></h6>
+            </div>
+            <div class="col text-end">
+                <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
+                <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom">Glucosa</a>
+                <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom nav-link-active">Funciones IA Premium</a>
+                <a href="${pageContext.request.contextPath}/analisisAlimentos" class="nav-link-custom">Análisis de Alimentos</a>
+                <a href="${pageContext.request.contextPath}/verRecetas" class="nav-link-custom">Ver Recetas</a>
+                <a href="${pageContext.request.contextPath}/cerrarSesion" class="btn btn-gray">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="premium-hero container-fluid">
+        <h1>Desbloquea todo el potencial de <br><span class="highlight">GlicemIA Premium</span></h1>
+        <p>Toma el control definitivo de tu glucemia con nuestras herramientas de inteligencia artificial más avanzadas.</p>
+    </section>
+
+    <div class="premium-offer-container">
+        <div class="benefits-section col-md-6">
+            <h4 class="mb-4" style="font-weight: 600;">Beneficios del Plan Premium</h4>
+            <div class="benefit-item">
+                <i class="bi bi-check-circle-fill icon"></i>
+                <p><strong>Análisis Predictivo Avanzado:</strong> Anticípate a las fluctuaciones de glucosa con hasta 24 horas de antelación.</p>
+            </div>
+            <div class="benefit-item">
+                <i class="bi bi-check-circle-fill icon"></i>
+                <p><strong>Planes de Comida Dinámicos:</strong> Planes que se ajustan automáticamente según tus registros y actividad.</p>
+            </div>
+            <div class="benefit-item">
+                <i class="bi bi-check-circle-fill icon"></i>
+                <p><strong>Asistente Virtual 24/7:</strong> Soporte prioritario y respuestas más profundas basadas en tu historial completo.</p>
+            </div>
+            <div class="benefit-item">
+                <i class="bi bi-check-circle-fill icon"></i>
+                <p><strong>Informes para tu Médico:</strong> Genera informes detallados y fáciles de entender para compartir con tu equipo de salud.</p>
+            </div>
+            <div class="benefit-item">
+                <i class="bi bi-check-circle-fill icon"></i>
+                <p><strong>Acceso a todas las funciones futuras:</strong> Sé el primero en disfrutar de las nuevas herramientas que lancemos.</p>
+            </div>
+        </div>
+
+        <div class="plan-payment-section col-md-6">
+            <h4 class="mb-4" style="font-weight: 600;">Elige tu Plan</h4>
+
+            <div class="plan-options">
+                <div class="plan-card active" data-plan="anual">
+                    <small class="badge">MÁS POPULAR</small>
+                    <div class="plan-price">$99.99<span class="plan-duration">/año</span></div>
+                    <small class="plan-discount">Ahorra un 15%</small>
+                </div>
+                <div class="plan-card" data-plan="mensual">
+                    <div class="plan-price">$9.99<span class="plan-duration">/mes</span></div>
+                </div>
+            </div>
+
+            <h6 class="mb-3" style="font-weight: 600;">Métodos de Pago Seguros</h6>
+            <div class="payment-methods">
+                <img src="${pageContext.request.contextPath}/img/visa_logo.png" alt="Visa">
+                <img src="${pageContext.request.contextPath}/img/mastercard_logo.png" alt="Mastercard">
+                <img src="${pageContext.request.contextPath}/img/paypal_logo.png" alt="PayPal">
+                <img src="${pageContext.request.contextPath}/img/amex_logo.png" alt="American Express">
+            </div>
+
+            <form action="${pageContext.request.contextPath}/procesarPago" method="post">
+                <div class="mb-3">
+                    <label for="cardNumber" class="form-label-custom">Número de Tarjeta</label>
+                    <input type="text" class="form-control form-control-payment" id="cardNumber" name="cardNumber" placeholder="xxxx xxxx xxxx xxxx" required>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="expiryDate" class="form-label-custom">Fecha de Vencimiento</label>
+                        <input type="text" class="form-control form-control-payment" id="expiryDate" name="expiryDate" placeholder="MM/AA" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cvc" class="form-label-custom">CVC</label>
+                        <input type="text" class="form-control form-control-payment" id="cvc" name="cvc" placeholder="***" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-subscribe mt-4"><i class="bi bi-lock-fill me-2"></i>Suscribirse ahora</button>
+                <p class="terms-text">Transacción segura y encriptada. Puedes cancelar en cualquier momento.</p>
+            </form>
+        </div>
+    </div>
+
+    <footer class="container-fluid py-4 mt-5 border-top">
+        <div class="row px-md-5">
+            <div class="col-md-4 d-flex align-items-center mb-3 mb-md-0">
+                <img src="/src/main/resources/static/img/GlicemIA_icono.png" alt="Icono GlicemIA" style="width: 30px; height: auto; margin-right: 10px;">
+                <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
+            </div>
+            <div class="col-md-8 text-md-end">
+                <a href="${pageContext.request.contextPath}/terminos" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
+                <a href="${pageContext.request.contextPath}/politicaPrivacidad" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+                <a href="${pageContext.request.contextPath}/contacto" class="text-muted text-decoration-none">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Script para manejar la selección de planes
+        document.addEventListener('DOMContentLoaded', function() {
+            const planCards = document.querySelectorAll('.plan-card');
+            planCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    planCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    // Aquí podrías actualizar un input hidden en el formulario
+                    // o alguna variable JS para enviar el plan seleccionado al backend.
+                    console.log('Plan seleccionado:', this.dataset.plan);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
