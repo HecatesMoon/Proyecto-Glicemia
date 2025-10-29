@@ -24,8 +24,6 @@ public class Glucosa {
     private Long id;
 
     @NotNull(message = "El valor en mg/dL es obligatorio")
-    /* @Min(value = 1, message = "El valor mínimo permitido es 1 mg/dL") */
-    /* @Max(value = 500, message = "El valor máximo permitido es 500 mg/dL") */
     private Integer valorMgDl;
 
     

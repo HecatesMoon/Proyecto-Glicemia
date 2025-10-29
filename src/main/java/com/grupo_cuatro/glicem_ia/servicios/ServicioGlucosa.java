@@ -15,8 +15,8 @@ public class ServicioGlucosa {
         this.repositorioGlucosa = repositorioGlucosa;
     }
 
-    public Glucosa agregarUno(Glucosa nuevaGlucosa){
-        return this.repositorioGlucosa.save(nuevaGlucosa);
+    public Glucosa agregarUno(Glucosa nuevoGlucosa){
+        return this.repositorioGlucosa.save(nuevoGlucosa);
     }
 
 
