@@ -20,6 +20,10 @@ public class ServicioUsuario {
         return repositorioUsuario.findByCorreo(correo);
     }
 
+    public Usuario obtenerPorId(Long id){
+        return repositorioUsuario.findById(id).orElse(null);
+    }
+
     public Usuario agregarUno(Usuario nuevoUsuario){
         String contraseniaEncriptada = BCrypt.hashpw(nuevoUsuario.getContrasenia(), BCrypt.gensalt());
         nuevoUsuario.setContrasenia(contraseniaEncriptada);
