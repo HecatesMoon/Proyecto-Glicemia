@@ -28,15 +28,15 @@
         <h2>GlicemIA:Registro y Análisi con IA</h2>
         <div class="row">
                 <c:if test="${not empty mensajeExito}">
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="alert alert-success alert-dismissible fade show boton" role="alert">
                         ${mensajeExito}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
                     </div>
                 </c:if>
 
                 <form:form class="col-6" action="/agregar/glucosa" method="POST" modelAttribute="nuevoGlucosa">
                     <div>
-                        <form:label class="form-label" path="valorMgDl">
+                        <form:label class="form-label" path="valorMgDl" >
                             Valor en mg/dL: 
                         </form:label>
                         <form:input class="form-control" path="valorMgDl" type="text"/>
@@ -88,6 +88,7 @@
                 </form:form>
     
         <script>
+            /* mg → mmol */
             document.addEventListener("DOMContentLoaded", function () {
                 const mgInput = document.querySelector('[name="valorMgDl"]');
                 const mmolInput = document.querySelector('[name="valorMmolL"]');
@@ -101,7 +102,28 @@
                         mmolInput.value = "";
                     }
                 });
+
+               /*  mmol → mg */
+                    mmolInput.addEventListener("input", function () {
+                        const mmolValue = parseFloat(mmolInput.value);
+                        if (!isNaN(mmolValue)) {
+                            const mgValue = (mmolValue / 0.0555).toFixed(0);
+                            mgInput.value = mgValue;
+                        } else {
+                            mgInput.value = "";
+                        }
+                    });
             });
+
+
+            setTimeout(() => {
+                    const alerta = document.querySelector('.boton');
+                    if (alerta) {
+                    alerta.style.display = 'none';
+                    }
+                }, 10000); // 10 segundos
+
+
         </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

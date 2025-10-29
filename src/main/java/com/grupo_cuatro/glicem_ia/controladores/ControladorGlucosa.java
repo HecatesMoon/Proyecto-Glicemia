@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,7 +46,7 @@ public class ControladorGlucosa {
 
 
     @PostMapping("/agregar/glucosa")
-    public String postMethodName(@ModelAttribute("nuevoGlucosa") Glucosa nuevaGlucosa,
+    public String postMethodName(@Valid @ModelAttribute("nuevoGlucosa") Glucosa nuevaGlucosa,
                                 BindingResult resultado,
                                 HttpSession sesion,
                                 RedirectAttributes redirectAttrs) {
@@ -55,8 +57,17 @@ public class ControladorGlucosa {
         Long idUsuario = (Long) sesion.getAttribute("id_usuario");
         Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
 
-        nuevaGlucosa.setUsuario(usuario);
-        nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555); 
+        /* unidireccional  */
+        /* nuevaGlucosa.setUsuario(usuario);
+        nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555);  */
+
+        /* conversion bidireccional */
+        if (nuevaGlucosa.getValorMgDl() != null && nuevaGlucosa.getValorMmolL() == null) {
+            nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555);            
+        } else if (nuevaGlucosa.getValorMmolL() != null && nuevaGlucosa.getValorMmolL() == null) {
+            nuevaGlucosa.setValorMgDl((int) Math.round(nuevaGlucosa.getValorMmolL()/ 0.555 ));
+            
+        }
 
         repositorioGlucosa.save(nuevaGlucosa);
         

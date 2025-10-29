@@ -25,6 +25,7 @@ public class Glucosa {
     @NotNull(message = "El valor en mg/dL es obligatorio")
     private Integer valorMgDl;
 
+    @NotNull(message = "El valor en mmol/L es obligatorio")
     private Double valorMmolL;
 
     @NotNull(message = "Por favor indique la fecha")
