@@ -47,8 +47,24 @@ public class Usuario {
     @Size(message = "Proporciona tu tipo de diabetes")
     private String tipoDiabetes;
 
+    private String imagenPerfil;
+
+    private Integer edad;
+
+    private String contactoEmergencia;
+
+    private Boolean recibirNotificaciones = false;
+
+    private Boolean modoOscuro = false;
+
     @Transient
     private String confirmarContrasenia;
+    
+    //Esto te devuelve la edad automáticamente, sin guardarla en BD ni actualizarla manualmente.
+    @Transient
+    public int getEdad() {
+    return java.time.Period.between(this.fechaNacimiento, LocalDate.now()).getYears();
+    }
 
     @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
     List<Glucosa> glucosa;
@@ -115,6 +131,47 @@ public class Usuario {
 
     public void setTipoDiabetes(String tipoDiabetes) {
         this.tipoDiabetes = tipoDiabetes;
+    }
+
+    public String getImagenPerfil() {
+        return imagenPerfil;
+    }
+
+    public void setImagenPerfil(String imagenPerfil) {
+        this.imagenPerfil = imagenPerfil;
+    }
+    
+    public Integer getEdadValue() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+
+    public String getContactoEmergencia() {
+        return contactoEmergencia;
+    }
+
+    public void setContactoEmergencia(String contactoEmergencia) {
+        this.contactoEmergencia = contactoEmergencia;
+    }
+
+    public Boolean getRecibirNotificaciones() {
+        return recibirNotificaciones;
+    }
+
+    public void setRecibirNotificaciones(Boolean recibirNotificaciones) {
+        this.recibirNotificaciones = recibirNotificaciones;
+    }
+
+    public Boolean getModoOscuro() {
+        return modoOscuro;
+    }
+
+    public void setModoOscuro(Boolean modoOscuro) {
+        this.modoOscuro = modoOscuro;
     }
 
     public String getConfirmarContrasenia() {

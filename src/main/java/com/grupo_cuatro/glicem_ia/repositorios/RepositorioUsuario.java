@@ -9,6 +9,6 @@ import com.grupo_cuatro.glicem_ia.modelos.Usuario;
 public interface RepositorioUsuario extends CrudRepository<Usuario, Long> {
     Usuario findByCorreo(String correo);
 
-    Usuario save(Usuario nuevoUsuario);
+    // Usuario save(Usuario nuevoUsuario);
     
 }
