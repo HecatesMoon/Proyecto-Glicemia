@@ -12,10 +12,11 @@ import com.grupo_cuatro.glicem_ia.repositorios.RepositorioGlucosa;
 
 import com.grupo_cuatro.glicem_ia.servicios.ServicioUsuario;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 
@@ -42,10 +43,25 @@ public class ControladorGlucosa {
     }
 
 
-    /* @PostMapping("/agregar/glucosa")
-    public String postMethodName(@ModelAttribute("nuevoGlucosa") Glucosa ) {
+    @PostMapping("/agregar/glucosa")
+    public String postMethodName(@ModelAttribute("nuevoGlucosa") Glucosa nuevaGlucosa,
+                                BindingResult resultado,
+                                HttpSession sesion,
+                                RedirectAttributes redirectAttrs) {
+        if (resultado.hasErrors()) {
+            return "glucosa";
+        }
+
+        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
+        Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
+
+        nuevaGlucosa.setUsuario(usuario);
+        nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555); 
+
+        repositorioGlucosa.save(nuevaGlucosa);
         
-        return entity;
-    } */
+        redirectAttrs.addFlashAttribute("mensajeExito", "Glucosa registrada correctamente.");
+        return "redirect:/glucosa";
+    }
     
 }

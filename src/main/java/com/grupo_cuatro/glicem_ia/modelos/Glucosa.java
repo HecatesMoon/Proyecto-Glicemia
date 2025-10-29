@@ -14,7 +14,6 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -26,7 +25,6 @@ public class Glucosa {
     @NotNull(message = "El valor en mg/dL es obligatorio")
     private Integer valorMgDl;
 
-    
     private Double valorMmolL;
 
     @NotNull(message = "Por favor indique la fecha")

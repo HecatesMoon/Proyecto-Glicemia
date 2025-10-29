@@ -27,6 +27,13 @@
     <div>
         <h2>GlicemIA:Registro y Análisi con IA</h2>
         <div class="row">
+                <c:if test="${not empty mensajeExito}">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        ${mensajeExito}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </c:if>
+
                 <form:form class="col-6" action="/agregar/glucosa" method="POST" modelAttribute="nuevoGlucosa">
                     <div>
                         <form:label class="form-label" path="valorMgDl">
@@ -76,9 +83,26 @@
     
                     
                     <button class="btn btn-primary mt-2">
-                        Registrarse
+                        Guardar Medición
                     </button>
                 </form:form>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const mgInput = document.querySelector('[name="valorMgDl"]');
+                const mmolInput = document.querySelector('[name="valorMmolL"]');
+
+                mgInput.addEventListener("input", function () {
+                    const mgValue = parseFloat(mgInput.value);
+                    if (!isNaN(mgValue)) {
+                        const mmolValue = (mgValue * 0.0555).toFixed(2);
+                        mmolInput.value = mmolValue;
+                    } else {
+                        mmolInput.value = "";
+                    }
+                });
+            });
+        </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

@@ -12,6 +12,7 @@ import com.grupo_cuatro.glicem_ia.modelos.Usuario;
 public interface RepositorioGlucosa extends JpaRepository<Glucosa, Long> {
     Glucosa save(Glucosa nuevaGlucosa);
     List<Glucosa> findByUsuarioOrderByFechaDesc(Usuario usuario);
+    
 }
 
 
