@@ -260,7 +260,7 @@
         <div class="row g-3">
             <div class="col-md-6">
                 <button class="btn btn-social btn-google">
-                    <img src="${pageContext.request.contextPath}/img/google_logo.png" alt="Google Logo"> Google
+                    <i class="bi bi-google"></i>  Google
                 </button>
             </div>
             <div class="col-md-6">
