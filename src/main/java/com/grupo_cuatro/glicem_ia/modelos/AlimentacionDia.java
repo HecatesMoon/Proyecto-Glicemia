@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,6 +36,10 @@ public class AlimentacionDia {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     Usuario usuario;
+
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "receta_id")
+    private Receta receta;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
@@ -90,6 +95,14 @@ public class AlimentacionDia {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Receta getReceta() {
+        return receta;
+    }
+
+    public void setReceta(Receta receta) {
+        this.receta = receta;
     }
 
     public Date getFechaCreacion() {
