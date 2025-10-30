@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Medicamentos - GlicemIA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Style_prueba.css">
+
+    <style>
+        /* Estilos específicos para la vista de Medicamentos (Mover a Style_prueba.css si se reutilizan) */
+        body { background-color: #fdfaf5; font-family: "Figtree", sans-serif; color: #413d3c; }
+        .btn-orange { background-color: #f5843a; color: white; border: none; border-radius: 8px; padding: 10px 20px; font-weight: 500; }
+        .btn-orange:hover { background-color: #e0702a; color: white; }
+        .btn-gray { background-color: #e0e0e0; color: #333; border: none; border-radius: 8px; transition: 0.2s; padding: 8px 15px; }
+        .btn-gray:hover { background-color: #cfcfcf; color: #000; }
+        .nav-link-custom { text-decoration: none; color: #413d3c; margin-right: 1.2rem; font-weight: 500; transition: color 0.2s; }
+        .nav-link-custom:hover { color: #f5843a; }
+        .nav-link-active { color: #f5843a !important; font-weight: 600; }
+
+        /* Estilos de las tarjetas de contenido */
+        .card-meds {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            height: 100%; /* Para que las columnas tengan altura similar */
+        }
+        .card-meds .card-title-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #413d3c;
+        }
+
+        /* Estilos para el botón "Exportar a PDF" */
+        .btn-export-pdf {
+            background-color: #fff1e6; /* Fondo naranja claro */
+            color: #f5843a; /* Texto naranja */
+            border: 1px solid #f5843a;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .btn-export-pdf:hover {
+            background-color: #f5843a;
+            color: white;
+            border-color: #f5843a;
+        }
+
+        /* Estilos para la lista de medicamentos */
+        .med-list-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            height: 100%; /* Asegura que la tarjeta Mi Lista tenga la misma altura */
+        }
+        .med-list-card .list-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f5843a;
+            margin-bottom: 1.2rem;
+        }
+        .med-item {
+            background-color: #fdfaf5; /* Fondo claro para cada item */
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #eee;
+            transition: all 0.2s ease;
+        }
+        .med-item:hover {
+            border-color: #f5843a;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .med-item .med-info {
+            flex-grow: 1;
+        }
+        .med-item .med-name {
+            font-weight: 600;
+            color: #413d3c;
+            margin-bottom: 0.2rem;
+        }
+        .med-item .med-details {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 0;
+        }
+        .med-item .med-notes {
+            font-size: 0.8rem;
+            color: #999;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        .med-item .delete-btn {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .med-item .delete-btn:hover {
+            color: #dc3545; /* Rojo de Bootstrap para peligro */
+        }
+
+        /* Ajustes para inputs de fecha y hora */
+        .input-group-custom .input-group-text {
+            background-color: #e9ecef;
+            border-color: #ced4da;
+            border-radius: 0.375rem; /* Bootstrap default */
+            border-top-left-radius: 0; /* Solo el lado del input tiene redondeo */
+            border-bottom-left-radius: 0;
+        }
+        .input-group-custom .form-control {
+             border-right: none; /* Quita el borde derecho para que se "funda" con el icono */
+        }
+        /* Ajuste para que el calendario y reloj estén dentro del input group */
+        .input-group > .form-control:not(:last-child),
+        .input-group > .form-select:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .input-group > .input-group-text:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container-fluid border-bottom">
+        <div class="row align-items-center py-2 px-md-5">
+            <div class="col-auto d-flex align-items-center">
+                <img src="${pageContext.request.contextPath}/img/GlicemIA_icono.png" alt="Icono de GlicemIA" style="width: 30px; height: auto; margin-right: 8px;">
+                <h6 class="mb-0" style="font-weight: 600;">Glicem<span style="color: #d2691e;">IA</span></h6>
+            </div>
+            <div class="col text-end">
+                <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
+                <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom">Glucosa</a>
+                <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom">Funciones IA</a>
+                <a href="${pageContext.request.contextPath}/analisisAlimentos" class="nav-link-custom">Análisis de Alimentos</a>
+                <a href="${pageContext.request.contextPath}/verRecetas" class="nav-link-custom">Ver Recetas</a>
+                <a href="${pageContext.request.contextPath}/medicamentos" class="nav-link-custom nav-link-active">Medicamentos</a>
+                <a href="${pageContext.request.contextPath}/cerrarSesion" class="btn btn-gray">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4 px-md-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h3 class="mb-1" style="font-weight: 700; color: #413d3c;">Registro de Medicamentos</h3>
+                <p class="text-muted mb-0">Añade y gestiona los medicamentos que utilizas para tu tratamiento.</p>
+            </div>
+            <div>
+                <button class="btn btn-export-pdf">
+                    <i class="bi bi-box-arrow-down me-2"></i>Exportar a PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card-meds">
+                    <h5 class="card-title-header mb-4">Añadir Nuevo Medicamento</h5>
+                    <form action="${pageContext.request.contextPath}/guardarMedicamento" method="post">
+                        <div class="mb-3">
+                            <label for="nombreMedicamento" class="form-label">Nombre del Medicamento</label>
+                            <input type="text" class="form-control" id="nombreMedicamento" name="nombreMedicamento" placeholder="Ej: Metformina" required>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="dosisMedicamento" class="form-label">Dosis</label>
+                                <input type="text" class="form-control" id="dosisMedicamento" name="dosisMedicamento" placeholder="Ej: 500 mg" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="tipoMedicamento" class="form-label">Tipo de Medicamento</label>
+                                <select class="form-select" id="tipoMedicamento" name="tipoMedicamento">
+                                    <option selected>Pastilla</option>
+                                    <option>Inyección</option>
+                                    <option>Líquido</option>
+                                    <option>Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="fechaRecordatorio" class="form-label">Fecha</label>
+                                <div class="input-group">
+                                    <input type="date" class="form-control" id="fechaRecordatorio" name="fechaRecordatorio" placeholder="mm/dd/yyyy">
+                                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="horaRecordatorio" class="form-label">Hora</label>
+                                <div class="input-group">
+                                    <input type="time" class="form-control" id="horaRecordatorio" name="horaRecordatorio" placeholder="--:--">
+                                    <span class="input-group-text"><i class="bi bi-clock"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="notasAdicionales" class="form-label">Notas Adicionales</label>
+                            <textarea class="form-control" id="notasAdicionales" name="notasAdicionales" rows="3" placeholder="Ej: Tomar con el desayuno, evitar lácteos..."></textarea>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" value="" id="notificarMedicamento" name="notificarMedicamento">
+                            <label class="form-check-label" for="notificarMedicamento">
+                                Notificarme para tomar este medicamento
+                            </label>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-orange">
+                                <i class="bi bi-plus-circle me-2"></i>Guardar Medicamento
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="med-list-card">
+                    <h5 class="list-title">
+                        <i class="bi bi-plus-square me-2"></i>Mi Lista
+                    </h5>
+
+                    <div class="med-item">
+                        <div class="med-info">
+                            <div class="med-name">Metformina</div>
+                            <div class="med-details">500 mg, Dos veces al día</div>
+                            </div>
+                        <button class="delete-btn"><i class="bi bi-trash"></i></button>
+                    </div>
+
+                    <div class="med-item">
+                        <div class="med-info">
+                            <div class="med-name">Insulina Glargina</div>
+                            <div class="med-details">10 unidades, Una vez al día</div>
+                            <p class="med-notes">Nota: Aplicar por la noche.</p>
+                        </div>
+                        <button class="delete-btn"><i class="bi bi-trash"></i></button>
+                    </div>
+
+                    <div class="med-item">
+                        <div class="med-info">
+                            <div class="med-name">Glibenclamida</div>
+                            <div class="med-details">5 mg, Con cada comida</div>
+                        </div>
+                        <button class="delete-btn"><i class="bi bi-trash"></i></button>
+                    </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid py-4 mt-5 border-top">
+        <div class="row px-md-5">
+            <div class="col-md-4 d-flex align-items-center mb-3 mb-md-0">
+                <img src="${pageContext.request.contextPath}/img/GlicemIA_icono.png" alt="Icono GlicemIA" style="width: 30px; height: auto; margin-right: 10px;">
+                <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
+            </div>
+            <div class="col-md-8 text-md-end">
+                <a href="${pageContext.request.contextPath}/terminos" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
+                <a href="${pageContext.request.contextPath}/politicaPrivacidad" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+                <a href="${pageContext.request.contextPath}/contacto" class="text-muted text-decoration-none">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
