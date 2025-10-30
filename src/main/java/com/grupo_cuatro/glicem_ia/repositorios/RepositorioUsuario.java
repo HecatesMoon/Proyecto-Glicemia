@@ -11,6 +11,6 @@ import java.util.List;
 public interface RepositorioUsuario extends CrudRepository<Usuario, Long> {
     Usuario findByCorreo(String correo);
 
-    Usuario save(Usuario nuevoUsuario);
+    // Usuario save(Usuario nuevoUsuario);
     
 }
