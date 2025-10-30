@@ -71,6 +71,9 @@ public class Usuario {
     @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<HistorialChat> historialChats;
 
+    @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    private List<Pago> pagos;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
 

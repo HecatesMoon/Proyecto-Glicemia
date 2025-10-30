@@ -34,8 +34,8 @@ public class ControladorPerfil {
     // Actualizar perfil
     @PostMapping("/perfil/actualizar")
     public String actualizarPerfil(@Valid @ModelAttribute("usuario") Usuario usuarioForm,
-                                   BindingResult validaciones,
-                                   HttpSession sesion){
+                                    BindingResult validaciones,
+                                    HttpSession sesion){
         Long idUsuario = (Long) sesion.getAttribute("id_usuario");
         if (idUsuario == null) return "redirect:/login";
         

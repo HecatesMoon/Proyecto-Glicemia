@@ -30,9 +30,6 @@ public class ServicioUsuario {
         return this.repositorioUsuario.save(nuevoUsuario);
     }
 
-    public Usuario obtenerPorId(Long idUsuario){
-        return this.repositorioUsuario.findById(idUsuario).orElse(null);
-    }
 
         // Actualizar perfil existente
     public Usuario actualizarUsuario(Long idUsuario, Usuario datosActualizados){
