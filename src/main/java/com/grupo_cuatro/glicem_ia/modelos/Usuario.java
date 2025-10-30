@@ -47,12 +47,30 @@ public class Usuario {
     @Size(message = "Proporciona tu tipo de diabetes")
     private String tipoDiabetes;
 
+    private String imagenPerfil;
+
+    private Integer edad;
+
+    private String contactoEmergencia;
+
+    private Boolean recibirNotificaciones = false;
+
+    private Boolean modoOscuro = false;
+
     @Transient
     private String confirmarContrasenia;
+    
+    //Esto te devuelve la edad automáticamente, sin guardarla en BD ni actualizarla manualmente.
+    @Transient
+    public int getEdad() {
+    return java.time.Period.between(this.fechaNacimiento, LocalDate.now()).getYears();
+    }
 
-    // //TODO: descomentar cuando Glucosa.java este completo
-    // @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
-    // List<Glucosa> glucosa;
+    @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
+    List<Glucosa> glucosa;
+
+    @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<HistorialChat> historialChats;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
@@ -118,6 +136,47 @@ public class Usuario {
         this.tipoDiabetes = tipoDiabetes;
     }
 
+    public String getImagenPerfil() {
+        return imagenPerfil;
+    }
+
+    public void setImagenPerfil(String imagenPerfil) {
+        this.imagenPerfil = imagenPerfil;
+    }
+    
+    public Integer getEdadValue() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+
+    public String getContactoEmergencia() {
+        return contactoEmergencia;
+    }
+
+    public void setContactoEmergencia(String contactoEmergencia) {
+        this.contactoEmergencia = contactoEmergencia;
+    }
+
+    public Boolean getRecibirNotificaciones() {
+        return recibirNotificaciones;
+    }
+
+    public void setRecibirNotificaciones(Boolean recibirNotificaciones) {
+        this.recibirNotificaciones = recibirNotificaciones;
+    }
+
+    public Boolean getModoOscuro() {
+        return modoOscuro;
+    }
+
+    public void setModoOscuro(Boolean modoOscuro) {
+        this.modoOscuro = modoOscuro;
+    }
+
     public String getConfirmarContrasenia() {
         return confirmarContrasenia;
     }
@@ -126,14 +185,13 @@ public class Usuario {
         this.confirmarContrasenia = confirmarContrasenia;
     }
 
-    // TODO: Descomentar cuando la clase Glucosa esté disponible
-    // public List<Glucosa> getGlucosa() {
-    //     return glucosa;
-    // }
+    public List<Glucosa> getGlucosa() {
+        return glucosa;
+    }
 
-    // public void setGlucosa(List<Glucosa> glucosa) {
-    //     this.glucosa = glucosa;
-    // }
+    public void setGlucosa(List<Glucosa> glucosa) {
+        this.glucosa = glucosa;
+    }
 
     public Date getFechaCreacion() {
         return fechaCreacion;
