@@ -88,6 +88,7 @@
                     </div>
 
                     <div>
+                        <input type="hidden" name="aceptaTerminos" value="false"/>
                         <form:checkbox class="form-check-input" path="aceptaTerminos"/>
                         <form:label class="form-check-label" path="aceptaTerminos">
                             Acepto los <a href="/terminos" target="_blank">términos y condiciones</a>

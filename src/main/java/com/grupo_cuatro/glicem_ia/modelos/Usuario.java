@@ -51,7 +51,7 @@ public class Usuario {
     @Transient
     private String confirmarContrasenia;
 
-    @NotNull(message = "Debes aceptar los términos y condiciones para continuar")
+    @AssertTrue(message = "Debes aceptar los términos y condiciones para continuar")
     private Boolean aceptaTerminos;
 
     @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
