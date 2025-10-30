@@ -59,7 +59,7 @@ public class Usuario {
 
     @Transient
     private String confirmarContrasenia;
-    
+
     //Esto te devuelve la edad automáticamente, sin guardarla en BD ni actualizarla manualmente.
     @Transient
     public int getEdad() {
@@ -143,7 +143,7 @@ public class Usuario {
     public void setImagenPerfil(String imagenPerfil) {
         this.imagenPerfil = imagenPerfil;
     }
-    
+
     public Integer getEdadValue() {
         return edad;
     }
