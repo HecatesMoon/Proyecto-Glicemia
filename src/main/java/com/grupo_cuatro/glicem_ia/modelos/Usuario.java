@@ -18,9 +18,9 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
 
 @Entity
 @Table(name = "usuarios")
@@ -29,7 +29,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min =3, message = "Por favor proporciona tu nombre")
+    @Size(min = 3, message = "Por favor proporciona tu nombre")
     private String nombre;
 
     @Size(min = 3, message = "Por favor proporciona tu apellido")
@@ -44,12 +44,10 @@ public class Usuario {
     @NotNull(message = "Por favor proporciona tu fecha de nacimiento")
     private LocalDate fechaNacimiento;
 
-    @Size(message = "Proporciona tu tipo de diabetes")
+    @NotBlank(message = "Proporciona tu tipo de diabetes")
     private String tipoDiabetes;
 
     private String imagenPerfil;
-
-    private Integer edad;
 
     private String contactoEmergencia;
 
@@ -60,17 +58,20 @@ public class Usuario {
     @Transient
     private String confirmarContrasenia;
 
-    //Esto te devuelve la edad automáticamente, sin guardarla en BD ni actualizarla manualmente.
+    // Esto te devuelve la edad automáticamente, sin guardarla en BD ni actualizarla manualmente.
     @Transient
     public int getEdad() {
-    return java.time.Period.between(this.fechaNacimiento, LocalDate.now()).getYears();
+        return java.time.Period.between(this.fechaNacimiento, LocalDate.now()).getYears();
     }
 
-    @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
-    List<Glucosa> glucosa;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Glucosa> glucosa;
 
-    @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<HistorialChat> historialChats;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<HistorialChat> historialChats;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Pago> pagos;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
@@ -78,7 +79,7 @@ public class Usuario {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaActualizacion;
 
-    public Usuario(){}
+    public Usuario() {}
 
     public Long getId() {
         return id;
@@ -144,15 +145,6 @@ public class Usuario {
         this.imagenPerfil = imagenPerfil;
     }
 
-    public Integer getEdadValue() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
-
-
     public String getContactoEmergencia() {
         return contactoEmergencia;
     }
@@ -210,16 +202,13 @@ public class Usuario {
     }
 
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         this.fechaCreacion = new Date();
         this.fechaActualizacion = new Date();
     }
 
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdate() {
         this.fechaActualizacion = new Date();
     }
-
-
-
 }

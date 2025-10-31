@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.grupo_cuatro.glicem_ia.modelos.Usuario;
-import java.util.List;
+
 
 
 @Repository

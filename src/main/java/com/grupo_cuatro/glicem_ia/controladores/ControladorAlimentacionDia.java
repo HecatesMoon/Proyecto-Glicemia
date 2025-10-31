@@ -50,13 +50,13 @@ public class ControladorAlimentacionDia {
     @GetMapping("/listarPorFecha")
     public String listarPorUsuarioYFecha(@RequestParam Long usuarioId,
                                         @RequestParam String fecha,
-                                        Model model, HttpSession sesion){ 
+                                        Model modelo, HttpSession sesion){ 
     if (sesion.getAttribute("id_usuario") == null) {
         return "redirect:/login";
         }
         LocalDate fechaParseada = LocalDate.parse(fecha);
         List<AlimentacionDia> comidas = servicioAlimentacionDia.listarPorUsuarioYFecha(usuarioId, fechaParseada);
-        model.addAttribute("comidas", comidas);
+        modelo.addAttribute("comidas", comidas);
         return "alimentacion/lista"; 
     }
 
