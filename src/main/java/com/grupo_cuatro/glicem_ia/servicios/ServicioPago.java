@@ -27,8 +27,8 @@ public class ServicioPago {
         return repositorioPago.save(pago);
     }
 
-    public Pago obtenerPagoPorId(Long id) {
-        return repositorioPago.findById(id).orElse(null);
+    public Pago obtenerPagoPorId(Long idUsuario) {
+        return repositorioPago.findById(idUsuario).orElse(null);
     }
 
     public Pago registrarPago(Pago pago) {

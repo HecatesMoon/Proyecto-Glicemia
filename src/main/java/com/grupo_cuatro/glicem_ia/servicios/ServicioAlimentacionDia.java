@@ -2,7 +2,7 @@ package com.grupo_cuatro.glicem_ia.servicios;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.stereotype.Service;
 
@@ -22,9 +22,6 @@ public class ServicioAlimentacionDia {
         return repositorioAlimentacionDia.save(alimentacionDia);
     }
 
-    public Optional<AlimentacionDia> buscarPorId(Long id) {
-        return repositorioAlimentacionDia.findById(id);
-    }
 
     public List<AlimentacionDia> listarPorUsuarioId(Long usuarioId) {
         return repositorioAlimentacionDia.findByUsuarioId(usuarioId);

@@ -21,25 +21,25 @@ public class ControladorPago {
     private ServicioPago servicioPago;
     
     @GetMapping("/metodo/pago")
-    public String mostrarMetodoDePago(Model model, HttpSession session) {
+    public String mostrarMetodoDePago(Model modelo, HttpSession session) {
         Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
         
         if(usuarioEnSesion == null) {
             return "redirect:/login"; // si no está logueado → lo mandamos al login
         }
         
-        model.addAttribute("pago", new Pago());
+        modelo.addAttribute("pago", new Pago());
         return "pagoPlanes";
     }
 
     @GetMapping("/pago/voucher/{id}")
-        public String mostrarVoucher(@PathVariable("id") Long id, Model model, HttpSession session) {
+        public String mostrarVoucher(@PathVariable("id") Long idUsuario, Model modelo, HttpSession session) {
         Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
         
         if(usuarioEnSesion == null) {
             return "redirect:/login"; // si no está logueado → lo mandamos al login
         }
-        Pago pago = servicioPago.obtenerPagoPorId(id); // lo hacemos en el servicio
+        Pago pago = servicioPago.obtenerPagoPorId(idUsuario); // lo hacemos en el servicio
 
         if (pago == null) {
         return "redirect:/"; // o página de error
@@ -49,7 +49,7 @@ public class ControladorPago {
         return "redirect:/"; 
         }
         
-        model.addAttribute("pago", pago);
+        modelo.addAttribute("pago", pago);
         return "voucher";
     }
 
