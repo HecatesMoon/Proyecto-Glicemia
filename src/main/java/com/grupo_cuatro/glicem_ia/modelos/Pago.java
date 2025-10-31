@@ -18,23 +18,23 @@ public class Pago {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer valor;
+    private String plan; // mensual o anual
 
-    private String descripcionPago;
+    private String numeroTarjeta;
 
-    private LocalDate fechaPago;
+    private String fechaVencimiento;
+
+    private String cvc;
+
+    private LocalDate fechaActivacion;
+
+    private boolean activo;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-
-    public Pago(){}
-
-    public Pago(Integer valor, String descripcionPago, LocalDate fechaPago) {
-        this.valor = valor;
-        this.descripcionPago = descripcionPago;
-        this.fechaPago = fechaPago;
-    }
+    
+    public Pago() {}
 
     public Long getId() {
         return id;
@@ -44,28 +44,52 @@ public class Pago {
         this.id = id;
     }
 
-    public Integer getValor() {
-        return valor;
+    public String getPlan() {
+        return plan;
     }
 
-    public void setValor(Integer valor) {
-        this.valor = valor;
+    public void setPlan(String plan) {
+        this.plan = plan;
     }
 
-    public String getDescripcionPago() {
-        return descripcionPago;
+    public String getNumeroTarjeta() {
+        return numeroTarjeta;
     }
 
-    public void setDescripcionPago(String descripcionPago) {
-        this.descripcionPago = descripcionPago;
+    public void setNumeroTarjeta(String numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
     }
 
-    public LocalDate getFechaPago() {
-        return fechaPago;
+    public String getFechaVencimiento() {
+        return fechaVencimiento;
+    }   
+
+    public void setFechaVencimiento(String fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
     }
 
-    public void setFechaPago(LocalDate fechaPago) {
-        this.fechaPago = fechaPago;
+    public String getCvc() {
+        return cvc;
+    }
+
+    public void setCvc(String cvc) {
+        this.cvc = cvc;
+    }
+
+    public LocalDate getFechaActivacion() {
+        return fechaActivacion;
+    }
+
+    public void setFechaActivacion(LocalDate fechaActivacion) {
+        this.fechaActivacion = fechaActivacion;
+    }
+    
+    public boolean isActivo() {
+        return activo;
+    }   
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public Usuario getUsuario() {
@@ -75,7 +99,7 @@ public class Pago {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
     
 
 }

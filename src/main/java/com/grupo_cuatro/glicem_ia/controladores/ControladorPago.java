@@ -27,8 +27,9 @@ public class ControladorPago {
         if(usuarioEnSesion == null) {
             return "redirect:/login"; // si no está logueado → lo mandamos al login
         }
-        model.addAttribute("pago", new Pago()); 
-        return "metodoPago"; // Nombre de la vista JSP
+        
+        model.addAttribute("pago", new Pago());
+        return "pagoPlanes";
     }
 
     @GetMapping("/pago/voucher/{id}")
@@ -61,8 +62,8 @@ public class ControladorPago {
             return "redirect:/login"; // si no está logueado → lo mandamos al login
         }
         pago.setUsuario(usuarioEnSesion);
-        servicioPago.registrarPago(pago.getValor(), pago.getDescripcionPago());
-        return "redirect:/pago-exitoso";
-
+        
+        Pago pagoGuardado = servicioPago.registrarPago(pago);
+        return "redirect:/voucher/" + pagoGuardado.getId();
     }
 }
