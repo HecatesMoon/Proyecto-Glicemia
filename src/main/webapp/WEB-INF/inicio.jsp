@@ -20,7 +20,7 @@
                 </nav>
     </div>
     
-
+    
     <div>
         <c:choose>
             <c:when test="${not empty sessionScope.id_usuario}">
@@ -32,6 +32,34 @@
         </c:choose>
     </div>
 
+
+    <div>
+        <c:choose>
+            <c:when test="${not empty sessionScope.id_usuario}">
+                <a class="btn btn-primary" href="/funcionesIA">Ver planes premiun</a>
+            </c:when>
+            <c:otherwise>
+                <a class="btn btn-primary" href="/login">Ver planes premiun</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+
+
+    <div>
+        <c:choose>
+            <c:when test="${not empty sessionScope.id_usuario}">
+                <a class="btn btn-primary" href="/recetas">Explorar el foro</a>
+            </c:when>
+            <c:otherwise>
+                <a class="btn btn-primary" href="/login">Explorar el foro</a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+
+
+    <div>
+            <a href="/donaciones"> Hacer una donación</a>
+    </div>
 
 
 
