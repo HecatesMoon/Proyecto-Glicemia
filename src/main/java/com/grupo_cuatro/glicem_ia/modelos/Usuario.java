@@ -18,6 +18,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -44,12 +45,10 @@ public class Usuario {
     @NotNull(message = "Por favor proporciona tu fecha de nacimiento")
     private LocalDate fechaNacimiento;
 
-    @Size(message = "Proporciona tu tipo de diabetes")
+    @NotBlank(message = "Proporciona tu tipo de diabetes")
     private String tipoDiabetes;
 
     private String imagenPerfil;
-
-    private Integer edad;
 
     private String contactoEmergencia;
 
@@ -71,6 +70,9 @@ public class Usuario {
 
     @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<HistorialChat> historialChats;
+
+    @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    private List<Pago> pagos;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
@@ -144,14 +146,6 @@ public class Usuario {
         this.imagenPerfil = imagenPerfil;
     }
     
-    public Integer getEdadValue() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
-
 
     public String getContactoEmergencia() {
         return contactoEmergencia;
