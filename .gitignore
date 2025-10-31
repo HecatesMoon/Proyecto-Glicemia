@@ -47,8 +47,6 @@ build/
 ### Local Configuration ###
 .env
 
-# Archivos individuales
-asistente.jsp
 
 # Ignorar configuraciones de perfiles locales
 application-h2.properties

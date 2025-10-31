@@ -1,0 +1,21 @@
+Merge branch 'develop' into funcion/frontend-vistasEnHTML
+Merge develop into funcion/frontend-vistasEnHTML - Usuario.java conflict
+resolved
+# Conflicts:
+#	src/main/java/com/grupo_cuatro/glicem_ia/modelos/Usuario.java
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please run
+#	git update-ref -d MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch funcion/frontend-vistasEnHTML
+# Your branch is ahead of 'origin/funcion/frontend-vistasEnHTML' by 2 commits.
+#   (use "git push" to publish your local commits)
+#
+# All conflicts fixed but you are still merging.
+#
