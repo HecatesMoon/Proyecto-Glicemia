@@ -61,6 +61,8 @@ public class ControladorGlucosa {
         /* nuevaGlucosa.setUsuario(usuario);
         nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555);  */
 
+        nuevaGlucosa.setUsuario(usuario);
+
         /* conversion bidireccional */
         if (nuevaGlucosa.getValorMgDl() != null && nuevaGlucosa.getValorMmolL() == null) {
             nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555);            

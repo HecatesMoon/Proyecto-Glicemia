@@ -57,6 +57,9 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
     List<Glucosa> glucosa;
 
+    @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
+    List<Medicamento> medicamento;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
 
@@ -170,6 +173,14 @@ public class Usuario {
     @PreUpdate
     protected void onUpdate(){
         this.fechaActualizacion = new Date();
+    }
+
+    public List<Medicamento> getMedicamento() {
+        return medicamento;
+    }
+
+    public void setMedicamento(List<Medicamento> medicamento) {
+        this.medicamento = medicamento;
     }
     
 
