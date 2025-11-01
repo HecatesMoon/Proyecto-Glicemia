@@ -40,6 +40,8 @@ build/
 # ==== Controladores de Prueba de Frontend ====
 **/*PruebaController.java
 **/*TempControlador.java
+**/*ControladorInicioTest.java
+**/*ControladorGlucosaTest.java
 
 # ==== Modelos de Prueba (Dummies) ====
 **/*Dummy.java

@@ -160,7 +160,7 @@
                 <div class="card-glicemia">
                     <h5 class="card-title">Registro de Alimentación</h5>
                     <%-- Asumiendo que el modelAttribute será 'nuevoAlimento' --%>
-                    <form:form action="/registrarAlimento" method="POST" modelAttribute="nuevoAlimento">
+                    <form:form action="/registrar" method="POST" modelAttribute="nuevoRegistro">
                         <div class="mb-3">
                             <form:label path="tipoComida" class="form-label">Tipo de comida</form:label>
                             <form:select path="tipoComida" class="form-select">
@@ -173,23 +173,23 @@
                             <form:errors path="tipoComida" cssClass="error-text"/>
                         </div>
                         <div class="mb-3">
-                            <form:label path="descripcionComida" class="form-label">Descripción</form:label>
+                            <form:label path="descripcion" class="form-label">Descripción</form:label>
                             <div class="input-group">
-                                <form:input path="descripcionComida" class="form-control" placeholder="Describe lo que comiste... Ej: 2 tostadas..."/>
+                                <form:input path="descripcion" class="form-control" placeholder="Describe lo que comiste... Ej: 2 tostadas..."/>
                                 <button class="btn btn-orange" type="button"><i class="bi bi-lightning-fill me-1"></i>Generar con IA</button>
                             </div>
-                            <form:errors path="descripcionComida" cssClass="error-text"/>
+                            <form:errors path="descripcion" cssClass="error-text"/>
                         </div>
                         <div class="row mb-4">
                             <div class="col-6">
-                                <form:label path="fechaComida" class="form-label">Fecha</form:label>
-                                <form:input path="fechaComida" type="date" class="form-control"/>
-                                <form:errors path="fechaComida" cssClass="error-text"/>
+                                <form:label path="fecha" class="form-label">Fecha</form:label>
+                                <form:input path="fecha" type="date" class="form-control"/>
+                                <form:errors path="fecha" cssClass="error-text"/>
                             </div>
                             <div class="col-6">
-                                <form:label path="horaComida" class="form-label">Hora</form:label>
-                                <form:input path="horaComida" type="time" class="form-control"/>
-                                <form:errors path="horaComida" cssClass="error-text"/>
+                                <form:label path="hora" class="form-label">Hora</form:label>
+                                <form:input path="hora" type="time" class="form-control"/>
+                                <form:errors path="hora" cssClass="error-text"/>
                             </div>
                         </div>
                         <div class="d-grid">
