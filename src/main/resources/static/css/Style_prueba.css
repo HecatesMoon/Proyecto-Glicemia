@@ -1,0 +1,155 @@
+/* === Reset and Base Styles === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%; /* Asegura que el HTML base cubra la altura */
+    overflow-x: hidden; /* Evita scroll horizontal global */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Opcional: Hace que el fondo no se mueva al hacer scroll */
+    overflow-x: hidden; /* Evita scroll horizontal global */
+    /* El background gradient se aplica inline en el HTML, pero podrías moverlo aquí */
+    /* background: linear-gradient(rgb(255, 228, 178), orange); */
+    font-family: "Figtree", sans-serif; /* Establece la fuente por defecto */
+}
+
+/* === Typography === */
+#bienV {
+    color: rgb(65, 61, 60);
+    text-align: center;
+    font-family: "Figtree", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 750;
+    font-size: 40px;
+}
+
+#iniciaS {
+    font-family: "Figtree", sans-serif;
+    font-size: 15px;
+    color: rgb(119, 119, 119);
+    font-weight: 270;
+}
+
+#tuApoyo {
+    color: rgb(65, 61, 60);
+    text-align: center;
+    font-family: "Figtree", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 750;
+    font-size: 34px;
+}
+
+#donacion {
+    font-family: "Figtree", sans-serif;
+    color: rgb(65, 61, 60);
+    font-weight: 650;
+}
+
+h5.titColumnDona {
+    font-family: "Figtree", sans-serif;
+    color: rgb(65, 61, 60);
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.parrafoCol {
+    font-family: "Figtree", sans-serif;
+    font-size: 15px;
+    color: rgb(119, 119, 119);
+    font-weight: 270;
+    text-align: center;
+}
+
+#cadaCon {
+    font-family: "Figtree", sans-serif;
+    font-size: 15px;
+    color: rgb(119, 119, 119);
+    font-weight: 270;
+    padding-top: 30px;
+}
+
+/* === Forms & Inputs === */
+.labelUser {
+    font-family: "Figtree", sans-serif;
+    font-weight: 450;
+    color: rgb(65, 61, 60);
+}
+
+/* Estilos para Input Groups personalizados */
+.input-group .input-group-text {
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    padding-right: 0.5rem;
+}
+
+.input-group .input-group-text i {
+    color: #6c757d; /* Color gris para iconos */
+}
+
+.input-group .form-control {
+    border: none; /* Sin bordes */
+    border-bottom: 1px solid #ced4da; /* Borde inferior */
+    border-radius: 0;
+    box-shadow: none;
+    padding-left: 0.5rem; /* Espacio a la izquierda del texto */
+}
+
+.input-group .form-control:focus {
+    border-color: #ff8c00; /* Borde naranja al enfocar */
+    box-shadow: none;
+}
+
+/* === Buttons & Links === */
+#naranjo { /* Asumiendo que es el ID del botón de Iniciar Sesión */
+    background-color: chocolate;
+    border: none;
+    padding: 10px;
+    font-family: "Figtree", sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    /* Considera añadir color de texto si no lo hereda bien */
+    color: white;
+}
+
+#pNaranjo { /* Para enlaces "Olvidaste contraseña" y "Registrate" */
+    color: chocolate;
+}
+
+.nav-link { /* Estilos para enlaces de navegación si los usas */
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #f5843a;
+}
+
+/* === Icons === */
+.iconosNaran {
+    color: #ff8c00; /* Naranja más brillante que chocolate */
+    font-size: 2rem;
+    padding-bottom: 20px;
+}
+
+/* === Utilities === */
+.text-orange {
+    color: #f5843a !important; /* Color naranja específico */
+}
+
+#noTienesC {
+    margin-top: 50px; /* Espaciado para el enlace de registro */
+}
+
+.nav-link-custom { text-decoration: none; color: #413d3c; margin-right: 1.2rem; font-weight: 500; transition: color 0.2s; }
+.nav-link-custom:hover { color: #f5843a; }
