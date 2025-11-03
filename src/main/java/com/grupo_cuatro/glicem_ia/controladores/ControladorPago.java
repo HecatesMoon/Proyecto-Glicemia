@@ -29,7 +29,7 @@ public class ControladorPago {
         }
 
         modelo.addAttribute("pago", new Pago());
-        return "pagar";
+        return "pagoPlanes";
     }
 
     @GetMapping("/pago/voucher/{id}")
