@@ -186,10 +186,10 @@
                 <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
                 <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom">Glucosa</a>
                 <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom">Funciones IA</a>
-                <a href="${pageContext.request.contextPath}/analisisAlimentos" class="nav-link-custom nav-link-active">Análisis de Alimentos</a>
+                <a href="${pageContext.request.contextPath}/analisisAlimentos" class="nav-link-custom nav-link-active">Analisis de Alimentos</a>
                 <a href="${pageContext.request.contextPath}/verRecetas" class="nav-link-custom">Ver Recetas</a>
                 <a href="${pageContext.request.contextPath}/medicamentos" class="nav-link-custom">Medicamentos</a>
-                <a href="${pageContext.request.contextPath}/cerrarSesion" class="btn btn-gray">Cerrar Sesión</a>
+                <a href="${pageContext.request.contextPath}/cerrarSesion" class="btn btn-gray">Cerrar Sesion</a>
             </div>
         </div>
     </nav>
@@ -205,7 +205,7 @@
                         <i class="bi bi-award-fill"></i>
                     </div>
                     <div>
-                        <h6>Accede a Análisis Avanzado con Premium</h6>
+                        <h6>Accede a Analisis Avanzado con Premium</h6>
                         <p>Conecta tus datos de glucosa para obtener tendencias y predicciones personalizadas basadas en tu alimentación. ¡Mejora tu control hoy!</p>
                     </div>
                     <a href="${pageContext.request.contextPath}/planesPremium" class="btn btn-premium-action">Actualizar a Premium</a>
@@ -230,7 +230,7 @@
 
             <div class="col-lg-4">
                 <div class="card-general">
-                    <h5 class="card-title">Distribución Promedio</h5>
+                    <h5 class="card-title">Distribucion Promedio</h5>
                     <div style="height: 250px; display: flex; align-items: center; justify-content: center;">
                         <canvas id="macroDistributionChart"></canvas>
                     </div>
