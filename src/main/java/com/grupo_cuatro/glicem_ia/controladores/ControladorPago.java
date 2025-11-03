@@ -16,26 +16,26 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ControladorPago {
-    
+
     @Autowired
     private ServicioPago servicioPago;
-    
+
     @GetMapping("/metodo/pago")
     public String mostrarMetodoDePago(Model modelo, HttpSession session) {
         Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
-        
+
         if(usuarioEnSesion == null) {
             return "redirect:/login"; // si no está logueado → lo mandamos al login
         }
-        
+
         modelo.addAttribute("pago", new Pago());
-        return "pagoPlanes";
+        return "pagar";
     }
 
     @GetMapping("/pago/voucher/{id}")
         public String mostrarVoucher(@PathVariable("id") Long idUsuario, Model modelo, HttpSession session) {
         Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
-        
+
         if(usuarioEnSesion == null) {
             return "redirect:/login"; // si no está logueado → lo mandamos al login
         }
@@ -44,11 +44,11 @@ public class ControladorPago {
         if (pago == null) {
         return "redirect:/"; // o página de error
         }
-        
+
         if (!pago.getUsuario().getId().equals(usuarioEnSesion.getId())) {
-        return "redirect:/"; 
+        return "redirect:/";
         }
-        
+
         modelo.addAttribute("pago", pago);
         return "voucher";
     }
@@ -57,12 +57,12 @@ public class ControladorPago {
     @PostMapping("/suscribirse")
     public String procesarSuscripcion(@ModelAttribute("pago") Pago pago, HttpSession session) {
         Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
-        
+
         if(usuarioEnSesion == null) {
             return "redirect:/login"; // si no está logueado → lo mandamos al login
         }
         pago.setUsuario(usuarioEnSesion);
-        
+
         Pago pagoGuardado = servicioPago.registrarPago(pago);
         return "redirect:/voucher/" + pagoGuardado.getId();
     }

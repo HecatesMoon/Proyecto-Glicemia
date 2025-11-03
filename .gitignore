@@ -42,6 +42,8 @@ build/
 **/*TempControlador.java
 **/*ControladorInicioTest.java
 **/*ControladorGlucosaTest.java
+**/*ControladorMedicamentosTest.java
+**/*MedicamentoTest.java
 
 # ==== Modelos de Prueba (Dummies) ====
 **/*Dummy.java

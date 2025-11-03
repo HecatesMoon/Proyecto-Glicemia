@@ -30,13 +30,6 @@
 
                 <h3 id="bienV" class="text-center">Bienvenido a GlicemIA</h3>
 
-                <%--
-                  FORMULARIO JSP:
-                  Conectado a tu controlador:
-                  - action="/procesa/login"
-                  - method="POST"
-                  - modelAttribute="loginUsuario"
-                --%>
                 <form:form method="POST" action="/procesa/login" modelAttribute="loginUsuario">
                     <h6 id="iniciaS" class="text-center mb-4">Inicia Sesión para continuar</h6>
 
