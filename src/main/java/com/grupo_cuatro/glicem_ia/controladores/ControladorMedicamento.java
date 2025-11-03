@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.grupo_cuatro.glicem_ia.modelos.Medicamento;
 import com.grupo_cuatro.glicem_ia.modelos.Usuario;
 import com.grupo_cuatro.glicem_ia.repositorios.RepositorioMedicamento;
-import com.grupo_cuatro.glicem_ia.servicios.ServicioMedicamento;
 import com.grupo_cuatro.glicem_ia.servicios.ServicioUsuario;
 
 import jakarta.servlet.http.HttpSession;
@@ -63,5 +62,4 @@ public class ControladorMedicamento {
         return "medicamentos";
     }
     
-
 }

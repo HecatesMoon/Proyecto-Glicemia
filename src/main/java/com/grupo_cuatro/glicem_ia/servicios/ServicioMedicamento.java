@@ -1,6 +1,7 @@
 package com.grupo_cuatro.glicem_ia.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.grupo_cuatro.glicem_ia.modelos.Medicamento;
@@ -17,5 +18,10 @@ public class ServicioMedicamento {
 
     public Medicamento agregarUno(Medicamento nuevoMedicamento){
         return this.repositorioMedicamento.save(nuevoMedicamento);
+    }
+
+    @Scheduled(fixedRate = 60000) //cada minuto
+    public void revisarNotificaciones(){
+        
     }
 }
