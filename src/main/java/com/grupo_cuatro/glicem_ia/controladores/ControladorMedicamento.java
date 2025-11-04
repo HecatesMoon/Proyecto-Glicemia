@@ -40,7 +40,7 @@ public class ControladorMedicamento {
         return "medicamentos";
     }
 
-    @PostMapping("/agregar/medicamento")
+    //@PostMapping("/agregar/medicamento")
     public String postMethodName(@Valid @ModelAttribute("nuevoMedicamento") Medicamento nuevoMedicamento,
                                 BindingResult resultado,
                                 HttpSession sesion,

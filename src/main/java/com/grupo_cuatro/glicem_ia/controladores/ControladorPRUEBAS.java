@@ -73,7 +73,7 @@ public class ControladorPRUEBAS {
 
 }
 
-//hay que hacer redirect @PostMapping("/agregar/medicamento")
+@PostMapping("/agregar/medicamento")
     public String postMethodName(@Valid @ModelAttribute("nuevoMedicamento") Medicamento nuevoMedicamento,
                                 BindingResult resultado,
                                 HttpSession sesion,
@@ -91,7 +91,7 @@ public class ControladorPRUEBAS {
 
         repositorioMedicamento.save(nuevoMedicamento);
 
-        redirectAttrs.addFlashAttribute("mensajeExito", "Medicamento registrada correctamente.");
+        redirectAttrs.addFlashAttribute("mensajeAgregaExito", "Medicamento registrada correctamente.");
         return "medicamentos";
     }
 }

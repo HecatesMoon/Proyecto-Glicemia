@@ -51,7 +51,7 @@
                 <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
                 <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom">Glucosa</a>
                 <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom">Funciones IA</a>
-                <a href="${pageContext.request.contextPath}/analisisAlimentos" class="nav-link-custom">Análisis de Alimentos</a>
+                <a href="${pageContext.request.contextPath}/analisis" class="nav-link-custom">Análisis de Alimentos</a>
                 <a href="${pageContext.request.contextPath}/verRecetas" class="nav-link-custom">Ver Recetas</a>
                 <a href="${pageContext.request.contextPath}/medicamentos" class="nav-link-custom nav-link-active">Medicamentos</a>
                 <a href="${pageContext.request.contextPath}/cerrarSesion" class="btn btn-gray">Cerrar Sesión</a>
