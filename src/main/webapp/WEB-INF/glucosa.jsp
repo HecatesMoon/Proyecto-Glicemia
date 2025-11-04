@@ -16,10 +16,10 @@
     <div class="row">
                 <nav class="col-4">
                     <div class="row">
-                        <a class="col-4" href="/Perfil"> Perfil </a>
+                        <a class="col-4" href="/perfil"> Perfil </a>
                         <a class="col-4" href="/glucosa"> Glucosa </a>
                         <a class="col-4" href="/funcionesIA">Funciones IA</a>
-                        <a class="col-4" href="/Alimento">Analisis de alimento</a>
+                        <a class="col-4" href="/alimento">Analisis de alimento</a>
                         <a class="col-4" href="/logout"> Logout </a>
                     </div>
                 </nav>

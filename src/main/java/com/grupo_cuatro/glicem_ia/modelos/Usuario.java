@@ -45,7 +45,7 @@ public class Usuario {
 
     @NotNull(message = "Por favor proporciona tu fecha de nacimiento")
     private LocalDate fechaNacimiento;
-  
+
     @NotBlank(message = "Proporciona tu tipo de diabetes")
     private String tipoDiabetes;
 
@@ -72,12 +72,11 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
     List<Glucosa> glucosa;
 
-
     @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
     List<Medicamento> medicamento;
 
     @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-	  private List<HistorialChat> historialChats;
+	private List<HistorialChat> historialChats;
 
     @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Pago> pagos;
@@ -238,5 +237,5 @@ public class Usuario {
     public void setMedicamento(List<Medicamento> medicamento) {
         this.medicamento = medicamento;
     }
-  
+
 }

@@ -58,8 +58,8 @@ public class ControladorMedicamento {
 
         repositorioMedicamento.save(nuevoMedicamento);
 
-        redirectAttrs.addFlashAttribute("mensajeExito", "Medicamento registrada correctamente.");
-        return "medicamentos";
+        redirectAttrs.addFlashAttribute("mensajeAgregaExito", "Medicamento registrada correctamente.");
+        return "redirect:/medicamentos";
     }
     
 }

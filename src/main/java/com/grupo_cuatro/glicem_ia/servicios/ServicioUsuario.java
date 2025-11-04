@@ -20,8 +20,12 @@ public class ServicioUsuario {
         return repositorioUsuario.findByCorreo(correo);
     }
 
-    public Usuario obtenerPorId(Long idUsuario){
+  /*   public Usuario obtenerPorId(Long idUsuario){
         return repositorioUsuario.findById(idUsuario).orElse(null);
+    } */
+
+    public Usuario obtenerPorId(Long id){
+        return this.repositorioUsuario.findById(id).orElse(null);
     }
 
     public Usuario agregarUno(Usuario nuevoUsuario){

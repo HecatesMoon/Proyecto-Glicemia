@@ -30,7 +30,8 @@ public class ControladorAlimentacionDia {
     @GetMapping("/")
     public String mostrarFormularioAlimentacionDia(Model modelo, HttpSession sesion){
         if (sesion.getAttribute("id_usuario") == null) {
-        return "redirect:/login";
+        return "redirect:/glucosa";
+        /* return "redirect:/login"; */
     }
         modelo.addAttribute("alimentacion", new AlimentacionDia());
         return "alimentacion/formulario";
@@ -40,7 +41,7 @@ public class ControladorAlimentacionDia {
     public String listarComidasPorUsuario(@RequestParam Long usuarioId,
                                             Model modelo, HttpSession sesion){
         if (sesion.getAttribute("id_usuario") == null) {
-        return "redirect:/login";
+        return "redirect:/glucosa";
         }
         List<AlimentacionDia> comidas = servicioAlimentacionDia.listarPorUsuarioId(usuarioId);
         modelo.addAttribute("comidas", comidas);
@@ -52,7 +53,7 @@ public class ControladorAlimentacionDia {
                                         @RequestParam String fecha,
                                         Model modelo, HttpSession sesion){ 
     if (sesion.getAttribute("id_usuario") == null) {
-        return "redirect:/login";
+        return "redirect:/glucosa";
         }
         LocalDate fechaParseada = LocalDate.parse(fecha);
         List<AlimentacionDia> comidas = servicioAlimentacionDia.listarPorUsuarioYFecha(usuarioId, fechaParseada);
