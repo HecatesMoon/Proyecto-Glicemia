@@ -195,8 +195,8 @@
     </nav>
 
     <div class="container-fluid py-4 px-md-5">
-        <h3 class="mb-1" style="font-weight: 700; color: #413d3c;">Análisis de Alimentos</h3>
-        <p class="text-muted mb-4">Revisa tu historial de comidas, su análisis y las alertas generadas.</p>
+        <h3 class="mb-1" style="font-weight: 700; color: #413d3c;">Analisis de Alimentos</h3>
+        <p class="text-muted mb-4">Revisa tu historial de comidas, su analisis y las alertas generadas.</p>
 
         <div class="row mb-5">
             <div class="col-lg-8">
@@ -206,9 +206,9 @@
                     </div>
                     <div>
                         <h6>Accede a Analisis Avanzado con Premium</h6>
-                        <p>Conecta tus datos de glucosa para obtener tendencias y predicciones personalizadas basadas en tu alimentación. ¡Mejora tu control hoy!</p>
+                        <p>Conecta tus datos de glucosa para obtener tendencias y predicciones personalizadas basadas en tu alimentacion.</p>
                     </div>
-                    <a href="${pageContext.request.contextPath}/planesPremium" class="btn btn-premium-action">Actualizar a Premium</a>
+                    <a href="${pageContext.request.contextPath}/funcionesIA" class="btn btn-premium-action">Actualizar a Premium</a>
                 </div>
 
                 <h5 class="mb-3" style="font-weight: 600;">Alertas de Patrones</h5>
@@ -216,14 +216,14 @@
                     <i class="bi bi-arrow-up-circle-fill alert-icon"></i>
                     <div>
                         <h6>Alto consumo de carbohidratos en cenas</h6>
-                        <p>Se ha detectado un patrón de cenas con más del 50% de carbohidratos en los últimos 7 días. Esto podría estar afectando tus niveles de glucosa matutinos.</p>
+                        <p>Se ha detectado un patron de cenas con mas del 50% de carbohidratos en los ultimos 7 dias. Esto podria estar afectando tus niveles de glucosa matutinos.</p>
                     </div>
                 </div>
                 <div class="alert-pattern alert-warning" role="alert">
                     <i class="bi bi-exclamation-triangle-fill alert-icon"></i>
                     <div>
-                        <h6>Bajo consumo de proteínas en almuerzos</h6>
-                        <p>Tus almuerzos tienen en promedio menos del 20% de proteínas. Considera aumentarlas para mayor saciedad y mejor control glucémico.</p>
+                        <h6>Bajo consumo de proteinas en almuerzos</h6>
+                        <p>Tus almuerzos tienen en promedio menos del 20% de proteinas. Considera aumentarlas para mayor saciedad y mejor control glucemico.</p>
                     </div>
                 </div>
             </div>
@@ -237,7 +237,7 @@
                     <div class="d-flex justify-content-center mt-3 small text-muted">
                         <div class="me-3"><span class="badge" style="background-color: #f5843a;"></span> Carbohidratos</div>
                         <div class="me-3"><span class="badge" style="background-color: #6c757d;"></span> Grasas</div>
-                        <div><span class="badge" style="background-color: #28a745;"></span> Proteínas</div>
+                        <div><span class="badge" style="background-color: #28a745;"></span> Proteinas</div>
                     </div>
                 </div>
             </div>
@@ -275,10 +275,10 @@
                     <thead>
                         <tr>
                             <th>Fecha y Hora</th>
-                            <th>Descripción</th>
+                            <th>Descripcion</th>
                             <th>Carbs</th>
                             <th>Grasas</th>
-                            <th>Proteínas</th>
+                            <th>Proteinas</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -297,7 +297,7 @@
                                 <div>22/07/2024</div>
                                 <div class="date-time">02:30 PM - Almuerzo</div>
                             </td>
-                            <td class="description">Pechuga de pollo a la plancha con quinoa y brócoli al vapor.</td>
+                            <td class="description">Pechuga de pollo a la plancha con quinoa y brocoli al vapor.</td>
                             <td class="macro-percentage carbs">30%</td>
                             <td class="macro-percentage fats">20%</td>
                             <td class="macro-percentage proteins">50%</td>
@@ -317,7 +317,7 @@
                                 <div>21/07/2024</div>
                                 <div class="date-time">04:00 PM - Snack</div>
                             </td>
-                            <td class="description">Un puñado de almendras y una manzana.</td>
+                            <td class="description">Un poco de almendras y una manzana.</td>
                             <td class="macro-percentage carbs">35%</td>
                             <td class="macro-percentage fats">50%</td>
                             <td class="macro-percentage proteins">15%</td>
@@ -330,7 +330,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card-general">
-                    <h5 class="card-title">Consumo de Carbohidratos (Últimos 7 días)</h5>
+                    <h5 class="card-title">Consumo de Carbohidratos (Ultimos 7 dias)</h5>
                     <div class="chart-container-lg">
                         <canvas id="carbsWeeklyChart"></canvas>
                     </div>
@@ -338,7 +338,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="card-general">
-                    <h5 class="card-title">Consumo de Proteínas (Últimos 7 días)</h5>
+                    <h5 class="card-title">Consumo de Proteinas (Ultimos 7 dias)</h5>
                     <div class="chart-container-lg">
                         <canvas id="proteinsWeeklyChart"></canvas>
                     </div>
@@ -354,8 +354,8 @@
                 <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
             </div>
             <div class="col-md-8 text-md-end">
-                <a href="${pageContext.request.contextPath}/terminos" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
-                <a href="${pageContext.request.contextPath}/politicaPrivacidad" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+                <a href="${pageContext.request.contextPath}/terminos" class="text-muted me-3 text-decoration-none">Terminos y Condiciones</a>
+                <a href="${pageContext.request.contextPath}/politicaPrivacidad" class="text-muted me-3 text-decoration-none">Politica de Privacidad</a>
                 <a href="${pageContext.request.contextPath}/contacto" class="text-muted text-decoration-none">Contacto</a>
             </div>
         </div>

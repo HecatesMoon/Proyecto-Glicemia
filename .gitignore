@@ -50,7 +50,7 @@ build/
 
 ### Local Configuration ###
 .env
-
+database.mv.db
 
 # Ignorar configuraciones de perfiles locales
 application-h2.properties
