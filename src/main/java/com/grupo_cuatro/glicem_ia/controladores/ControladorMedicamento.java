@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.grupo_cuatro.glicem_ia.modelos.Medicamento;
 import com.grupo_cuatro.glicem_ia.modelos.Usuario;
@@ -60,6 +61,25 @@ public class ControladorMedicamento {
 
         redirectAttrs.addFlashAttribute("mensajeAgregaExito", "Medicamento registrada correctamente.");
         return "redirect:/medicamentos";
+    }
+
+
+    @PostMapping("/eliminar/medicamento/{id}")
+        public String eliminarMedicamento(@PathVariable("id") Long id, HttpSession sesion, RedirectAttributes redirectAttrs) {
+                                            Long idUsuario = (Long) sesion.getAttribute("id_usuario");
+                                            Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
+
+        Medicamento medicamento = repositorioMedicamento.findById(id).orElse(null);
+
+        if (medicamento != null && medicamento.getUsuario().getId().equals(usuario.getId())) {
+            repositorioMedicamento.delete(medicamento);
+            redirectAttrs.addFlashAttribute("mensajeExito", "Medicamento eliminado correctamente.");
+        } else {
+            redirectAttrs.addFlashAttribute("mensajeError", "No se pudo eliminar el medicamento.");
+        }
+
+        return "redirect:/medicamentos";
+
     }
     
 }
