@@ -40,7 +40,7 @@
 </head>
 <body>
 
-    <!-- 🔹 Navbar -->
+    <!-- Navbar -->
     <nav class="container-fluid border-bottom">
         <div class="row align-items-center py-2 px-md-5">
             <div class="col-auto d-flex align-items-center">
@@ -59,7 +59,29 @@
         </div>
     </nav>
 
-    <!-- 🔹 Contenido principal -->
+    <c:if test="${not empty mensajeExito}">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        ${mensajeExito}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</c:if>
+
+<c:if test="${not empty mensajeError}">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        ${mensajeError}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</c:if>
+
+<c:if test="${not empty mensajeAgregaExito}">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        ${mensajeAgregaExito}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</c:if>
+
+
+    <!-- Contenido principal -->
     <div class="container-fluid py-4 px-md-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
@@ -131,18 +153,18 @@
                 </div>
             </div>
 
-            <!-- Lista -->
+            <!-- Lista de medicamentos -->
             <div class="col-md-5">
                 <div class="med-list-card">
                     <h5 class="list-title"><i class="bi bi-plus-square me-2"></i>Mi Lista</h5>
-                    <c:forEach var="med" items="${listaMedicamentos}">
+                    <c:forEach var="med" items="${registrosMedicamentos}">
                         <div class="med-item">
                             <div class="med-info">
                                 <div class="med-name">${med.medicamento}</div>
                                 <div class="med-details">${med.dosis} - ${med.tipo}</div>
                                 <p class="med-notes">${med.notas}</p>
                             </div>
-                            <form action="${pageContext.request.contextPath}/eliminarMedicamento/${med.id}" method="post">
+                            <form action="${pageContext.request.contextPath}/eliminar/medicamento/${med.id}" method="post">
                                 <button class="delete-btn" type="submit"><i class="bi bi-trash"></i></button>
                             </form>
                         </div>
@@ -151,6 +173,8 @@
             </div>
         </div>
     </div>
+
+
 
     <footer class="container-fluid py-4 mt-5 border-top text-muted text-center">
         <p class="mb-0">&copy; 2025 GlicemIA — Todos los derechos reservados.</p>

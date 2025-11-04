@@ -32,25 +32,14 @@ build/
 ### VS Code ###
 .vscode/
 
-# ==== Vistas de Prueba de Frontend ====
-/src/main/webapp/WEB-INF/*_prueba.jsp
-/src/main/webapp/WEB-INF/*_temp.jsp
-/src/main/webapp/WEB-INF/test-*.jsp
 
-# ==== Controladores de Prueba de Frontend ====
-**/*PruebaController.java
-**/*TempControlador.java
-**/*ControladorInicioTest.java
-**/*ControladorGlucosaTest.java
-**/*ControladorMedicamentosTest.java
-**/*MedicamentoTest.java
 
-# ==== Modelos de Prueba (Dummies) ====
-**/*Dummy.java
-
+=======
 ### Local Configuration ###
 .env
 database.mv.db
 
-# Ignorar configuraciones de perfiles locales
+asistente.jsp
+
 application-h2.properties
+

@@ -31,6 +31,7 @@ public class ServicioUsuario {
     }
 
 
+
         // Actualizar perfil existente
     public Usuario actualizarUsuario(Long idUsuario, Usuario datosActualizados){
         Usuario usuarioExistente = obtenerPorId(idUsuario);
@@ -59,6 +60,7 @@ public class ServicioUsuario {
     // Eliminar cuenta
     public void eliminarUsuario(Long idUsuario){
         repositorioUsuario.deleteById(idUsuario);
+
     }
 }
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%-- Esta es la línea actualizada de tu primer archivo --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isErrorPage="true"%>
 
@@ -95,7 +96,7 @@
                     </div>
                     <h5 class="mb-2" style="font-weight: 600;">Hazte Premium</h5>
                     <p class="text-muted mb-3">Potencia tu control bajo el análisis de IA de GlicemIA.</p>
-                    <a href="<c:url value='/planesPremium'/>" class="btn btn-orange">Saber Más</a>
+                    <a href="<${pageContext.request.contextPath}/funcionesIA>" class="btn btn-orange">Saber Más</a>
                 </div>
 
                 <div class="card-donacion mb-4">
@@ -104,7 +105,7 @@
                     </div>
                     <h5 class="mb-2" style="font-weight: 600;">Apoya Nuestro Proyecto</h5>
                     <p class="text-muted mb-3">Tu donación nos ayuda a seguir mejorando GlicemIA.</p>
-                    <a href="<c:url value='/donacion'/>" class="btn btn-orange">Realizar Donación</a>
+                    <a href="<${pageContext.request.contextPath}/donaciones" class="btn btn-orange">Realizar Donación</a>
                 </div>
 
                 <%-- FORMULARIO DE GLUCOSA (FUSIONADO) --%>
@@ -128,7 +129,7 @@
                         <div class="row mb-3">
                             <div class="col-6">
                                 <form:label path="fecha" class="form-label">Fecha</form:label>
-                                <form:input path="fecha" type="date" class_="form-control"/>
+                                <form:input path="fecha" type="date" class="form-control"/>
                                 <form:errors path="fecha" cssClass="error-text"/>
                             </div>
                             <div class="col-6">
