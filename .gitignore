@@ -36,3 +36,5 @@ build/
 .env
 
 asistente.jsp
+
+application-h2.properties
