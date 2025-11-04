@@ -19,7 +19,7 @@
                         <a class="col-4" href="/perfil"> Perfil </a>
                         <a class="col-4" href="/glucosa"> Glucosa </a>
                         <a class="col-4" href="/funcionesIA">Funciones IA</a>
-                        <a class="col-4" href="/alimento">Analisis de alimento</a>
+                        <a class="col-4" href="/analisis">Analisis de alimento</a>
                         <a class="col-4" href="/logout"> Logout </a>
                     </div>
                 </nav>
@@ -37,7 +37,7 @@
                 <form:form class="col-6" action="/agregar/glucosa" method="POST" modelAttribute="nuevoGlucosa">
                     <div>
                         <form:label class="form-label" path="valorMgDl" >
-                            Valor en mg/dL: 
+                            Valor en mg/dL:
                         </form:label>
                         <form:input class="form-control" path="valorMgDl" type="text"/>
                         <form:errors class="alert alert-danger mensaje-error" path="valorMgDl"/>
@@ -45,7 +45,7 @@
 
                     <div>
                         <form:label class="form-label" path="valorMmolL">
-                            Valor en mmol/L: 
+                            Valor en mmol/L:
                         </form:label>
                         <form:input class="form-control" path="valorMmolL" type="text"/>
                         <form:errors class="alert alert-danger mensaje-error" path="valorMmolL"/>
@@ -53,21 +53,21 @@
 
                     <div>
                         <form:label class="form-label" path="fecha">
-                            fecha: 
+                            fecha:
                         </form:label>
                         <form:input class="form-control" path="fecha" type="date"/>
                         <form:errors class="alert alert-danger mensaje-error" path="fecha"/>
                     </div>
                     <div>
                         <form:label class="form-label" path="hora">
-                            hora: 
+                            hora:
                         </form:label>
                         <form:input class="form-control" path="hora" type="time"/>
                         <form:errors class="alert alert-danger mensaje-error" path="hora"/>
                     </div>
                     <div>
                         <form:label class="form-label" path="momentoMedicion">
-                            Momento de la medición: 
+                            Momento de la medición:
                         </form:label>
                         <form:select class="form-control" path="momentoMedicion">
                             <!-- puedes cambiar los nombres en label="aquicambiasNombre" -->
@@ -80,13 +80,13 @@
                         </form:select>
                         <form:errors class="alert alert-danger mensaje-error" path="momentoMedicion"/>
                     </div>
-    
-                    
+
+
                     <button class="btn btn-primary mt-2">
                         Guardar Medición
                     </button>
                 </form:form>
-    
+
         <script>
             /* mg → mmol */
             document.addEventListener("DOMContentLoaded", function () {
