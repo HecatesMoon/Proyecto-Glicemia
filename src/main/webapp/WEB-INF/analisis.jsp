@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -208,7 +210,7 @@
                         <h6>Accede a Analisis Avanzado con Premium</h6>
                         <p>Conecta tus datos de glucosa para obtener tendencias y predicciones personalizadas basadas en tu alimentación. ¡Mejora tu control hoy!</p>
                     </div>
-                    <a href="${pageContext.request.contextPath}/planesPremium" class="btn btn-premium-action">Actualizar a Premium</a>
+                    <a href="${pageContext.request.contextPath}/funcionesIA" class="btn btn-premium-action">Actualizar a Premium</a>
                 </div>
 
                 <h5 class="mb-3" style="font-weight: 600;">Alertas de Patrones</h5>

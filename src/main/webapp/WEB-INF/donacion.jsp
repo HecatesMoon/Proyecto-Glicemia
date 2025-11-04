@@ -91,7 +91,7 @@
 
                 <%-- Acción del formulario se mantiene como "#", significa que se envía a la misma página --%>
                 <%-- Si necesitas que el botón haga POST a un controlador, cambia 'action="#"' a 'action="${pageContext.request.contextPath}/tuRutaDeDonacion"' --%>
-                <form method="post" action="${pageContext.request.contextPath}/pagar">
+                <form method="get" action="${pageContext.request.contextPath}/pagar">
                     <span>
                         <h6 id="iniciaS" class="text-center mb-4">GlicemIA es una herramienta gratuita que ayuda a miles de personas a gestionar su glucemia. Tu donación nos permite seguir mejorando y manteniendo la aplicación para todos.</h6>
                         <hr>
