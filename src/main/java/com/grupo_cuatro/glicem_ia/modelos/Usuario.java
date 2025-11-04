@@ -17,6 +17,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -44,7 +45,7 @@ public class Usuario {
 
     @NotNull(message = "Por favor proporciona tu fecha de nacimiento")
     private LocalDate fechaNacimiento;
-
+  
     @NotBlank(message = "Proporciona tu tipo de diabetes")
     private String tipoDiabetes;
 
@@ -65,14 +66,22 @@ public class Usuario {
     return java.time.Period.between(this.fechaNacimiento, LocalDate.now()).getYears();
     }
 
+    @AssertTrue(message = "Debes aceptar los términos y condiciones para continuar")
+    private Boolean aceptaTerminos;
+
     @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
     List<Glucosa> glucosa;
 
+
+    @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
+    List<Medicamento> medicamento;
+
     @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<HistorialChat> historialChats;
+	  private List<HistorialChat> historialChats;
 
     @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Pago> pagos;
+
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
@@ -179,6 +188,14 @@ public class Usuario {
         this.confirmarContrasenia = confirmarContrasenia;
     }
 
+    public Boolean getAceptaTerminos() {
+        return aceptaTerminos;
+    }
+
+    public void setAceptaTerminos(Boolean aceptaTerminos) {
+        this.aceptaTerminos = aceptaTerminos;
+    }
+
     public List<Glucosa> getGlucosa() {
         return glucosa;
     }
@@ -213,7 +230,13 @@ public class Usuario {
     protected void onUpdate(){
         this.fechaActualizacion = new Date();
     }
-    
 
-    
+    public List<Medicamento> getMedicamento() {
+        return medicamento;
+    }
+
+    public void setMedicamento(List<Medicamento> medicamento) {
+        this.medicamento = medicamento;
+    }
+  
 }

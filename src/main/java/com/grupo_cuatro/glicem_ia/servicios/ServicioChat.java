@@ -87,7 +87,7 @@ public class ServicioChat {
 
     public ServicioChat(RepositorioChat repositorioChat,
                         RepositorioUsuario repositorioUsuario,
-                        @Value("${GEMINI_API_KEY}") String apiKey) {
+                        @Value("gemini.api.key") String apiKey) {
         this.repositorioChat = repositorioChat;
         this.repositorioUsuario = repositorioUsuario;
         this.cliente = Client.builder().apiKey(apiKey).build();

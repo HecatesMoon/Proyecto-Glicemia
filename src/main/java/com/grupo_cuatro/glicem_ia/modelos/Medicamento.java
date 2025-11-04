@@ -16,64 +16,85 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "glucosa")
-public class Glucosa {
+@Table(name = "medicamento")
+public class Medicamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @NotNull(message = "Por favor ingrese el nombre del medicamento")
+    private String medicamento;
 
-    @NotNull(message = "El valor en mg/dL es obligatorio")
-    private Integer valorMgDl;
+    @NotNull(message = "Por favor ingrese la dosis")
+    private int dosis;
 
-    @NotNull(message = "El valor en mmol/L es obligatorio")
-    private Double valorMmolL;
+    @NotNull(message = "Por favor ingrese el tipo de medicamento")
+    private String tipo;
 
-    @NotNull(message = "Por favor indique la fecha")
+    @NotNull(message = "Por favor ingrese la fecha")
     private LocalDate fecha;
 
-    @NotNull(message = "La hora de medición es obligatoria")
+    @NotNull(message = "Por favor ingrese la hora")
     private LocalTime hora;
 
-    @NotNull(message = "Indique el momento de medición")
-    private String momentoMedicion;
+    @Size(max = 500, message = "Las notas no deben superar los 500 caracteres")
+    private String notas;
+
+    private Boolean notificacion;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
     Usuario usuario;
-
-
+    
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaActualizacion;
 
-    public Glucosa(){}
+    public Medicamento (){}
 
     public Long getId() {
         return id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getValorMgDl() {
-        return valorMgDl;
+    public String getMedicamento() {
+        return medicamento;
     }
 
-    public void setValorMgDl(Integer valorMgDl) {
-        this.valorMgDl = valorMgDl;
+    public void setMedicamento(String medicamento) {
+        this.medicamento = medicamento;
     }
 
-    public Double getValorMmolL() {
-        return valorMmolL;
+    public int getDosis() {
+        return dosis;
     }
 
-    public void setValorMmolL(Double valorMmolL) {
-        this.valorMmolL = valorMmolL;
+    public void setDosis(int dosis) {
+        this.dosis = dosis;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public LocalDate getFecha() {
@@ -92,20 +113,20 @@ public class Glucosa {
         this.hora = hora;
     }
 
-    public String getMomentoMedicion() {
-        return momentoMedicion;
+    public String getNotas() {
+        return notas;
     }
 
-    public void setMomentoMedicion(String momentoMedicion) {
-        this.momentoMedicion = momentoMedicion;
+    public void setNotas(String notas) {
+        this.notas = notas;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Boolean getNotificacion() {
+        return notificacion;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setNotificacion(Boolean notificacion) {
+        this.notificacion = notificacion;
     }
 
     public Date getFechaCreacion() {
@@ -124,6 +145,7 @@ public class Glucosa {
         this.fechaActualizacion = fechaActualizacion;
     }
 
+    
     @PrePersist
     protected void onCreate(){
         this.fechaCreacion = new Date();
