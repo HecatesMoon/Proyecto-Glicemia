@@ -349,19 +349,37 @@
         </div>
     </div>
 
-    <footer class="container-fluid py-4 mt-5 border-top">
-        <div class="row px-md-5">
-            <div class="col-md-4 d-flex align-items-center mb-3 mb-md-0">
-                <img src="${pageContext.request.contextPath}/img/GlicemIA_icono.png" alt="Icono GlicemIA" style="width: 30px; height: auto; margin-right: 10px;">
-                <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
-            </div>
-            <div class="col-md-8 text-md-end">
-                <a href="${pageContext.request.contextPath}/terminos" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
-                <a href="${pageContext.request.contextPath}/politicaPrivacidad" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
-                <a href="${pageContext.request.contextPath}/contacto" class="text-muted text-decoration-none">Contacto</a>
-            </div>
+    <!-- DONACIÓN -->
+<section class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-2 text-center mb-3 mb-md-0">
+            <i class="bi bi-gift-fill" style="font-size: 4rem; color: #f5843a;"></i>
         </div>
-    </footer>
+        <div class="col-md-7">
+            <h3 class="section-title">Apoya nuestra misión, transforma vidas</h3>
+            <p>GlicemIA es gratuita gracias al apoyo de usuarios como tú. Tu donación nos permite seguir innovando y ayudando a más personas.</p>
+        </div>
+        <div class="col-md-3 text-center text-md-end">
+            <a href="${pageContext.request.contextPath}/donaciones" class="btn btn-orange">Hacer una Donación</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="container py-4 mt-5 border-top">
+    <div class="row">
+        <div class="col-md-4 d-flex align-items-center mb-3 mb-md-0">
+            <img src="${pageContext.request.contextPath}/img/GlicemIA_icono.png" alt="Icono GlicemIA"
+                 style="width: 30px; height: auto; margin-right: 10px;">
+            <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
+        </div>
+        <div class="col-md-8 text-md-end">
+            <a href="#" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
+            <a href="#" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+            <a href="#" class="text-muted text-decoration-none">Contacto</a>
+        </div>
+    </div>
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
@@ -485,5 +503,6 @@
             }
         });
     </script>
+
 </body>
 </html>
