@@ -19,6 +19,7 @@ import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -44,12 +45,26 @@ public class Usuario {
 
     @NotNull(message = "Por favor proporciona tu fecha de nacimiento")
     private LocalDate fechaNacimiento;
-
-    @Size(message = "Por favir proporciona tu tipo de diabetes")
+  
+    @NotBlank(message = "Proporciona tu tipo de diabetes")
     private String tipoDiabetes;
+
+    private String imagenPerfil;
+
+    private String contactoEmergencia;
+
+    private Boolean recibirNotificaciones = false;
+
+    private Boolean modoOscuro = false;
 
     @Transient
     private String confirmarContrasenia;
+    
+    //Esto te devuelve la edad automáticamente, sin guardarla en BD ni actualizarla manualmente.
+    @Transient
+    public int getEdad() {
+    return java.time.Period.between(this.fechaNacimiento, LocalDate.now()).getYears();
+    }
 
     @AssertTrue(message = "Debes aceptar los términos y condiciones para continuar")
     private Boolean aceptaTerminos;
@@ -57,8 +72,16 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
     List<Glucosa> glucosa;
 
+
     @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.LAZY )
     List<Medicamento> medicamento;
+
+    @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	  private List<HistorialChat> historialChats;
+
+    @OneToMany(mappedBy= "usuario", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    private List<Pago> pagos;
+
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
@@ -124,6 +147,39 @@ public class Usuario {
         this.tipoDiabetes = tipoDiabetes;
     }
 
+    public String getImagenPerfil() {
+        return imagenPerfil;
+    }
+
+    public void setImagenPerfil(String imagenPerfil) {
+        this.imagenPerfil = imagenPerfil;
+    }
+    
+
+    public String getContactoEmergencia() {
+        return contactoEmergencia;
+    }
+
+    public void setContactoEmergencia(String contactoEmergencia) {
+        this.contactoEmergencia = contactoEmergencia;
+    }
+
+    public Boolean getRecibirNotificaciones() {
+        return recibirNotificaciones;
+    }
+
+    public void setRecibirNotificaciones(Boolean recibirNotificaciones) {
+        this.recibirNotificaciones = recibirNotificaciones;
+    }
+
+    public Boolean getModoOscuro() {
+        return modoOscuro;
+    }
+
+    public void setModoOscuro(Boolean modoOscuro) {
+        this.modoOscuro = modoOscuro;
+    }
+
     public String getConfirmarContrasenia() {
         return confirmarContrasenia;
     }
@@ -182,6 +238,5 @@ public class Usuario {
     public void setMedicamento(List<Medicamento> medicamento) {
         this.medicamento = medicamento;
     }
-    
-
+  
 }
