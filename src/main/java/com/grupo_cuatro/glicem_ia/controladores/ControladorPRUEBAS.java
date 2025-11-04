@@ -33,5 +33,10 @@ public class ControladorPRUEBAS {
         return "analisis"; // /WEB-INF/pagar.jsp
     }
 
+    @GetMapping("/glucosa")
+    public String mostrarGlucosa() {
+        return "glucosa"; // /WEB-INF/pagar.jsp
+    }
+
 }
 
