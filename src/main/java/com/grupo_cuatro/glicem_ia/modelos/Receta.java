@@ -36,10 +36,10 @@ public class Receta {
     private String descripcionReceta;
     
     @Column(name = "Tiempo de preparación")
-    private Integer tiempopreparacion;
+    private Integer tiempoPreparacion;
     
-    //@NotNull(message = "El tiempo de cocción es obligatorio")
-    //private Integer tiempoCoccion;
+    
+    private Integer tiempoCoccion;
 
     private String imagenReceta;
     
@@ -66,9 +66,8 @@ public class Receta {
 
     public Receta() {}
 
-    
 
-        public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -104,27 +103,27 @@ public class Receta {
 
 
 
-    public Integer getTiempopreparacion() {
-        return tiempopreparacion;
+    public Integer getTiempoPreparacion() {
+        return tiempoPreparacion;
     }
 
 
 
-    public void setTiempopreparacion(Integer tiempopreparacion) {
-        this.tiempopreparacion = tiempopreparacion;
+    public void setTiempopreparacion(Integer tiempoPreparacion) {
+        this.tiempoPreparacion = tiempoPreparacion;
     }
 
 
 
-   // public Integer getTiempoCoccion() {
-    //    return tiempoCoccion;
-    //}
+    public Integer getTiempoCoccion() {
+        return tiempoCoccion;
+    }
 
 
 
-   // public void setTiempoCoccion(Integer tiempoCoccion) {
-     //   this.tiempoCoccion = tiempoCoccion;
-    //}
+    public void setTiempoCoccion(Integer tiempoCoccion) {
+        this.tiempoCoccion = tiempoCoccion;
+    }
 
 
 
@@ -138,8 +137,6 @@ public class Receta {
         this.imagenReceta = imagenReceta;
     }
     
-    
-
 
     public String getIngredientes() {
         return ingredientes;
@@ -225,7 +222,4 @@ public class Receta {
     }
 
 
-
-    
-    
 }
