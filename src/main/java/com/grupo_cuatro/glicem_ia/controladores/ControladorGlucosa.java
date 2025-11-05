@@ -33,7 +33,7 @@ public class ControladorGlucosa {
         this.repositorioGlucosa = repositorioGlucosa;
     }
 
-    @GetMapping("/glucosa")
+    //@GetMapping("/glucosa")
     public String glucosa(Model model, HttpSession sesion) {
         Long idUsuario = (Long) sesion.getAttribute("id_usuario");
         Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
@@ -65,16 +65,16 @@ public class ControladorGlucosa {
 
         /* conversion bidireccional */
         if (nuevaGlucosa.getValorMgDl() != null && nuevaGlucosa.getValorMmolL() == null) {
-            nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555);            
+            nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555);
         } else if (nuevaGlucosa.getValorMmolL() != null && nuevaGlucosa.getValorMmolL() == null) {
             nuevaGlucosa.setValorMgDl((int) Math.round(nuevaGlucosa.getValorMmolL()/ 0.555 ));
-            
+
         }
 
         repositorioGlucosa.save(nuevaGlucosa);
-        
+
         redirectAttrs.addFlashAttribute("mensajeExito", "Glucosa registrada correctamente.");
         return "redirect:/glucosa";
     }
-    
+
 }

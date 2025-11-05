@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isErrorPage="true"%>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -67,8 +68,8 @@
                 <a href="<c:url value='/perfil'/>" class="nav-link-custom">Perfil</a>
                 <a href="<c:url value='/glucosa'/>" class="nav-link-custom nav-link-active">Glucosa</a>
                 <a href="<c:url value='/funcionesIA'/>" class="nav-link-custom">Funciones IA</a>
-                <a href="<c:url value='/analisisAlimentos'/>" class="nav-link-custom">Análisis de Alimentos</a>
-                <a href="<c:url value='/verRecetas'/>" class="nav-link-custom">Ver Recetas</a>
+                <a href="<c:url value='/analisis'/>" class="nav-link-custom">Análisis de Alimentos</a>
+                <a href="<c:url value='/recetas'/>" class="nav-link-custom">Ver Recetas</a>
                 <a href="<c:url value='/logout'/>" class="btn btn-gray">Cerrar Sesión</a>
             </div>
         </div>
@@ -96,7 +97,7 @@
                     </div>
                     <h5 class="mb-2" style="font-weight: 600;">Hazte Premium</h5>
                     <p class="text-muted mb-3">Potencia tu control bajo el análisis de IA de GlicemIA.</p>
-                    <a href="<${pageContext.request.contextPath}/funcionesIA>" class="btn btn-orange">Saber Más</a>
+                    <a href="${pageContext.request.contextPath}/funcionesIA" class="btn btn-orange">Saber Más</a>
                 </div>
 
                 <div class="card-donacion mb-4">
@@ -105,7 +106,7 @@
                     </div>
                     <h5 class="mb-2" style="font-weight: 600;">Apoya Nuestro Proyecto</h5>
                     <p class="text-muted mb-3">Tu donación nos ayuda a seguir mejorando GlicemIA.</p>
-                    <a href="<${pageContext.request.contextPath}/donaciones" class="btn btn-orange">Realizar Donación</a>
+                    <a href="${pageContext.request.contextPath}/donaciones" class="btn btn-orange">Realizar Donación</a>
                 </div>
 
                 <%-- FORMULARIO DE GLUCOSA (FUSIONADO) --%>
@@ -161,7 +162,7 @@
                 <div class="card-glicemia">
                     <h5 class="card-title">Registro de Alimentación</h5>
                     <%-- Asumiendo que el modelAttribute será 'nuevoAlimento' --%>
-                    <form:form action="/registrar" method="POST" modelAttribute="nuevoRegistro">
+                    <form:form action="${pageContext.request.contextPath}/agregar/alimentacion" method="POST" modelAttribute="nuevaAlimentacion">
                         <div class="mb-3">
                             <form:label path="tipoComida" class="form-label">Tipo de comida</form:label>
                             <form:select path="tipoComida" class="form-select">
@@ -208,18 +209,65 @@
                 <div class="chart-card mb-4">
                     <h5 class="card-title">Tendencia de Glucosa</h5>
                     <div class="chart-placeholder text-center py-5">
-                        <img src="https://via.placeholder.com/600x200/f8f9fa/dee2e6?text=Gr%C3%A1fico+de+Glucosa+aqu%C3%AD" alt="Gráfico de Tendencia de Glucosa" class="img-fluid">
+                        <div class="chart-card" style="position: relative; height: 300px;">
+  <canvas id="glucoseChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('glucoseChart').getContext('2d');
+
+    // 📊 Labels (fechas) desde la base de datos
+    const labels = [
+      <c:forEach var="r" items="${registrosGlucosa}">
+        "${r.fecha}",
+      </c:forEach>
+    ];
+
+    // 📈 Valores (mg/dL) desde la base de datos
+    const valores = [
+      <c:forEach var="r" items="${registrosGlucosa}">
+        ${r.valorMgDl},
+      </c:forEach>
+    ];
+
+    if (labels.length > 0) {
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels.reverse(), // Para mostrar desde más antiguo a más reciente
+          datasets: [{
+            label: 'Tendencia de Glucosa',
+            data: valores.reverse(),
+            borderColor: '#f97316',
+            backgroundColor: 'rgba(249,115,22,0.1)',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 5,
+            pointBackgroundColor: '#f97316'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { beginAtZero: false, min: 80, max: 350, title: { display: true, text: 'mg/dL' } },
+            x: { title: { display: true, text: 'Fecha de Registro' } }
+          }
+        }
+      });
+    } else {
+      // Si no hay datos, mostrar un mensaje dentro del canvas
+      ctx.font = "16px Figtree";
+      ctx.fillStyle = "#888";
+      ctx.textAlign = "center";
+      ctx.fillText("No hay datos de glucosa registrados", ctx.canvas.width / 2, ctx.canvas.height / 2);
+    }
+  });
+</script>
                     </div>
-                    <div class="d-flex justify-content-between text-muted small mt-3">
-                        <span>Lunes</span>
-                        <span>Martes</span>
-                        <span>Miércoles</span>
-                        <span>Jueves</span>
-                        <span>Viernes</span>
-                        <span>Sábado</span>
-                        <span>Domingo</span>
-                    </div>
-                </div>
 
                 <h3 class="mb-4 mt-5">Análisis IA de Comida</h3>
 
@@ -330,6 +378,7 @@
                 alerta.style.display = 'none';
             }
         }, 10000); // 10 segundos
+
     </script>
 </body>
 </html>

@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -24,13 +26,15 @@ public class AlimentacionDia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String tipoComida;
 
     private String descripcion;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fecha;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime hora;
 
     @ManyToOne
@@ -126,11 +130,11 @@ public class AlimentacionDia {
         this.fechaCreacion = new Date();
         this.fechaActualizacion = new Date();
     }
-    
+
     @PreUpdate
     protected void onUpdate(){
         this.fechaActualizacion = new Date();
     }
 
-    
+
 }
