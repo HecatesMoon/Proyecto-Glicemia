@@ -98,7 +98,7 @@ public String mostrarAnalisisDeAlimentos(Model model) {
                                 RedirectAttributes redirectAttrs) {
 
         if (resultado.hasErrors()) {
-            return "redirect:medicamentos";
+            return "medicamentos";
 
         }
 
@@ -110,7 +110,7 @@ public String mostrarAnalisisDeAlimentos(Model model) {
         repositorioMedicamento.save(nuevoMedicamento);
 
         redirectAttrs.addFlashAttribute("mensajeAgregaExito", "Medicamento registrada correctamente.");
-        return "medicamentos";
+        return "redirect:/medicamentos";
     }
 
     @PostMapping("/agregar/alimentacion")
