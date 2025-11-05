@@ -65,12 +65,13 @@
                 <h4 class="mb-0">Glicem<span style="color: #d2691e;">IA</span></h4>
             </div>
             <div class="col-md-9 text-end">
-                <a href="<c:url value='/perfil'/>" class="nav-link-custom">Perfil</a>
-                <a href="<c:url value='/glucosa'/>" class="nav-link-custom nav-link-active">Glucosa</a>
-                <a href="<c:url value='/funcionesIA'/>" class="nav-link-custom">Funciones IA</a>
-                <a href="<c:url value='/analisis'/>" class="nav-link-custom">Análisis de Alimentos</a>
-                <a href="<c:url value='/recetas'/>" class="nav-link-custom">Ver Recetas</a>
-                <a href="<c:url value='/logout'/>" class="btn btn-gray">Cerrar Sesión</a>
+                <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
+                <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom nav-link-active">Glucosa</a>
+                <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom">Funciones IA</a>
+                <a href="${pageContext.request.contextPath}/analisis" class="nav-link-custom">Análisis de Alimentos</a>
+                <a href="${pageContext.request.contextPath}/recetas" class="nav-link-custom">Ver Recetas</a>
+                <a href="${pageContext.request.contextPath}/medicamentos" class="nav-link-custom">Medicamentos</a>
+                <a href="${pageContext.request.contextPath}/logout" class="btn btn-gray">Cerrar Sesión</a>
             </div>
         </div>
     </nav>
