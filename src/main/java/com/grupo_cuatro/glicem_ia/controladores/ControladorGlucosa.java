@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.grupo_cuatro.glicem_ia.modelos.AlimentacionDia;
 import com.grupo_cuatro.glicem_ia.modelos.Glucosa;
 import com.grupo_cuatro.glicem_ia.modelos.Usuario;
 import com.grupo_cuatro.glicem_ia.repositorios.RepositorioGlucosa;
@@ -34,15 +35,22 @@ public class ControladorGlucosa {
     }
 
     @GetMapping("/glucosa")
-    public String glucosa(Model model, HttpSession sesion) {
-        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
-        Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
+public String glucosa(Model model, HttpSession sesion) {
+    Long idUsuario = (Long) sesion.getAttribute("id_usuario");
+    Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
 
+    // 🧩 Asegurar ambos objetos si la vista tiene dos formularios
+    if (!model.containsAttribute("nuevoGlucosa")) {
         model.addAttribute("nuevoGlucosa", new Glucosa());
-        model.addAttribute("registrosGlucosa", repositorioGlucosa.findByUsuarioOrderByFechaDesc(usuario));
-
-        return "glucosa";
     }
+    if (!model.containsAttribute("nuevaAlimentacion")) {
+        model.addAttribute("nuevaAlimentacion", new AlimentacionDia());
+    }
+
+    model.addAttribute("registrosGlucosa", repositorioGlucosa.findByUsuarioOrderByFechaDesc(usuario));
+
+    return "glucosa";
+}
 
 
     @PostMapping("/agregar/glucosa")
@@ -65,16 +73,18 @@ public class ControladorGlucosa {
 
         /* conversion bidireccional */
         if (nuevaGlucosa.getValorMgDl() != null && nuevaGlucosa.getValorMmolL() == null) {
-            nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555);            
+            nuevaGlucosa.setValorMmolL(nuevaGlucosa.getValorMgDl() * 0.0555);
         } else if (nuevaGlucosa.getValorMmolL() != null && nuevaGlucosa.getValorMmolL() == null) {
             nuevaGlucosa.setValorMgDl((int) Math.round(nuevaGlucosa.getValorMmolL()/ 0.555 ));
-            
+
         }
 
         repositorioGlucosa.save(nuevaGlucosa);
-        
+
         redirectAttrs.addFlashAttribute("mensajeExito", "Glucosa registrada correctamente.");
         return "redirect:/glucosa";
     }
-    
+
+
+
 }

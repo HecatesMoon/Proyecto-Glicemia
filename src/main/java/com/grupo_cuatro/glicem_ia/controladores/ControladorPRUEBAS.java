@@ -1,7 +1,10 @@
 package com.grupo_cuatro.glicem_ia.controladores;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.grupo_cuatro.glicem_ia.modelos.AlimentacionDia;
 
 @Controller
 public class ControladorPRUEBAS {
@@ -29,9 +32,12 @@ public class ControladorPRUEBAS {
     }
 
     @GetMapping("/analisis")
-    public String mostrarAnalisisDeAlimentos() {
-        return "analisis"; // /WEB-INF/pagar.jsp
+public String mostrarAnalisisDeAlimentos(Model model) {
+    if (!model.containsAttribute("nuevaAlimentacion")) {
+        model.addAttribute("nuevaAlimentacion", new AlimentacionDia());
     }
+    return "analisis";
+}
 
 
 }

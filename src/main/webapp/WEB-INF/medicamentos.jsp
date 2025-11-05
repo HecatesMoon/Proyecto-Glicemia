@@ -43,18 +43,18 @@
     <!-- Navbar -->
     <nav class="container-fluid border-bottom">
         <div class="row align-items-center py-2 px-md-5">
-            <div class="col-auto d-flex align-items-center">
-                <img src="${pageContext.request.contextPath}/img/GlicemIA_icono.png" alt="GlicemIA" style="width: 30px; margin-right: 8px;">
-                <h6 class="mb-0 fw-bold">Glicem<span style="color: #d2691e;">IA</span></h6>
+            <div class="col-md-3 d-flex align-items-center">
+                <img src="<c:url value='/img/GlicemIA_icono.png'/>" alt="Icono de GlicemIA" style="width: 40px; height: auto; margin-right: 10px;">
+                <h4 class="mb-0">Glicem<span style="color: #d2691e;">IA</span></h4>
             </div>
-            <div class="col text-end">
+            <div class="col-md-9 text-end">
                 <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
                 <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom">Glucosa</a>
                 <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom">Funciones IA</a>
                 <a href="${pageContext.request.contextPath}/analisis" class="nav-link-custom">Análisis de Alimentos</a>
-                <a href="${pageContext.request.contextPath}/verRecetas" class="nav-link-custom">Ver Recetas</a>
+                <a href="${pageContext.request.contextPath}/recetas" class="nav-link-custom">Ver Recetas</a>
                 <a href="${pageContext.request.contextPath}/medicamentos" class="nav-link-custom nav-link-active">Medicamentos</a>
-                <a href="${pageContext.request.contextPath}/cerrarSesion" class="btn btn-gray">Cerrar Sesión</a>
+                <a href="${pageContext.request.contextPath}/logout" class="btn btn-gray">Cerrar Sesión</a>
             </div>
         </div>
     </nav>
