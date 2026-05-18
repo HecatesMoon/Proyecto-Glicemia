@@ -9,7 +9,7 @@ public class ControladorUsuario {
     }
 
     @GetMapping("/registro")
-    public String registro(@ModelAttribute("nuevoUsuario") Usuario nuevUsuario){
+    public String registro(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario){
         return "registro";
     }
 
@@ -46,7 +46,7 @@ public class ControladorUsuario {
     sesion.setAttribute("id_usuario", nuevoUsuario.getId());
     sesion.setAttribute("nombre", nuevoUsuario.getNombre() + " " + nuevoUsuario.getApellido());
 
-    return "redirect:/inicio";
+    return "redirect:/glucosa";
     }
 
     @PostMapping("/procesa/login")
@@ -69,7 +69,7 @@ public class ControladorUsuario {
     sesion.setAttribute("id_usuario", usuario.getId());
     sesion.setAttribute("nombre", usuario.getNombre() + " " + usuario.getApellido());
 
-    return "redirect:/inicio";
+    return "redirect:/glucosa";
     }
 }
 

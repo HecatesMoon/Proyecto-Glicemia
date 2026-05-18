@@ -20,8 +20,12 @@ public class ServicioUsuario {
         return repositorioUsuario.findByCorreo(correo);
     }
 
-    public Usuario obtenerPorId(Long idUsuario){
+  /*   public Usuario obtenerPorId(Long idUsuario){
         return repositorioUsuario.findById(idUsuario).orElse(null);
+    } */
+
+    public Usuario obtenerPorId(Long id){
+        return this.repositorioUsuario.findById(id).orElse(null);
     }
 
     public Usuario agregarUno(Usuario nuevoUsuario){
@@ -29,6 +33,7 @@ public class ServicioUsuario {
         nuevoUsuario.setContrasenia(contraseniaEncriptada);
         return this.repositorioUsuario.save(nuevoUsuario);
     }
+
 
 
         // Actualizar perfil existente
@@ -59,6 +64,7 @@ public class ServicioUsuario {
     // Eliminar cuenta
     public void eliminarUsuario(Long idUsuario){
         repositorioUsuario.deleteById(idUsuario);
+
     }
 }
 

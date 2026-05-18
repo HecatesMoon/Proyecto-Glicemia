@@ -1,5 +1,8 @@
 package com.grupo_cuatro.glicem_ia.controladores;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.grupo_cuatro.glicem_ia.modelos.Receta;
 import com.grupo_cuatro.glicem_ia.modelos.Usuario;
@@ -101,23 +106,49 @@ public class ControladorRecetas {
     }
 
 
-
     @PostMapping("/agregar/receta")
     public String agregarReceta(@Valid @ModelAttribute("nuevaReceta") Receta nuevaReceta,
-                                BindingResult validaciones, HttpSession sesion){
-        if (sesion.getAttribute("id_usuario") == null) {
+                                @RequestParam("archivoImagen") MultipartFile archivo,
+                                BindingResult validaciones,
+                                HttpSession sesion) {
+
+        // 1. Verificar sesión
+        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
+        if (idUsuario == null) {
             return "redirect:/login";
         }
+
+        // 2. Validaciones
         if (validaciones.hasErrors()) {
             return "formularioReceta";
         }
-        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
-        Usuario usuario = this.servicioUsuario.obtenerPorId(idUsuario);
 
+        // 3. Asignar usuario a la receta
+        Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
         nuevaReceta.setUsuario(usuario);
-        this.servicioReceta.agregarUna(nuevaReceta);
+
+        // 4. Guardar imagen si se sube una
+        if (!archivo.isEmpty()) {
+            try {
+                String nombreArchivo = archivo.getOriginalFilename();
+                Path ruta = Paths.get("src/main/resources/static/uploads/" + nombreArchivo);
+
+                Files.createDirectories(ruta.getParent()); // crea la carpeta si no existe
+                Files.write(ruta, archivo.getBytes());      // guarda el archivo
+
+                nuevaReceta.setImagenReceta(nombreArchivo);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("⚠ Error al guardar la imagen");
+            }
+        }
+
+        // 5. Guardar receta
+        servicioReceta.agregarUna(nuevaReceta);
+
         return "redirect:/recetas";
-    }
+    }    
 
 
 
