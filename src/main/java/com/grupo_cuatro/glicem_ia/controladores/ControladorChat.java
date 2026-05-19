@@ -1,6 +1,5 @@
 package com.grupo_cuatro.glicem_ia.controladores;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,9 +17,8 @@ import jakarta.validation.Valid;
 
 @Controller
 public class ControladorChat {
-    @Autowired
+
     private final ServicioChat servicioChat;
-    @Autowired
     private final ServicioUsuario servicioUsuario;
 
     public ControladorChat(ServicioChat servicioChat, ServicioUsuario servicioUsuario){

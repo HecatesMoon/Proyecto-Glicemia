@@ -1,7 +1,6 @@
 package com.grupo_cuatro.glicem_ia.controladores;
 
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,7 @@ import jakarta.validation.Valid;
 
 @Controller
 public class ControladorUsuario {
-    @Autowired
+
     private final ServicioUsuario servicioUsuario;
 
     public ControladorUsuario(ServicioUsuario servicioUsuario){

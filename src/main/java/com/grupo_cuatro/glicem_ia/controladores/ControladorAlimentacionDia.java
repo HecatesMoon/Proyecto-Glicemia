@@ -3,7 +3,6 @@ package com.grupo_cuatro.glicem_ia.controladores;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,11 +26,8 @@ import jakarta.validation.Valid;
 @Controller
 public class ControladorAlimentacionDia {
 
-    @Autowired
     private final RepositorioAlimentacionDia repositorioAlimentacionDia;
-
     private final ServicioAlimentacionDia servicioAlimentacionDia;
-
     private final ServicioUsuario servicioUsuario;
 
     public ControladorAlimentacionDia(RepositorioAlimentacionDia repositorioAlimentacionDia,
