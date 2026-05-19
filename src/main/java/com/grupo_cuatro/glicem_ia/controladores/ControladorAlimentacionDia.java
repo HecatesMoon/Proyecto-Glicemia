@@ -43,7 +43,7 @@ public class ControladorAlimentacionDia {
     public String mostrarFormularioAlimentacionDia(Model modelo, HttpSession sesion){
         if (sesion.getAttribute("id_usuario") == null) {
         return "redirect:/login";
-    }
+        }
         modelo.addAttribute("alimentacion", new AlimentacionDia());
         return "alimentacion/formulario"; //todo: no existe
     }
@@ -56,7 +56,7 @@ public class ControladorAlimentacionDia {
         }
         List<AlimentacionDia> comidas = servicioAlimentacionDia.listarPorUsuarioId(usuarioId);
         modelo.addAttribute("comidas", comidas);
-        return "alimentacion/lista_comidas";
+        return "alimentacion/lista_comidas"; //todo: no existe
     }
 
     @GetMapping("/listarPorFecha")
@@ -69,7 +69,7 @@ public class ControladorAlimentacionDia {
         LocalDate fechaParseada = LocalDate.parse(fecha);
         List<AlimentacionDia> comidas = servicioAlimentacionDia.listarPorUsuarioYFecha(usuarioId, fechaParseada);
         modelo.addAttribute("comidas", comidas);
-        return "alimentacion/lista";
+        return "alimentacion/lista"; //todo: no existe
     }
 
 
@@ -81,32 +81,32 @@ public class ControladorAlimentacionDia {
 
 
     @DeleteMapping("/eliminar/{idAlimentacion}")
-public String eliminarAlimentacion(@PathVariable Long idAlimentacion, HttpSession sesion) {
-    if (sesion.getAttribute("id_usuario") == null) {
-        return "redirect:/login";
+    public String eliminarAlimentacion(@PathVariable Long idAlimentacion, HttpSession sesion) {
+        if (sesion.getAttribute("id_usuario") == null) {
+            return "redirect:/login";
+        }
+        servicioAlimentacionDia.eliminarAlimentacionDia(idAlimentacion);
+        return "redirect:/alimentacion/listar";
     }
-    servicioAlimentacionDia.eliminarAlimentacionDia(idAlimentacion);
-    return "redirect:/alimentacion/listar";
-}
 
     @PostMapping("/agregar/alimentacion")
-public String agregarAlimentacion(
-        @Valid @ModelAttribute("nuevaAlimentacion") AlimentacionDia nuevaAlimentacion,
-        BindingResult resultado,
-        HttpSession sesion,
-        RedirectAttributes redirectAttrs) {
+    public String agregarAlimentacion(
+            @Valid @ModelAttribute("nuevaAlimentacion") AlimentacionDia nuevaAlimentacion,
+            BindingResult resultado,
+            HttpSession sesion,
+            RedirectAttributes redirectAttrs) {
 
-    if (resultado.hasErrors()) {
+        if (resultado.hasErrors()) {
+            return "redirect:/analisis";
+        }
+
+        Long idUsuario = (Long) sesion.getAttribute("id_usuario");
+        Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
+
+        nuevaAlimentacion.setUsuario(usuario);
+        repositorioAlimentacionDia.save(nuevaAlimentacion);
+
+        redirectAttrs.addFlashAttribute("mensajeAlimExito", "Registro de alimentación agregado correctamente.");
         return "redirect:/analisis";
     }
-
-    Long idUsuario = (Long) sesion.getAttribute("id_usuario");
-    Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
-
-    nuevaAlimentacion.setUsuario(usuario);
-    repositorioAlimentacionDia.save(nuevaAlimentacion);
-
-    redirectAttrs.addFlashAttribute("mensajeAlimExito", "Registro de alimentación agregado correctamente.");
-    return "redirect:/analisis";
-}
 }
