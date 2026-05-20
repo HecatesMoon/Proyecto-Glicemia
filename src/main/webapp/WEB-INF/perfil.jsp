@@ -252,11 +252,11 @@
                     <div class="col-md-6">
                         <label for="tipoDiabetes" class="form-label-custom">Tipo de Diabetes</label>
                         <form:select path="tipoDiabetes" class="form-select form-select-custom" id="tipoDiabetes">
-                            <form:option value="Tipo 1">Tipo 1</form:option>
-                            <form:option value="Tipo 2">Tipo 2</form:option>
-                            <form:option value="Gestacional">Gestacional</form:option>
-                            <form:option value="Pre-diabetes">Pre-diabetes</form:option>
-                            <form:option value="Otro">Otro</form:option>
+                            <form:option value="Tipo 1" label="Tipo 1"/>
+                            <form:option value="Tipo 2" label="Tipo 2"/>
+                            <form:option value="Gestacional" label="Gestacional"/>
+                            <form:option value="Prediabetes" label="Prediabetes"/>
+                            <form:option value="Control Preventivo" label="Control Preventivo"/>
                         </form:select>
                         <form:errors path="tipoDiabetes" cssClass="text-danger small"/>
                     </div>
