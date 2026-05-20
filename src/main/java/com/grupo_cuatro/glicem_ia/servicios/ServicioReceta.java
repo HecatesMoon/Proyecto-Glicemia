@@ -3,14 +3,13 @@ package com.grupo_cuatro.glicem_ia.servicios;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.grupo_cuatro.glicem_ia.modelos.Receta;
 import com.grupo_cuatro.glicem_ia.repositorios.RepositorioReceta;
 
 @Service
 public class ServicioReceta {
-    @Autowired
+    
     private final RepositorioReceta repositorioReceta;
 
     public ServicioReceta(RepositorioReceta repositorioReceta){
