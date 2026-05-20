@@ -3,11 +3,11 @@ package com.grupo_cuatro.glicem_ia.repositorios;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.grupo_cuatro.glicem_ia.modelos.AlimentacionDia;
 
-public interface RepositorioAlimentacionDia extends CrudRepository<AlimentacionDia, Long> {
+public interface RepositorioAlimentacionDia extends JpaRepository<AlimentacionDia, Long> {
     
     // Buscar todas las comidas de un usuario
     List<AlimentacionDia> findByUsuarioId(Long usuarioId);
