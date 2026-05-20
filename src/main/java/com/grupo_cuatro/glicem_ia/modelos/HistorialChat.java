@@ -31,7 +31,6 @@ public class HistorialChat {
     @Column(name= "origen_del_mensaje")
     @Enumerated(EnumType.STRING)
     private OrigenMensaje origenMensaje;
-    // private Integer costoTokens;
 
     public HistorialChat (){}
 
@@ -74,14 +73,5 @@ public class HistorialChat {
     public void setOrigenMensaje(OrigenMensaje origenMensaje) {
         this.origenMensaje = origenMensaje;
     }
-
-    // public Integer getCostoTokens() {
-    //     return costoTokens;
-    // }
-
-    // public void setCostoTokens(Integer costoTokens) {
-    //     this.costoTokens = costoTokens;
-    // }
-
     
 }
