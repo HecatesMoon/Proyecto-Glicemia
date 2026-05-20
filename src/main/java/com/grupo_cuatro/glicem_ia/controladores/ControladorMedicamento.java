@@ -32,6 +32,7 @@ public class ControladorMedicamento {
 
     @GetMapping("/medicamentos")
     public String medicamento(Model modelo, HttpSession sesion){
+        if (sesion.getAttribute("id_usuario") == null) {return "redirect:/login";}
         Long idUsuario = (Long) sesion.getAttribute("id_usuario");
         Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
 
@@ -57,6 +58,7 @@ public class ControladorMedicamento {
         nuevoMedicamento.setUsuario(usuario); //Asignar el usuario al medicamento
 
         repositorioMedicamento.save(nuevoMedicamento);
+        //todo: este flujo podria ser parte del servicio
 
         redirectAttrs.addFlashAttribute("mensajeAgregaExito", "Medicamento registrada correctamente.");
         return "redirect:/medicamentos";
@@ -76,6 +78,7 @@ public class ControladorMedicamento {
         } else {
             redirectAttrs.addFlashAttribute("mensajeError", "No se pudo eliminar el medicamento.");
         }
+        //todo: este flujo podria ser parte del servicio
 
         return "redirect:/medicamentos";
 
