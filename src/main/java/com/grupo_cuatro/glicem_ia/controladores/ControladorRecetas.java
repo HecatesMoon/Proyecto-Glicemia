@@ -107,8 +107,8 @@ public class ControladorRecetas {
 
     @PostMapping("/agregar/receta")
     public String agregarReceta(@Valid @ModelAttribute("nuevaReceta") Receta nuevaReceta,
-                                @RequestParam("archivoImagen") MultipartFile archivo,
                                 BindingResult validaciones,
+                                @RequestParam("archivoImagen") MultipartFile archivo,
                                 HttpSession sesion) {
 
         // 1. Verificar sesión
