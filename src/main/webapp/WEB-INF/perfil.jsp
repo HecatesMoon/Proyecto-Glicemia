@@ -242,9 +242,9 @@
 
         <div class="row mb-3"> <%-- Este div estaba originalmente, pero es mejor separarlo si son campos diferentes --%>
             <div class="col-md-6">
-                <label for="edad" class="form-label-custom">Edad</label>
-                <form:input path="edad" type="number" class="form-control form-control-custom" id="edad"/>
-                <form:errors path="edad" cssClass="text-danger small"/>
+                <label for="fechaNacimiento" class="form-label-custom">Fecha de Nacimiento</label>
+                <form:input path="fechaNacimiento" type="date" class="form-control form-control-custom" id="fechaNacimiento"/>
+                <form:errors path="fechaNacimiento" cssClass="text-danger small"/>
             </div>
         </div>
         <%-- ... el resto de tu formulario ... --%>
@@ -293,6 +293,10 @@
                         <label class="form-check-label checkbox-label" for="modoOscuro">Activar modo oscuro por defecto</label>
                     </div>
                 </div>
+
+                <c:if test="${not empty usuarioNoExiste}">
+                    <div class="alert alert-danger text-danger">${usuarioNoExiste}</div>
+                </c:if>
 
                 <div class="profile-actions">
                     <a href="${pageContext.request.contextPath}/perfil" class="btn btn-cancel">Cancelar</a>
