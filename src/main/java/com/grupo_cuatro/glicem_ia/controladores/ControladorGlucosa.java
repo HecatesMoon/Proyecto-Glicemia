@@ -35,6 +35,7 @@ public class ControladorGlucosa {
 
     @GetMapping("/glucosa")
 public String glucosa(Model model, HttpSession sesion) {
+    if (sesion.getAttribute("id_usuario") == null) {return "redirect:/login";}
     Long idUsuario = (Long) sesion.getAttribute("id_usuario");
     Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
 
@@ -77,6 +78,7 @@ public String glucosa(Model model, HttpSession sesion) {
             nuevaGlucosa.setValorMgDl((int) Math.round(nuevaGlucosa.getValorMmolL()/ 0.555 ));
 
         }
+        //todo: esto podria ir en el servicio
 
         repositorioGlucosa.save(nuevaGlucosa);
 
