@@ -44,13 +44,11 @@ public class ControladorChat {
         Usuario usuario = servicioUsuario.obtenerPorId((Long) sesion.getAttribute("id_usuario"));
         // Usuario usuario = servicioUsuario.obtenerPorId( 1L);
         if (validaciones.hasErrors()) {
-            modelo.addAttribute("historialChat", servicioChat.obtenerChatUsuario(usuario));;
+            modelo.addAttribute("historialChat", servicioChat.obtenerChatUsuario(usuario));
             return "asistente";
         }
-
-        servicioChat.procesarMensaje(usuario.getId(), nuevoPrompt.getPrompt());
-        // servicioChat.procesarMensaje(1L, nuevoPrompt.getPrompt());
         
+        servicioChat.procesarMensaje(usuario.getId(), nuevoPrompt.getPrompt());
         return "redirect:/asistente";
     }
 }
