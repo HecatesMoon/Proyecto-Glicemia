@@ -140,6 +140,7 @@ public class ControladorRecetas {
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("⚠ Error al guardar la imagen");
+                //todo: añadir error para usuario
             }
         }
 
