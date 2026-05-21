@@ -165,8 +165,8 @@
                 </div>
             </div>
         </div>
-
-        <c:choose>  <!-- todo:decidir si /recetario sera con cuenta o abierto -->
+<!-- todo:decidir si /recetario sera con cuenta o abierto -->
+        <c:choose>  
             <c:when test="${not empty sessionScope.id_usuario}">
                 <a class="btn btn-orange mt-4" href="${pageContext.request.contextPath}/recetas">Explora el Recetario</a>
             </c:when>
