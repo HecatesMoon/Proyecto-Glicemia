@@ -334,9 +334,9 @@
                 <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
             </div>
             <div class="col-md-8 text-md-end">
-                <a href="<c:url value='/terminos'/>" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
-                <a href="<c:url value='/politicaPrivacidad'/>" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
-                <a href="<c:url value='/contacto'/>" class="text-muted text-decoration-none">Contacto</a>
+                <a href="#" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
+                <a href="#>" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+                <a href="#" class="text-muted text-decoration-none">Contacto</a>
             </div>
         </div>
     </footer>
