@@ -64,7 +64,7 @@
                     <%-- Etiqueta <form:errors> para mostrar errores de validación --%>
                     <form:errors path="contrasenia" cssClass="alert alert-danger p-1 text-center small"/>
 
-                    <div id="pNaranjo" class="text-end"> <p><a href="/inicio" target="_blank" style="color:chocolate; text-decoration: none;">¿Olvidaste tu contraseña?</a></p> </div>
+                    <div id="pNaranjo" class="text-end"> <p style="cursor: pointer; user-select: none;" title="bajo construccion" >¿Olvidaste tu contraseña?</p> </div>
 
                     <div class="d-grid">
                         <button type="submit" id="naranjo" class="btn btn-primary morado">Iniciar Sesión</button>
