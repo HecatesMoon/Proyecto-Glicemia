@@ -249,7 +249,7 @@
             <div class="form-check text-start mb-4">
                 <form:checkbox class="form-check-input" path="aceptaTerminos" id="aceptaTerminos"/>
                 <label class="form-check-label" for="aceptaTerminos">
-                    Acepto los <a href="${pageContext.request.contextPath}/terminos" target="_blank" class="text-decoration-none" style="color: #f5843a; font-weight: 600;">términos y condiciones</a>
+                    Acepto los <a href="${pageContext.request.contextPath}/inicio" target="_blank" class="text-decoration-none" style="color: #f5843a; font-weight: 600;">términos y condiciones</a>
                 </label>
                 <form:errors class="mensaje-error" path="aceptaTerminos"/>
             </div>
