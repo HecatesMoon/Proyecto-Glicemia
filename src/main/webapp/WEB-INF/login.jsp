@@ -22,7 +22,7 @@
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/GlicemIA_icono.png">
 </head>
 <body style="background: linear-gradient(rgb(255, 228, 178), orange);">
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-5 p-5 rounded-5" style="background-color: rgb(255, 255, 255);">
 
