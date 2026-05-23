@@ -300,7 +300,7 @@
                 </c:if>
 
                 <div class="profile-actions">
-                    <a href="${pageContext.request.contextPath}/perfil" class="btn btn-cancel">Cancelar</a>
+                    <a href="${pageContext.request.contextPath}/glucosa" class="btn btn-cancel">Cancelar</a>
                     <button type="submit" class="btn btn-orange">Guardar Cambios</button>
                 </div>
             </form:form>
@@ -312,12 +312,17 @@
                 <h5>Zona de Peligro</h5>
                 <p>Eliminar cuenta: Esta acción es permanente y no se puede deshacer.</p>
             </div>
-            <form action="${pageContext.request.contextPath}/perfil/eliminar" method="post" onsubmit="return confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.');">
+            <form action="${pageContext.request.contextPath}/perfil/eliminar" method="post" onsubmit="return mostrarConfirmacionEliminar();">
                 <button type="submit" class="btn btn-delete-account">Eliminar mi Cuenta</button>
             </form>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        function mostrarConfirmacionEliminar() {
+            return confirm("¿Estás seguro? Esta acción no se puede deshacer.");
+        }
+    </script>
 </body>
 </html>
