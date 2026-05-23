@@ -61,7 +61,7 @@
                     <c:when test="${not empty sessionScope.id_usuario}">
                         <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
                         <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom">Glucosa</a>
-                        <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom nav-link-active">Funciones IA</a>
+                        <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom">Funciones IA</a>
                         <a href="${pageContext.request.contextPath}/analisis" class="nav-link-custom">Análisis de Alimentos</a>
                         <a href="${pageContext.request.contextPath}/recetas" class="nav-link-custom">Ver Recetas</a>
                         <a href="${pageContext.request.contextPath}/medicamentos" class="nav-link-custom">Medicamentos</a>
