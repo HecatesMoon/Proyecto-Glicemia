@@ -32,6 +32,7 @@ public String mostrarAnalisisDeAlimentos(Model model) {
         model.addAttribute("nuevaAlimentacion", new AlimentacionDia());
     }
     return "analisis";
+    //todo: mover a otro controlador y ponerle validacion de usuario?
 }
 
     @GetMapping("/enConstruccion")
