@@ -311,7 +311,7 @@
                             <img src="<c:url value='/img/partner-logo1.png'/>" alt="Logo BienestarTotal" class="icon-img">
                             <h5 class="mb-2">Patrocinado por BienestarTotal</h5>
                             <p class="mb-3">Glucómetros precisos para ti<br>Controla tu diabetes, vive tu vida.</p>
-                            <a href="<c:url value='/bienestarTotal'/>" class="btn btn-orange">Ver glucómetros</a>
+                            <a href="/enConstruccion" class="btn btn-orange">Ver glucómetros</a>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
@@ -319,7 +319,7 @@
                              <img src="<c:url value='/img/partner-logo5.png'/>" alt="Logo SaborSalud" class="icon-img">
                             <h5 class="mb-2">Patrocinado por SaborSalud</h5>
                             <p class="mb-3">Alimentos de bajo índice glucémico<br>Come delicioso y cuida tu salud.</p>
-                            <a href="<c:url value='/saborSalud'/>" class="btn btn-orange">Ver alimentos</a>
+                            <a href="/enConstruccion" class="btn btn-orange">Ver alimentos</a>
                         </div>
                     </div>
                 </div>
