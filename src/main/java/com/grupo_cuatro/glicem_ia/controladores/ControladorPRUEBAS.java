@@ -34,6 +34,10 @@ public String mostrarAnalisisDeAlimentos(Model model) {
     return "analisis";
 }
 
+    @GetMapping("/enConstruccion")
+    public String mostrarEnConstruccion() {
+        return "enConstruccion";
+    }
 
 }
 
