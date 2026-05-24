@@ -335,7 +335,7 @@
             </div>
             <div class="col-md-8 text-md-end">
                 <a href="#" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
-                <a href="#>" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+                <a href="#" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
                 <a href="#" class="text-muted text-decoration-none">Contacto</a>
             </div>
         </div>
