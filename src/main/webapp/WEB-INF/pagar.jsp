@@ -61,6 +61,7 @@
                     <a href="${pageContext.request.contextPath}/logout" class="btn btn-gray">Cerrar Sesión</a>
                 </c:when>
                 <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/" class="nav-link-custom">Inicio</a>
                     <a href="${pageContext.request.contextPath}/login" class="btn btn-light me-3" style="border-radius: 8px; font-weight: 500;">Iniciar Sesión</a>
                     <a href="${pageContext.request.contextPath}/registro" class="btn btn-orange" style="border-radius: 8px;">Registrarse</a>
                 </c:otherwise>

@@ -37,6 +37,8 @@
             text-decoration: none;
         }
         .btn-back-to-home:hover { background-color: #e0702a; color: white; }
+        .btn-orange { background-color: #f5843a; color: white; border: none; border-radius: 8px; padding: 10px 20px; font-weight: 500; }
+        .btn-orange:hover { background-color: #e0702a; color: white; }
         .btn-gray { background-color: #e0e0e0; color: #333; border: none; border-radius: 8px; transition: 0.2s; padding: 8px 15px; }
         .btn-gray:hover { background-color: #cfcfcf; color: #000; }
         .nav-link-custom { text-decoration: none; color: #413d3c; margin-right: 1.2rem; font-weight: 500; transition: color 0.2s; }
@@ -68,6 +70,7 @@
                         <a href="${pageContext.request.contextPath}/logout" class="btn btn-gray">Cerrar Sesión</a>
                     </c:when>
                     <c:otherwise>
+                        <a href="${pageContext.request.contextPath}/" class="nav-link-custom">Inicio</a>
                         <a href="${pageContext.request.contextPath}/login" class="btn btn-light me-3" style="border-radius: 8px; font-weight: 500;">Iniciar Sesión</a>
                         <a href="${pageContext.request.contextPath}/registro" class="btn btn-orange" style="border-radius: 8px;">Registrarse</a>
                     </c:otherwise>
