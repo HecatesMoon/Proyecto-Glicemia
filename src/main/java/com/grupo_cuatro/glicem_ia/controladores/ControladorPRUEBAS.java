@@ -26,15 +26,6 @@ public class ControladorPRUEBAS {
         return "donacion"; // /WEB-INF/pagar.jsp
     }
 
-    @GetMapping("/analisis")
-public String mostrarAnalisisDeAlimentos(Model model) {
-    if (!model.containsAttribute("nuevaAlimentacion")) {
-        model.addAttribute("nuevaAlimentacion", new AlimentacionDia());
-    }
-    return "analisis";
-    //todo: mover a otro controlador y ponerle validacion de usuario?
-}
-
     @GetMapping("/enConstruccion")
     public String mostrarEnConstruccion() {
         return "enConstruccion";

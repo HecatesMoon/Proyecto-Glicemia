@@ -26,7 +26,7 @@ import jakarta.validation.Valid;
 @Controller
 public class ControladorAlimentacionDia {
 
-    private final RepositorioAlimentacionDia repositorioAlimentacionDia;
+    private final RepositorioAlimentacionDia repositorioAlimentacionDia; //todo: repo y servicio?
     private final ServicioAlimentacionDia servicioAlimentacionDia;
     private final ServicioUsuario servicioUsuario;
 
@@ -37,6 +37,16 @@ public class ControladorAlimentacionDia {
         this.servicioAlimentacionDia = servicioAlimentacionDia;
         this.servicioUsuario = servicioUsuario;
     }
+
+    @GetMapping("/analisis")
+    public String mostrarAnalisisAlimentacion(Model modelo, HttpSession sesion) {
+        if (sesion.getAttribute("id_usuario") == null) {return "redirect:/login";}
+        if (!modelo.containsAttribute("nuevaAlimentacion")){
+            modelo.addAttribute("nuevaAlimentacion", new AlimentacionDia());
+        }
+        return "analisis";
+    }
+    
 
     //Formulario de registro de alimentación diaria
     @GetMapping("/alimentacion")
