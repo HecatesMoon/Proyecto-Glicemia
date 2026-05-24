@@ -70,6 +70,7 @@
                         <button type="submit" id="naranjo" class="btn btn-primary morado">Iniciar Sesión</button>
                     </div>
                     <div id="noTienesC" class="text-center"><p>¿No tienes una cuenta? <a id="pNaranjo" href="/registro">Registrate</a></p></div>
+                    <div class="text-center"><a href="/" style="text-decoration: none; color: gray;">Volver a Inicio</a></div>
 
                 </form:form> <%-- Fin del formulario de Spring --%>
             </div>
