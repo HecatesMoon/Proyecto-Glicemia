@@ -180,7 +180,7 @@
     </style>
 </head>
 <body>
-    <div class="registro-container">
+    <div class="registro-container mt-4 mb-4">
         <h1>Regístrate en Glicem<span style="color: #d2691e;">IA</span></h1>
         <h3>Controla tu glucemia de forma inteligente</h3>
 
