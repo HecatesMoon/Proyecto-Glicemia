@@ -1,6 +1,5 @@
 package com.grupo_cuatro.glicem_ia.controladores;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,9 +17,8 @@ import jakarta.validation.Valid;
 
 @Controller
 public class ControladorChat {
-    @Autowired
+
     private final ServicioChat servicioChat;
-    @Autowired
     private final ServicioUsuario servicioUsuario;
 
     public ControladorChat(ServicioChat servicioChat, ServicioUsuario servicioUsuario){
@@ -46,13 +44,11 @@ public class ControladorChat {
         Usuario usuario = servicioUsuario.obtenerPorId((Long) sesion.getAttribute("id_usuario"));
         // Usuario usuario = servicioUsuario.obtenerPorId( 1L);
         if (validaciones.hasErrors()) {
-            modelo.addAttribute("historialChat", servicioChat.obtenerChatUsuario(usuario));;
+            modelo.addAttribute("historialChat", servicioChat.obtenerChatUsuario(usuario));
             return "asistente";
         }
-
-        servicioChat.procesarMensaje(usuario.getId(), nuevoPrompt.getPrompt());
-        // servicioChat.procesarMensaje(1L, nuevoPrompt.getPrompt());
         
+        servicioChat.procesarMensaje(usuario.getId(), nuevoPrompt.getPrompt());
         return "redirect:/asistente";
     }
 }

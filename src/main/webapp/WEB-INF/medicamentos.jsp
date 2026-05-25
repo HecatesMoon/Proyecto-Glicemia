@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Medicamentos - GlicemIA</title>
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/GlicemIA_icono.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
@@ -34,6 +35,9 @@
         .list-title { font-size: 1.3rem; font-weight: 600; color: #f5843a; margin-bottom: 1.2rem; }
         .med-item { background-color: #fdfaf5; border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; border: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .med-item:hover { border-color: #f5843a; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .med-delete-btn {color:#f5843a; font-size: 1.5rem; border-radius: 2rem; padding: .2rem; border: none; background-color: transparent; transition: scale .2s;}
+        .med-delete-btn:hover {color: red;scale:1.2}
+        .med-delete-btn:active {scale:1}
 
         .mensaje-error { font-size: 0.85rem; margin-top: 3px; }
     </style>
@@ -92,6 +96,7 @@
                 <i class="bi bi-box-arrow-down me-2"></i>Exportar a PDF
             </button>
         </div>
+        <!-- todo: exportar? -->
 
         <div class="row">
             <!-- Formulario -->
@@ -165,7 +170,7 @@
                                 <p class="med-notes">${med.notas}</p>
                             </div>
                             <form action="${pageContext.request.contextPath}/eliminar/medicamento/${med.id}" method="post">
-                                <button class="delete-btn" type="submit"><i class="bi bi-trash"></i></button>
+                                <button class="delete-btn med-delete-btn" type="submit"><i class="bi bi-trash"></i></button>
                             </form>
                         </div>
                     </c:forEach>
@@ -205,11 +210,6 @@
         </div>
     </div>
 </footer>
-
-    <footer class="container-fluid py-4 mt-5 border-top text-muted text-center">
-        <p class="mb-0">&copy; 2025 GlicemIA — Todos los derechos reservados.</p>
-    </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -19,9 +19,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <title>Login GlicemIA</title>
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/GlicemIA_icono.png">
 </head>
 <body style="background: linear-gradient(rgb(255, 228, 178), orange);">
-    <div class="container mt-5">
+    <div class="container mt-4 mb-4">
         <div class="row justify-content-center">
             <div class="col-md-5 p-5 rounded-5" style="background-color: rgb(255, 255, 255);">
 
@@ -63,12 +64,13 @@
                     <%-- Etiqueta <form:errors> para mostrar errores de validación --%>
                     <form:errors path="contrasenia" cssClass="alert alert-danger p-1 text-center small"/>
 
-                    <div id="pNaranjo" class="text-end"> <p>¿Olvidaste tu contraseña?</p> </div>
+                    <div id="pNaranjo" class="text-end"> <p style="cursor: pointer; user-select: none;" title="bajo construccion" >¿Olvidaste tu contraseña?</p> </div>
 
                     <div class="d-grid">
                         <button type="submit" id="naranjo" class="btn btn-primary morado">Iniciar Sesión</button>
                     </div>
                     <div id="noTienesC" class="text-center"><p>¿No tienes una cuenta? <a id="pNaranjo" href="/registro">Registrate</a></p></div>
+                    <div class="text-center"><a href="/" style="text-decoration: none; color: gray;">Volver a Inicio</a></div>
 
                 </form:form> <%-- Fin del formulario de Spring --%>
             </div>

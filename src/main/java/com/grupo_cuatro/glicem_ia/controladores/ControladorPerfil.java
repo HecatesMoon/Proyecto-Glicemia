@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grupo_cuatro.glicem_ia.modelos.Usuario;
 import com.grupo_cuatro.glicem_ia.servicios.ServicioUsuario;
@@ -35,7 +36,8 @@ public class ControladorPerfil {
     @PostMapping("/perfil/actualizar")
     public String actualizarPerfil(@Valid @ModelAttribute("usuario") Usuario usuarioForm,
                                     BindingResult validaciones,
-                                    HttpSession sesion){
+                                    HttpSession sesion,
+                                    RedirectAttributes redirectAttributes){
         Long idUsuario = (Long) sesion.getAttribute("id_usuario");
         if (idUsuario == null) return "redirect:/login";
         
@@ -49,7 +51,10 @@ public class ControladorPerfil {
             return "perfil";
         }
 
-        servicioUsuario.actualizarUsuario(idUsuario, usuarioForm);
+        Usuario usuarioActualizado = (Usuario) servicioUsuario.actualizarUsuario(idUsuario, usuarioForm);
+
+        if (usuarioActualizado == null){redirectAttributes.addFlashAttribute("usuarioNoExiste", "Ocurrio un error, este usuario no existe");}
+
         return "redirect:/perfil";
     }
 

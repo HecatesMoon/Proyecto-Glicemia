@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Glucosa - GlicemIA</title>
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/GlicemIA_icono.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
@@ -310,7 +311,7 @@
                             <img src="<c:url value='/img/partner-logo1.png'/>" alt="Logo BienestarTotal" class="icon-img">
                             <h5 class="mb-2">Patrocinado por BienestarTotal</h5>
                             <p class="mb-3">Glucómetros precisos para ti<br>Controla tu diabetes, vive tu vida.</p>
-                            <a href="<c:url value='/bienestarTotal'/>" class="btn btn-orange">Ver glucómetros</a>
+                            <a href="/enConstruccion" class="btn btn-orange">Ver glucómetros</a>
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
@@ -318,7 +319,7 @@
                              <img src="<c:url value='/img/partner-logo5.png'/>" alt="Logo SaborSalud" class="icon-img">
                             <h5 class="mb-2">Patrocinado por SaborSalud</h5>
                             <p class="mb-3">Alimentos de bajo índice glucémico<br>Come delicioso y cuida tu salud.</p>
-                            <a href="<c:url value='/saborSalud'/>" class="btn btn-orange">Ver alimentos</a>
+                            <a href="/enConstruccion" class="btn btn-orange">Ver alimentos</a>
                         </div>
                     </div>
                 </div>
@@ -333,9 +334,9 @@
                 <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
             </div>
             <div class="col-md-8 text-md-end">
-                <a href="<c:url value='/terminos'/>" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
-                <a href="<c:url value='/politicaPrivacidad'/>" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
-                <a href="<c:url value='/contacto'/>" class="text-muted text-decoration-none">Contacto</a>
+                <a href="#" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
+                <a href="#" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+                <a href="#" class="text-muted text-decoration-none">Contacto</a>
             </div>
         </div>
     </footer>

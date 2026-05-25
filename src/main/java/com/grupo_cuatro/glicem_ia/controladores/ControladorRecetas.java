@@ -5,7 +5,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,9 +27,9 @@ import jakarta.validation.Valid;
 
 @Controller
 public class ControladorRecetas {
-    @Autowired
+
     private final ServicioReceta servicioReceta;
-    private ServicioUsuario servicioUsuario;
+    private final ServicioUsuario servicioUsuario;
     
     public ControladorRecetas(ServicioReceta servicioReceta,
                             ServicioUsuario servicioUsuario){
@@ -108,8 +107,8 @@ public class ControladorRecetas {
 
     @PostMapping("/agregar/receta")
     public String agregarReceta(@Valid @ModelAttribute("nuevaReceta") Receta nuevaReceta,
-                                @RequestParam("archivoImagen") MultipartFile archivo,
                                 BindingResult validaciones,
+                                @RequestParam("archivoImagen") MultipartFile archivo,
                                 HttpSession sesion) {
 
         // 1. Verificar sesión
@@ -141,6 +140,7 @@ public class ControladorRecetas {
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("⚠ Error al guardar la imagen");
+                //todo: añadir error para usuario
             }
         }
 

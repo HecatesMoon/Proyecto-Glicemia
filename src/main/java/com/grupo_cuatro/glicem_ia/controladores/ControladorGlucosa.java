@@ -1,6 +1,5 @@
 package com.grupo_cuatro.glicem_ia.controladores;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,17 +24,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ControladorGlucosa {
-    @Autowired
-    private ServicioUsuario servicioUsuario;
-
+    
+    private final ServicioUsuario servicioUsuario;
     private final RepositorioGlucosa repositorioGlucosa;
 
-    ControladorGlucosa(RepositorioGlucosa repositorioGlucosa) {
+    ControladorGlucosa(RepositorioGlucosa repositorioGlucosa, ServicioUsuario servicioUsuario) {
         this.repositorioGlucosa = repositorioGlucosa;
+        this.servicioUsuario = servicioUsuario;
     }
 
     @GetMapping("/glucosa")
 public String glucosa(Model model, HttpSession sesion) {
+    if (sesion.getAttribute("id_usuario") == null) {return "redirect:/login";}
     Long idUsuario = (Long) sesion.getAttribute("id_usuario");
     Usuario usuario = servicioUsuario.obtenerPorId(idUsuario);
 
@@ -78,6 +78,7 @@ public String glucosa(Model model, HttpSession sesion) {
             nuevaGlucosa.setValorMgDl((int) Math.round(nuevaGlucosa.getValorMmolL()/ 0.555 ));
 
         }
+        //todo: esto podria ir en el servicio
 
         repositorioGlucosa.save(nuevaGlucosa);
 

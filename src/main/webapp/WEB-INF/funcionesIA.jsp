@@ -1,10 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funciones IA - GlicemIA</title>
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/GlicemIA_icono.png">
 
     <!-- Bootstrap y fuentes -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -37,13 +39,22 @@
                 <h4 class="mb-0">Glicem<span style="color: #d2691e;">IA</span></h4>
             </div>
             <div class="col-md-9 text-end">
-                <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
-                <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom">Glucosa</a>
-                <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom nav-link-active">Funciones IA</a>
-                <a href="${pageContext.request.contextPath}/analisis" class="nav-link-custom">Análisis de Alimentos</a>
-                <a href="${pageContext.request.contextPath}/recetas" class="nav-link-custom">Ver Recetas</a>
-                <a href="${pageContext.request.contextPath}/medicamentos" class="nav-link-custom">Medicamentos</a>
-                <a href="${pageContext.request.contextPath}/logout" class="btn btn-gray">Cerrar Sesión</a>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.id_usuario}">
+                        <a href="${pageContext.request.contextPath}/perfil" class="nav-link-custom">Perfil</a>
+                        <a href="${pageContext.request.contextPath}/glucosa" class="nav-link-custom">Glucosa</a>
+                        <a href="${pageContext.request.contextPath}/funcionesIA" class="nav-link-custom nav-link-active">Funciones IA</a>
+                        <a href="${pageContext.request.contextPath}/analisis" class="nav-link-custom">Análisis de Alimentos</a>
+                        <a href="${pageContext.request.contextPath}/recetas" class="nav-link-custom">Ver Recetas</a>
+                        <a href="${pageContext.request.contextPath}/medicamentos" class="nav-link-custom">Medicamentos</a>
+                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-gray">Cerrar Sesión</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="${pageContext.request.contextPath}/" class="nav-link-custom">Inicio</a>
+                        <a href="${pageContext.request.contextPath}/login" class="btn btn-light me-3" style="border-radius: 8px; font-weight: 500;">Iniciar Sesión</a>
+                        <a href="${pageContext.request.contextPath}/registro" class="btn btn-orange" style="border-radius: 8px;">Registrarse</a>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </nav>

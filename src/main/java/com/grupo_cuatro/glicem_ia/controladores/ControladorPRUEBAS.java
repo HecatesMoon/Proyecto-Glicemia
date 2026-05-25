@@ -26,19 +26,10 @@ public class ControladorPRUEBAS {
         return "donacion"; // /WEB-INF/pagar.jsp
     }
 
-    @GetMapping("/home")
-    public String mostrarLanding() {
-        return "inicio"; // /WEB-INF/pagar.jsp
+    @GetMapping("/enConstruccion")
+    public String mostrarEnConstruccion() {
+        return "enConstruccion";
     }
-
-    @GetMapping("/analisis")
-public String mostrarAnalisisDeAlimentos(Model model) {
-    if (!model.containsAttribute("nuevaAlimentacion")) {
-        model.addAttribute("nuevaAlimentacion", new AlimentacionDia());
-    }
-    return "analisis";
-}
-
 
 }
 

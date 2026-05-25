@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>GlicemIA</title>
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/GlicemIA_icono.png">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Style_prueba.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,15 +60,7 @@
             <div class="col-md-6 mb-4 mb-md-0">
                 <h1 style="font-weight: 700; font-size: 2.8rem; color: #413d3c;">Control simple e inteligente de tu glucosa</h1>
                 <p class="lead text-muted my-4">Gestiona tu salud con nuestra app intuitiva. Registra tus comidas, monitorea tu glucosa y recibe análisis personalizados para tomar mejores decisiones.</p>
-
-                <c:choose>
-                    <c:when test="${not empty sessionScope.id_usuario}">
-                        <a class="btn btn-orange btn-lg" href="${pageContext.request.contextPath}/glucosa">Empieza a Cuidar tu Salud Gratis</a>
-                    </c:when>
-                    <c:otherwise>
-                        <a class="btn btn-orange btn-lg" href="${pageContext.request.contextPath}/login">Empieza a Cuidar tu Salud Gratis</a>
-                    </c:otherwise>
-                </c:choose>
+                <a class="btn btn-orange btn-lg" href="${pageContext.request.contextPath}/glucosa">Empieza a Cuidar tu Salud Gratis</a>                    
             </div>
             <div class="col-md-6 text-center">
                 <img src="${pageContext.request.contextPath}/img/hero-image-placeholder.png" alt="App GlicemIA en un teléfono" class="img-fluid" style="max-width: 500px;">
@@ -111,16 +104,7 @@
     <section class="container py-5 text-center" style="background-color: #fff8f0;">
         <h2 class="section-title">Funcionalidades Premium</h2>
         <p class="section-subtitle">Desbloquea análisis avanzados y herramientas personalizadas para un control más profundo.</p>
-
-        <c:choose>
-            <c:when test="${not empty sessionScope.id_usuario}">
-                <a class="btn btn-orange mb-5" href="${pageContext.request.contextPath}/funcionesIA">Ver Planes Premium</a>
-            </c:when>
-            <c:otherwise>
-                <a class="btn btn-orange mb-5" href="${pageContext.request.contextPath}/login">Ver Planes Premium</a>
-            </c:otherwise>
-        </c:choose>
-
+        <a class="btn btn-orange mb-5" href="${pageContext.request.contextPath}/funcionesIA">Ver Planes Premium</a>
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card h-100 p-4 rounded-5">
@@ -181,8 +165,8 @@
                 </div>
             </div>
         </div>
-
-        <c:choose>
+<!-- todo:decidir si /recetario sera con cuenta o abierto -->
+        <c:choose>  
             <c:when test="${not empty sessionScope.id_usuario}">
                 <a class="btn btn-orange mt-4" href="${pageContext.request.contextPath}/recetas">Explora el Recetario</a>
             </c:when>
@@ -226,9 +210,9 @@
                 <span class="text-muted">&copy; 2025 GlicemIA. Todos los derechos reservados.</span>
             </div>
             <div class="col-md-8 text-md-end">
-                <a href="${pageContext.request.contextPath}/terminos" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
-                <a href="${pageContext.request.contextPath}/privacidad" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
-                <a href="${pageContext.request.contextPath}/contacto" class="text-muted text-decoration-none">Contacto</a>
+                <a href="#" class="text-muted me-3 text-decoration-none">Términos y Condiciones</a>
+                <a href="#" class="text-muted me-3 text-decoration-none">Política de Privacidad</a>
+                <a href="#" class="text-muted text-decoration-none">Contacto</a>
             </div>
         </div>
     </footer>

@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regístrate en GlicemIA</title>
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/GlicemIA_icono.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
@@ -179,7 +180,7 @@
     </style>
 </head>
 <body>
-    <div class="registro-container">
+    <div class="registro-container mt-4 mb-4">
         <h1>Regístrate en Glicem<span style="color: #d2691e;">IA</span></h1>
         <h3>Controla tu glucemia de forma inteligente</h3>
 
@@ -248,7 +249,7 @@
             <div class="form-check text-start mb-4">
                 <form:checkbox class="form-check-input" path="aceptaTerminos" id="aceptaTerminos"/>
                 <label class="form-check-label" for="aceptaTerminos">
-                    Acepto los <a href="${pageContext.request.contextPath}/terminos" target="_blank" class="text-decoration-none" style="color: #f5843a; font-weight: 600;">términos y condiciones</a>
+                    Acepto los <span style="color: #f5843a; font-weight: 600;cursor: pointer;" title="bajo construccion">términos y condiciones</span>
                 </label>
                 <form:errors class="mensaje-error" path="aceptaTerminos"/>
             </div>
@@ -274,6 +275,7 @@
         <p class="login-link">
             ¿Ya tienes una cuenta? <a href="${pageContext.request.contextPath}/login">Inicia sesión</a>
         </p>
+        <div class="text-center"><a href="/" style="text-decoration: none; color: gray;">Volver a Inicio</a></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

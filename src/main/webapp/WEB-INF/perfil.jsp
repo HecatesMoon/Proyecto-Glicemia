@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario - GlicemIA</title>
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/GlicemIA_icono.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"> <%-- Para los iconos de Bootstrap --%>
@@ -242,9 +243,9 @@
 
         <div class="row mb-3"> <%-- Este div estaba originalmente, pero es mejor separarlo si son campos diferentes --%>
             <div class="col-md-6">
-                <label for="edad" class="form-label-custom">Edad</label>
-                <form:input path="edad" type="number" class="form-control form-control-custom" id="edad"/>
-                <form:errors path="edad" cssClass="text-danger small"/>
+                <label for="fechaNacimiento" class="form-label-custom">Fecha de Nacimiento</label>
+                <form:input path="fechaNacimiento" type="date" class="form-control form-control-custom" id="fechaNacimiento"/>
+                <form:errors path="fechaNacimiento" cssClass="text-danger small"/>
             </div>
         </div>
         <%-- ... el resto de tu formulario ... --%>
@@ -252,11 +253,11 @@
                     <div class="col-md-6">
                         <label for="tipoDiabetes" class="form-label-custom">Tipo de Diabetes</label>
                         <form:select path="tipoDiabetes" class="form-select form-select-custom" id="tipoDiabetes">
-                            <form:option value="Tipo 1">Tipo 1</form:option>
-                            <form:option value="Tipo 2">Tipo 2</form:option>
-                            <form:option value="Gestacional">Gestacional</form:option>
-                            <form:option value="Pre-diabetes">Pre-diabetes</form:option>
-                            <form:option value="Otro">Otro</form:option>
+                            <form:option value="Tipo 1" label="Tipo 1"/>
+                            <form:option value="Tipo 2" label="Tipo 2"/>
+                            <form:option value="Gestacional" label="Gestacional"/>
+                            <form:option value="Prediabetes" label="Prediabetes"/>
+                            <form:option value="Control Preventivo" label="Control Preventivo"/>
                         </form:select>
                         <form:errors path="tipoDiabetes" cssClass="text-danger small"/>
                     </div>
@@ -294,8 +295,12 @@
                     </div>
                 </div>
 
+                <c:if test="${not empty usuarioNoExiste}">
+                    <div class="alert alert-danger text-danger">${usuarioNoExiste}</div>
+                </c:if>
+
                 <div class="profile-actions">
-                    <a href="${pageContext.request.contextPath}/perfil" class="btn btn-cancel">Cancelar</a>
+                    <a href="${pageContext.request.contextPath}/glucosa" class="btn btn-cancel">Cancelar</a>
                     <button type="submit" class="btn btn-orange">Guardar Cambios</button>
                 </div>
             </form:form>
@@ -307,12 +312,17 @@
                 <h5>Zona de Peligro</h5>
                 <p>Eliminar cuenta: Esta acción es permanente y no se puede deshacer.</p>
             </div>
-            <form action="${pageContext.request.contextPath}/perfil/eliminar" method="post" onsubmit="return confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.');">
+            <form action="${pageContext.request.contextPath}/perfil/eliminar" method="post" onsubmit="return mostrarConfirmacionEliminar();">
                 <button type="submit" class="btn btn-delete-account">Eliminar mi Cuenta</button>
             </form>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        function mostrarConfirmacionEliminar() {
+            return confirm("¿Estás seguro? Esta acción no se puede deshacer.");
+        }
+    </script>
 </body>
 </html>
